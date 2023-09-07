@@ -5,6 +5,8 @@ public class PlayerContoller : MonoBehaviour {
     public float speed = 5f;
     private CharacterController _characterController;
     private GameObject _hitObject;
+    public float jumpHeight = 15f; 
+    private float y_velocity; 
 
     // Start is called before the first frame update
     void Start() {
@@ -13,6 +15,7 @@ public class PlayerContoller : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
         tryMove();
         tryRaycast();
         tryInteract();
@@ -38,11 +41,23 @@ public class PlayerContoller : MonoBehaviour {
 
     private void tryMove() {
         Vector3 direction;
+        
 
         transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * 180f, 0);
         direction = transform.forward * Input.GetAxis("Vertical") * speed;
+        
+            if (Input.GetKeyDown(KeyCode.Space))
+        {   
+            Vector3 velocity = direction * speed;
+            Debug.Log("SPACE");
+            velocity.y = y_velocity;
+         _characterController.Move(velocity * Time.deltaTime);
+        }
 
+        else 
+        {
         _characterController.Move(direction * Time.deltaTime - Vector3.up * 0.1f);
+        }
     }
 
     private void tryInteract() {
@@ -51,4 +66,5 @@ public class PlayerContoller : MonoBehaviour {
             _hitObject.GetComponent<Interactable>().Interact(gameObject);
         }
     }
+
 }

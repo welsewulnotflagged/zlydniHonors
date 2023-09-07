@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+  jumpHeight: 100
 --- !u!65 &1697542148
 BoxCollider:
   m_ObjectHideFlags: 0
