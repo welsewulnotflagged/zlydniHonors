@@ -51,13 +51,14 @@ public class PlayerContoller : MonoBehaviour {
         {   
             Vector3 velocity = direction * speed;
             Debug.Log("SPACE");
-            velocity.y = y_velocity;
+            
          _characterController.Move(velocity * Time.deltaTime);
         }
 
         else 
         {
-        _characterController.Move(direction * Time.deltaTime - Vector3.up * 0.1f);
+           // velocity.y = y_velocity;
+            _characterController.Move(direction * Time.deltaTime - Vector3.up * 0.1f);
         }
     }
 
@@ -67,5 +68,23 @@ public class PlayerContoller : MonoBehaviour {
             _hitObject.GetComponent<Interactable>().Interact(gameObject);
         }
     }
+
+    /* private void tryJump()
+    {
+            Vector3 direction = transform.forward * Input.GetAxis("Vertical") * speed;;
+            Vector3 velocity = direction * speed;
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            y_velocity = jumpHeight;
+        }
+        else
+        {
+            y_velocity -= gravity;
+        }
+
+        velocity.y = y_velocity;
+        _characterController.Move(velocity * Time.deltaTime); 
+
+    }*/
 
 }
