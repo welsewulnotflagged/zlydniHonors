@@ -20,10 +20,6 @@ public class Openable : MonoBehaviour, Interactable {
         }
     }
 
-    // private Vector3 getDirection() {
-        
-    // }
-
     public void Interact(GameObject source) {
         opened = !opened;
         Debug.Log((source.transform.position - transform.position).normalized);

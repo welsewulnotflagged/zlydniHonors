@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6633207283156833141}
   - component: {fileID: 2733453044646658476}
   - component: {fileID: 918811804268973121}
+  - component: {fileID: 9062505272444718824}
   m_Layer: 0
   m_Name: Suzanne
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320017112469101205}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.907, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &8561404812054297116
 MeshFilter:
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34f0a9f5f0339ac4b821477d4bf1fc73, type: 2}
+  - {fileID: 2100000, guid: c1cdc276ac51ccc4f99ef6ae7d9db068, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,10 +96,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1320017112469101205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b62afb48f72c1b48a612c3524ae06f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 52d54e24fe50154458f75e0f9919d337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
+  turningSpeed: 180
+  currentCameraController: {fileID: 0}
+  jumpHeight: 15
 --- !u!143 &2733453044646658476
 CharacterController:
   m_ObjectHideFlags: 0
@@ -118,8 +122,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 0.01
-  m_Radius: 0.01
+  m_Height: 2
+  m_Radius: 0.5
   m_SlopeLimit: 0
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -146,3 +150,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.027969148, y: 0.016863286, z: 0.020113084}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9062505272444718824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320017112469101205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0097b812c4d04f3408a01bf29cdf6e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractionRange: 5

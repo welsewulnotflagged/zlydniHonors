@@ -6,8 +6,8 @@ public class PlayerContoller : MonoBehaviour {
     public float turningSpeed = 180f;
     private CharacterController _characterController;
     public CameraController currentCameraController;
-    public float jumpHeight = 15f; 
-    private float y_velocity; 
+    public float jumpHeight = 15f;
+    private float y_velocity;
 
     // Start is called before the first frame update
     void Start() {
@@ -32,22 +32,18 @@ public class PlayerContoller : MonoBehaviour {
 
     private void tryMove() {
         Vector3 direction;
-        
+
 
         transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * turningSpeed, 0);
         direction = transform.forward * Input.GetAxis("Vertical") * speed;
-        
-            if (Input.GetKeyDown(KeyCode.Space))
-        {   
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
             Vector3 velocity = direction * speed;
             Debug.Log("SPACE");
             velocity.y = y_velocity;
-         _characterController.Move(velocity * Time.deltaTime);
-        }
-
-        else 
-        {
-        _characterController.Move(direction * Time.deltaTime - Vector3.up * 0.1f);
+            _characterController.Move(velocity * Time.deltaTime);
+        } else {
+            _characterController.Move(direction * Time.deltaTime - Vector3.up * 0.1f);
         }
     }
 
@@ -56,5 +52,4 @@ public class PlayerContoller : MonoBehaviour {
             GUI.Label(new Rect(0, Screen.height - 40, 300, 20), "PRESS X TO CHANGE CAMERA");
         }
     }
-
 }
