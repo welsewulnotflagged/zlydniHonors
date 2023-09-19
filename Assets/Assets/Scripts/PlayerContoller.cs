@@ -33,6 +33,7 @@ public class PlayerContoller : MonoBehaviour {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 10f) && hit.collider.gameObject.GetComponent<Interactable>() != null) {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
             _hitObject = hit.collider.gameObject;
+
         } else {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 100, Color.red);
             _hitObject = null;
@@ -62,7 +63,7 @@ public class PlayerContoller : MonoBehaviour {
 
     private void tryInteract() {
         if (Input.GetKeyDown(KeyCode.E) && _hitObject != null) {
-            Debug.Log("KEYCODe");
+            Debug.Log("punch");
             _hitObject.GetComponent<Interactable>().Interact(gameObject);
         }
     }

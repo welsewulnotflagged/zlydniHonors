@@ -6,5 +6,6 @@ public enum InteractionType {
     PUNCH,
     PUSH,
     OPEN,
+    TALK,
     CUSTOM
 }

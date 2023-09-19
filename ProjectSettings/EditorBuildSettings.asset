@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/ObstaclesScene.unity
+    guid: 742a98572af23c04b9a2c0bd23485f72
+  - enabled: 1
+    path: Assets/Scenes/FixedCamera.unity
+    guid: 4f53ec65f0be1024f963ae3afdf22ea1
+  - enabled: 1
+    path: Assets/Scenes/AttachedCamera.unity
+    guid: e5aeab4169b5f6542a5da26d4af3947e
+  - enabled: 1
+    path: Assets/Scenes/PointClick.unity
+    guid: e3278eedbe810f34b8c3d266e4768824
   m_configObjects: {}

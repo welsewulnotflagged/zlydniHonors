@@ -21,6 +21,11 @@ public class Interactable : MonoBehaviour {
                 Debug.Log("PUNCHED");
                 _rigidbody.AddForce(source.transform.TransformDirection(Vector3.forward) * 500);
                 break;
+            case InteractionType.TALK:
+                Debug.Log("SPEAKED...");
+                NonPlayerCharacter NPC = GetComponent<NonPlayerCharacter>();
+                NPC.displayDialog();
+                break;
         }
     }
 }
