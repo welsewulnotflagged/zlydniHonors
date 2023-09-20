@@ -1,13 +1,16 @@
-using System;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerContoller : MonoBehaviour {
     public float speed = 5f;
     public float turningSpeed = 180f;
     private CharacterController _characterController;
     public CameraController currentCameraController;
-    public float jumpHeight = 15f;
-    private float y_velocity;
+
+    private float _gravity = -9.81f;
+    private Vector3 _velocity;
+    [SerializeField] private float jumpHeight;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -16,6 +19,8 @@ public class PlayerContoller : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        // print(_velocity);
+        // print(IsGrounded());
         tryMove();
         TrySwitchCamera();
     }
@@ -28,23 +33,27 @@ public class PlayerContoller : MonoBehaviour {
             }
         }
     }
-
+ 
 
     private void tryMove() {
-        Vector3 direction;
-
+        bool isGrounded = _characterController.isGrounded;
+        if (isGrounded && _velocity.y < 0) {
+            _velocity.y = 0;
+        }
 
         transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * turningSpeed, 0);
-        direction = transform.forward * Input.GetAxis("Vertical") * speed;
+        // _direction.x = Input.GetAxis("Vertical");
+        // _direction.z = transform.forward.magnitude;
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Vector3 velocity = direction * speed;
-            Debug.Log("SPACE");
-            velocity.y = y_velocity;
-            _characterController.Move(velocity * Time.deltaTime);
-        } else {
-            _characterController.Move(direction * Time.deltaTime - Vector3.up * 0.1f);
+        _characterController.Move(transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed);
+
+        if (Input.GetKeyUp(KeyCode.Space) && isGrounded) {
+            print("JUMPING");
+            _velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * _gravity);
         }
+
+        _velocity.y += _gravity * Time.deltaTime;
+        _characterController.Move(_velocity * Time.deltaTime);
     }
 
     public void OnGUI() {
