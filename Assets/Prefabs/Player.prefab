@@ -129,7 +129,7 @@ MonoBehaviour:
   speed: 5
   turningSpeed: 180
   currentCameraController: {fileID: 0}
-  jumpHeight: 0
+  jumpHeight: 2
 --- !u!114 &5733568409497016933
 MonoBehaviour:
   m_ObjectHideFlags: 0
