@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 240bdd5a705746d19b35d2fbbaf612a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 30e938d80d9c935409a2517a47ea284f, type: 3}
   m_Name: RayanGoslingCube
   m_EditorClassIdentifier: 
   id: 0
   dialogue:
-  - "\u041D\u0456 \u0447\u043E\u0440\u0442\u0430 \u0441\u043E\u0431\u0456!\t"
-  - "\u0426\u0435\u0436 \u0431\u043B\u043E\u043A \u0440\u0430\u044F\u043D\u0430 \u0491\u043E\u0441\u043B\u0456\u043D\u0491\u0430!"
+  - hi
+  - hola
+  - dzen dobrij
