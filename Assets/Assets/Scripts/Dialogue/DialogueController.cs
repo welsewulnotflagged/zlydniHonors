@@ -8,6 +8,7 @@ public class DialogueController : MonoBehaviour {
     public GameObject dialogueBar;
     public TMP_Text mainTextBox;
     public Queue<string> queue = new Queue<string>();
+    public bool queueEnd = false;
 
     
     
@@ -27,6 +28,7 @@ public class DialogueController : MonoBehaviour {
             mainTextBox.text = queue.Dequeue();
         } else {
             dialogueBar.SetActive(false);
+            queueEnd = true;
         }
     }
 

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
-{
+{   
+    public GameObject InventoryObj;
+    public Transform ObjContent;
+
     public static InventoryController Instance; 
     public List<ItemAsset> Items = new List<ItemAsset>();
 
@@ -21,4 +24,13 @@ public class InventoryController : MonoBehaviour
     {
         Items.Remove(item);
     }
+
+    /*public void ListItems()
+    {
+        for each (var item in Items)
+        {
+            GameObject obj = Instantiate(InventoryObj, ObjContent);
+           /// var itemName = obj.transform.Find("ItemAsset/title").GetComponent<Text>();
+        }
+    }*/
 }
