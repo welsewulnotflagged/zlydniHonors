@@ -25,32 +25,33 @@ public class CameraController : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
-           // CamEnable(other);
+            Enable(other.gameObject);
         }
     }
 
-    public void CamEnable(GameObject other)
-    {
+    public bool isEnabled() {
+        return cameras[currentCameraIndex].Priority > 0;
+    }
+
+    public void Enable(GameObject other) {
         cameras[currentCameraIndex].Priority = 2;
-            other.gameObject.GetComponent<PlayerContoller>().currentCameraController = this;
-    }
-
-    public void CamDisable(GameObject other)
-    {
-            foreach (var camera in cameras) {
-                camera.Priority = 0;
-            }
-            Debug.Log("AAAAAAAA");
-            other.gameObject.GetComponent<PlayerContoller>().currentCameraController = null;
-    }
-
-    /*public void OnTriggerExit(Collider other) {
-        if (other.CompareTag("Player")) {
-            foreach (var camera in cameras) {
-                camera.Priority = 0;
-            }
-
-            other.gameObject.GetComponent<PlayerContoller>().currentCameraController = null;
+        var playerController = other.gameObject.GetComponent<PlayerContoller>();
+        if (playerController) {
+            playerController.currentCameraController = this;
         }
-    }*/
+    }
+
+    public void Disable(GameObject other) {
+        foreach (var camera in cameras) {
+            camera.Priority = 0;
+        }
+
+        other.gameObject.GetComponent<PlayerContoller>().currentCameraController = null;
+    }
+
+    public void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Player")) {
+            Disable(other.gameObject);
+        }
+    }
 }
