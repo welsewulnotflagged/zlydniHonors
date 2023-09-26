@@ -25,9 +25,14 @@ public class CameraController : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
-            cameras[currentCameraIndex].Priority = 2;
-            other.gameObject.GetComponent<PlayerContoller>().currentCameraController = this;
+            //call this 
         }
+    }
+
+    public void CamEnable(GameObject other)
+    {
+        cameras[currentCameraIndex].Priority = 2;
+            other.gameObject.GetComponent<PlayerContoller>().currentCameraController = this;
     }
 
     public void OnTriggerExit(Collider other) {

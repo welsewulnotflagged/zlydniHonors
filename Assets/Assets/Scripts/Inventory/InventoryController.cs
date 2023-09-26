@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static InventoryController Instance; 
+    public List<ItemAsset> Items = new List<ItemAsset>();
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Add(ItemAsset item)
     {
-        
+        Items.Add(item);
+    }
+
+    public void Remove(ItemAsset item)
+    {
+        Items.Remove(item);
     }
 }

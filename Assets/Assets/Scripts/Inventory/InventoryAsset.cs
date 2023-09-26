@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "My assets/Item", order = 100)]
-public class ItemAsset : ScriptableObject {
-    public string title;
-    public Texture icon;
-    public GameObject obj;
-    public int id; 
+public class InventoryAsset : ScriptableObject {
+    [SerializeField]
+    public List<ItemAsset> Pickups = new();
 }
