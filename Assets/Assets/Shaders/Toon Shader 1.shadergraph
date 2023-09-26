@@ -52,9 +52,6 @@
             "m_Id": "0e4331990f0a4091bc8b07e69786e111"
         },
         {
-            "m_Id": "0f874bc77dfe4d52b82813eb460e612f"
-        },
-        {
             "m_Id": "9ac0c43d241049fc9aa0562c2957a58b"
         },
         {
@@ -80,6 +77,9 @@
         },
         {
             "m_Id": "34d0d0491b9447bbb4e9eae1c7ed71d8"
+        },
+        {
+            "m_Id": "a74b9199d5ce488595007ee9e0132274"
         }
     ],
     "m_GroupDatas": [],
@@ -94,21 +94,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "0f874bc77dfe4d52b82813eb460e612f"
-                },
-                "m_SlotId": 1
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "0f874bc77dfe4d52b82813eb460e612f"
-                },
-                "m_SlotId": 6
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "34d0d0491b9447bbb4e9eae1c7ed71d8"
+                    "m_Id": "a74b9199d5ce488595007ee9e0132274"
                 },
                 "m_SlotId": 1
             }
@@ -122,7 +108,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "0f874bc77dfe4d52b82813eb460e612f"
+                    "m_Id": "a74b9199d5ce488595007ee9e0132274"
                 },
                 "m_SlotId": 3
             }
@@ -164,9 +150,23 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "0f874bc77dfe4d52b82813eb460e612f"
+                    "m_Id": "a74b9199d5ce488595007ee9e0132274"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "a74b9199d5ce488595007ee9e0132274"
+                },
+                "m_SlotId": 6
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "34d0d0491b9447bbb4e9eae1c7ed71d8"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -192,7 +192,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "0f874bc77dfe4d52b82813eb460e612f"
+                    "m_Id": "a74b9199d5ce488595007ee9e0132274"
                 },
                 "m_SlotId": 5
             }
@@ -206,7 +206,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "0f874bc77dfe4d52b82813eb460e612f"
+                    "m_Id": "a74b9199d5ce488595007ee9e0132274"
                 },
                 "m_SlotId": 2
             }
@@ -220,7 +220,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "0f874bc77dfe4d52b82813eb460e612f"
+                    "m_Id": "a74b9199d5ce488595007ee9e0132274"
                 },
                 "m_SlotId": 4
             }
@@ -301,10 +301,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1036.0,
-            "y": 132.00001525878907,
-            "width": 202.39990234375,
-            "height": 33.60002136230469
+            "x": -1075.199951171875,
+            "y": 184.80006408691407,
+            "width": 115.199951171875,
+            "height": 33.5999755859375
         }
     },
     "m_Slots": [
@@ -404,67 +404,6 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.Occlusion"
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.CustomFunctionNode",
-    "m_ObjectId": "0f874bc77dfe4d52b82813eb460e612f",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "ToonShading (Custom Function)",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": -640.0,
-            "y": -160.79998779296876,
-            "width": 314.3999938964844,
-            "height": 397.59991455078127
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "7aafe892d97d4e64884cf4ac2c7e3081"
-        },
-        {
-            "m_Id": "5b178eb5adfd4ec8a40cee090aac74af"
-        },
-        {
-            "m_Id": "235e7bab9463432bab0aa9cc2ebe2fab"
-        },
-        {
-            "m_Id": "626dc37b1b714f4886e4ea46dc8712c9"
-        },
-        {
-            "m_Id": "5fff587a26c74eb883fd57b0842d918b"
-        },
-        {
-            "m_Id": "2a5c8ad2ff8645dd9fcc35fa25e6f7f7"
-        },
-        {
-            "m_Id": "7b5f1ab854774e08b7e3f2f6cb16a0ef"
-        },
-        {
-            "m_Id": "4b0d18c53abe4657a3a742c6eb80f6c2"
-        }
-    ],
-    "synonyms": [
-        "code",
-        "HLSL"
-    ],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_SourceType": 0,
-    "m_FunctionName": "ToonShading",
-    "m_FunctionSource": "5a420ac20409a54439def3f52a6e9e77",
-    "m_FunctionBody": "void ToonShading_float(in float3 Normal, in float ToonRampSmoothness, in float3 ClipSpacePos, in float3 WorldPos, in float4 ToonRampTinting,\r\nin float ToonRampOffset, out float3 ToonRampOutput, out float3 Direction)\r\n{\r\n \r\n    // set the shader graph node previews\r\n#ifdef SHADERGRAPH_PREVIEW\r\n        ToonRampOutput = float3(0.5,0.5,0);\r\n        Direction = float3(0.5,0.5,0);\r\n#else\r\n \r\n        // grab the shadow coordinates\r\n#if SHADOWS_SCREEN\r\n            half4 shadowCoord = ComputeScreenPos(ClipSpacePos);\r\n#else\r\n    half4 shadowCoord = TransformWorldToShadowCoord(WorldPos);\r\n#endif \r\n \r\n        // grab the main light\r\n#if _MAIN_LIGHT_SHADOWS_CASCADE || _MAIN_LIGHT_SHADOWS\r\n            Light light = GetMainLight(shadowCoord);\r\n#else\r\n    Light light = GetMainLight();\r\n#endif\r\n \r\n        // dot product for toonramp\r\n    half d = dot(Normal, light.direction) * 0.5 + 0.5;\r\n        \r\n        // toonramp in a smoothstep\r\n    half toonRamp = smoothstep(ToonRampOffset, ToonRampOffset + ToonRampSmoothness, d);\r\n        // multiply with shadows;\r\n    toonRamp *= light.shadowAttenuation;\r\n        // add in lights and extra tinting\r\n    ToonRampOutput = light.color * (toonRamp + ToonRampTinting);\r\n        // output direction for rimlight\r\n    Direction = light.direction;\r\n#endif\r\n \r\n}"
 }
 
 {
@@ -574,29 +513,6 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
-    "m_ObjectId": "235e7bab9463432bab0aa9cc2ebe2fab",
-    "m_Id": 2,
-    "m_DisplayName": "ClipSpacePos",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "ClipSpacePos",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "24bd1cf926904c178dade1ffa1ea290b",
     "m_Id": 0,
     "m_DisplayName": "Out",
@@ -614,21 +530,6 @@
         "y": 0.0,
         "z": 0.0
     },
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "2a5c8ad2ff8645dd9fcc35fa25e6f7f7",
-    "m_Id": 5,
-    "m_DisplayName": "ToonRampOffset",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "ToonRampOffset",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
     "m_Labels": []
 }
 
@@ -707,6 +608,21 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "3bec009884ed4c67af655f074a010655",
+    "m_Id": 1,
+    "m_DisplayName": "ToonRampSmoothness",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "ToonRampSmoothness",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -820,24 +736,16 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
-    "m_ObjectId": "4b0d18c53abe4657a3a742c6eb80f6c2",
-    "m_Id": 8,
-    "m_DisplayName": "Direction",
-    "m_SlotType": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "51b4e2a33ce1475db437bd1ad0fc0e55",
+    "m_Id": 5,
+    "m_DisplayName": "ToonRampOffset",
+    "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "Direction",
+    "m_ShaderOutputName": "ToonRampOffset",
     "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
     "m_Labels": []
 }
 
@@ -856,23 +764,54 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "5b178eb5adfd4ec8a40cee090aac74af",
-    "m_Id": 1,
-    "m_DisplayName": "ToonRampSmoothness",
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "58b029b6d3b54683be0cf0ae4803605d",
+    "m_Id": 3,
+    "m_DisplayName": "WorldPos",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "ToonRampSmoothness",
+    "m_ShaderOutputName": "WorldPos",
     "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "62c462b8acae46aab0cc535323700672",
+    "m_Id": 2,
+    "m_DisplayName": "ClipSpacePos",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "ClipSpacePos",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
     "m_Labels": []
 }
 
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
-    "m_ObjectId": "5fff587a26c74eb883fd57b0842d918b",
+    "m_ObjectId": "7715ea9a07bd455ea28c64571f0f7fcf",
     "m_Id": 4,
     "m_DisplayName": "ToonRampTinting",
     "m_SlotType": 0,
@@ -890,29 +829,6 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
-    },
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
-    "m_ObjectId": "626dc37b1b714f4886e4ea46dc8712c9",
-    "m_Id": 3,
-    "m_DisplayName": "WorldPos",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "WorldPos",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
     },
     "m_Labels": []
 }
@@ -991,35 +907,12 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
-    "m_ObjectId": "7aafe892d97d4e64884cf4ac2c7e3081",
+    "m_ObjectId": "8306830a6e9b40b28d5f79f9fc0f0fb6",
     "m_Id": 0,
     "m_DisplayName": "Normal",
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "Normal",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
-    "m_ObjectId": "7b5f1ab854774e08b7e3f2f6cb16a0ef",
-    "m_Id": 6,
-    "m_DisplayName": "ToonRampOutput",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "ToonRampOutput",
     "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
@@ -1357,6 +1250,67 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.CustomFunctionNode",
+    "m_ObjectId": "a74b9199d5ce488595007ee9e0132274",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "ToonShading (Custom Function)",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -608.0,
+            "y": -130.39996337890626,
+            "width": 314.4000549316406,
+            "height": 397.6000061035156
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "8306830a6e9b40b28d5f79f9fc0f0fb6"
+        },
+        {
+            "m_Id": "3bec009884ed4c67af655f074a010655"
+        },
+        {
+            "m_Id": "62c462b8acae46aab0cc535323700672"
+        },
+        {
+            "m_Id": "58b029b6d3b54683be0cf0ae4803605d"
+        },
+        {
+            "m_Id": "7715ea9a07bd455ea28c64571f0f7fcf"
+        },
+        {
+            "m_Id": "51b4e2a33ce1475db437bd1ad0fc0e55"
+        },
+        {
+            "m_Id": "bb4ac1c0c3ba4f6780b6e801e5c40a8f"
+        },
+        {
+            "m_Id": "ccb38c85496145ecb55f66ea8cc95506"
+        }
+    ],
+    "synonyms": [
+        "code",
+        "HLSL"
+    ],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SourceType": 0,
+    "m_FunctionName": "ToonShading",
+    "m_FunctionSource": "fe512080b32f84d4ba80486dd315efce",
+    "m_FunctionBody": "void ToonShading_float(in float3 Normal, in float ToonRampSmoothness, in float3 ClipSpacePos, in float3 WorldPos, in float4 ToonRampTinting,\r\nin float ToonRampOffset, out float3 ToonRampOutput, out float3 Direction)\r\n{\r\n \r\n    // set the shader graph node previews\r\n#ifdef SHADERGRAPH_PREVIEW\r\n        ToonRampOutput = float3(0.5,0.5,0);\r\n        Direction = float3(0.5,0.5,0);\r\n#else\r\n \r\n        // grab the shadow coordinates\r\n#if SHADOWS_SCREEN\r\n            half4 shadowCoord = ComputeScreenPos(ClipSpacePos);\r\n#else\r\n    half4 shadowCoord = TransformWorldToShadowCoord(WorldPos);\r\n#endif \r\n \r\n        // grab the main light\r\n#if _MAIN_LIGHT_SHADOWS_CASCADE || _MAIN_LIGHT_SHADOWS\r\n            Light light = GetMainLight(shadowCoord);\r\n#else\r\n    Light light = GetMainLight();\r\n#endif\r\n \r\n        // dot product for toonramp\r\n    half d = dot(Normal, light.direction) * 0.5 + 0.5;\r\n        \r\n        // toonramp in a smoothstep\r\n    half toonRamp = smoothstep(ToonRampOffset, ToonRampOffset + ToonRampSmoothness, d);\r\n        // multiply with shadows;\r\n    toonRamp *= light.shadowAttenuation;\r\n        // add in lights and extra tinting\r\n    ToonRampOutput = light.color * (toonRamp + ToonRampTinting);\r\n        // output direction for rimlight\r\n    Direction = light.direction;\r\n#endif\r\n \r\n}"
+}
+
+{
     "m_SGVersion": 3,
     "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
     "m_ObjectId": "ab671a73bbfb452090265542c3d1b4a5",
@@ -1563,6 +1517,29 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "bb4ac1c0c3ba4f6780b6e801e5c40a8f",
+    "m_Id": 6,
+    "m_DisplayName": "ToonRampOutput",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "ToonRampOutput",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "bc71ca229f6f441fa465996c9f83ee8b",
     "m_Id": 0,
     "m_DisplayName": "Out",
@@ -1617,6 +1594,29 @@
     "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "ccb38c85496145ecb55f66ea8cc95506",
+    "m_Id": 8,
+    "m_DisplayName": "Direction",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Direction",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
     "m_Labels": []
 }
 
@@ -1841,10 +1841,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -996.7999267578125,
-            "y": 235.2000274658203,
-            "width": 116.79998779296875,
-            "height": 33.59996032714844
+            "x": -996.800048828125,
+            "y": 260.79998779296877,
+            "width": 108.0,
+            "height": 33.5999755859375
         }
     },
     "m_Slots": [
@@ -1914,10 +1914,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1258.4000244140625,
-            "y": 98.39999389648438,
-            "width": 208.0,
-            "height": 126.39996337890625
+            "x": -1228.0,
+            "y": 96.8000259399414,
+            "width": 97.5999755859375,
+            "height": 33.59998321533203
         }
     },
     "m_Slots": [
