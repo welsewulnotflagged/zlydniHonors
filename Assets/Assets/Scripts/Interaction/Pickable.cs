@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class Pickable : MonoBehaviour {
+public class Pickable : Interactable {
     public ItemAsset item;
     public float radius = 3f;
     private Mesh mesh;
