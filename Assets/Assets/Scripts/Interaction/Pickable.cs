@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -23,16 +19,6 @@ public class Pickable : MonoBehaviour {
         }
     }
 
-
-// Update is called once per frame
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
-            Destroy(_spawnedObj);
-            Debug.Log("PICK UP ITEM" + item.title);
-            gameObject.SetActive(false);
-        }
-    }
-
     private void OnDrawGizmos() {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, radius);
@@ -41,4 +27,9 @@ public class Pickable : MonoBehaviour {
         Graphics.DrawMeshNow(item.obj.GetComponent<MeshFilter>().sharedMesh, transform.position, Quaternion.identity, 0);
     }
 
+    public void Interact(GameObject source) {
+        Destroy(_spawnedObj);
+        Debug.Log("PICK UP ITEM" + item.title);
+        gameObject.SetActive(false);
+    }
 }
