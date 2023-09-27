@@ -8,7 +8,7 @@ using UnityEngine;
 public class Pickable : MonoBehaviour {
     public ItemAsset item;
     public float radius = 3f;
-    public Mesh mesh;
+    private Mesh mesh;
 
     private GameObject _spawnedObj;
 
