@@ -22,12 +22,11 @@ public class Pickable : Interactable {
     private void OnDrawGizmos() {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, radius);
-        Debug.Log(item.obj.GetComponent<MeshFilter>());
         item.obj.GetComponent<MeshRenderer>().sharedMaterial.SetPass(0);
         Graphics.DrawMeshNow(item.obj.GetComponent<MeshFilter>().sharedMesh, transform.position, Quaternion.identity, 0);
     }
 
-    public void Interact(GameObject source) {
+    public override void Interact(GameObject source) {
         Destroy(_spawnedObj);
         Debug.Log("PICK UP ITEM" + item.title);
         gameObject.SetActive(false);

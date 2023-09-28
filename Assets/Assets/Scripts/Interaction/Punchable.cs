@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Punchable : MonoBehaviour, Interactable {
+public class Punchable : Interactable {
     public float PunchStrength = 500f;
 
     private Rigidbody _rigidbody;
@@ -11,7 +10,7 @@ public class Punchable : MonoBehaviour, Interactable {
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    public void Interact(GameObject source) {
+    public override void Interact(GameObject source) {
         _rigidbody.AddForce(source.transform.TransformDirection(Vector3.forward) * PunchStrength);
     }
 }

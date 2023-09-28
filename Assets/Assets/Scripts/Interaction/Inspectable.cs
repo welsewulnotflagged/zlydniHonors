@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class Inspectable : MonoBehaviour, Interactable {
+public class Inspectable : Interactable {
     public DialogueAsset DialogueAsset;
 
-    public void Interact(GameObject source) {
+    public override void Interact(GameObject source) {
         var dialogueController = FindObjectOfType<DialogueController>();
         var cameraController = GetComponentInChildren<CameraController>();
 

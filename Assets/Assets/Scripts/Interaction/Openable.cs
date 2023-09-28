@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Openable : MonoBehaviour, Interactable {
+public class Openable : Interactable {
     public bool opened = false;
     public GameObject doorHandle;
     public float speed = 5f;
@@ -20,7 +20,7 @@ public class Openable : MonoBehaviour, Interactable {
         }
     }
 
-    public void Interact(GameObject source) {
+    public override void Interact(GameObject source) {
         opened = !opened;
         Debug.Log((source.transform.position - transform.position).normalized);
     }

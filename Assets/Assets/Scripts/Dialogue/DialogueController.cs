@@ -5,7 +5,7 @@ using UnityEngine;
 public class DialogueController : MonoBehaviour {
     public GameObject dialogueBar;
     public TMP_Text mainTextBox;
-    public Queue<string> queue = new Queue<string>();
+    public Queue<string> queue = new();
     private CameraController cameraController;
 
 
@@ -44,7 +44,7 @@ public class DialogueController : MonoBehaviour {
     } 
 
     public void Update() {
-        if (Input.GetKeyUp(KeyCode.F)) {
+        if (Input.GetMouseButtonUp(0)) {
             UpdateState();
         }
     }
