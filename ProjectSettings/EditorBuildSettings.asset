@@ -7,17 +7,23 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+    guid: 77ed632d3089b27439783d5a2cfbc089
+  - enabled: 0
     path: Assets/Scenes/ObstaclesScene.unity
-    guid: 742a98572af23c04b9a2c0bd23485f72
-  - enabled: 1
+    guid: c969b95e2ab3c7040b1f98f7abd7d9c7
+  - enabled: 0
     path: Assets/Scenes/FixedCamera.unity
-    guid: 4f53ec65f0be1024f963ae3afdf22ea1
-  - enabled: 1
+    guid: 2c190acd9b74fc1468503e3f611ed8d2
+  - enabled: 0
     path: Assets/Scenes/AttachedCamera.unity
-    guid: e5aeab4169b5f6542a5da26d4af3947e
-  - enabled: 1
+    guid: 1c3bc38a6aa54454d9a9216fc3cdaf28
+  - enabled: 0
     path: Assets/Scenes/PointClick.unity
-    guid: e3278eedbe810f34b8c3d266e4768824
+    guid: 645f2206c6ddea544842d8485fc59c97
+  - enabled: 1
+    path: Assets/Scenes/StarterInstruction.unity
+    guid: e3fca19e85ba5b642b7dd704e40173a2
+  - enabled: 1
+    path: Assets/Scenes/LevelMap.unity
+    guid: 9f85572809797f74aa33543f031a4266
   m_configObjects: {}

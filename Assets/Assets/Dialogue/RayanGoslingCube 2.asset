@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
-  m_Name: RayanGoslingCube
+  m_Name: RayanGoslingCube 2
   m_EditorClassIdentifier: 
   id: 2
   dialogue:
-  - 'Hello! Welcome to the train station. Please proceed to talking to the next Sphere
-    to get instructions about pickups. '
-  - 'To exit dialogue click off anywhere on screen. See you!
-
-'
+  - 'Hello! Sorry this area is underdeveloped yet for deadline submission purposes. '
+  - There is a mechanic coming very soon that lets you use the picked object to get
+    on the train you need and enable the cutscene!
+  - Good bye!
