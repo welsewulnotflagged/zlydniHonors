@@ -23,6 +23,10 @@ public class PlayerContoller : MonoBehaviour {
         // print(IsGrounded());
         tryMove();
         TrySwitchCamera();
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void TrySwitchCamera() {
