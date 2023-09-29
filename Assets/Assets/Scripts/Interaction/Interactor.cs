@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,11 @@ public class Interactor : MonoBehaviour {
     public float InteractionRange = 5f;
 
     private GameObject _hitObject;
+    private DialogueController _dialogueController;
+
+    private void Start() {
+        _dialogueController = FindObjectOfType<DialogueController>();
+    }
 
     public void OnGUI() {
         if (_hitObject != null) {
@@ -26,6 +32,10 @@ public class Interactor : MonoBehaviour {
     }
 
     void Update() {
+        if (_dialogueController.HasActiveDialogue()) {
+            return;
+        }
+
         tryRaycast();
 
         if (Input.GetKeyDown(KeyCode.E) && _hitObject != null) {

@@ -4,23 +4,26 @@ using UnityEngine;
 public class PlayerContoller : MonoBehaviour {
     public float speed = 5f;
     public float turningSpeed = 180f;
-    private CharacterController _characterController;
     public CameraController currentCameraController;
 
     private float _gravity = -9.81f;
     private Vector3 _velocity;
     [SerializeField] private float jumpHeight;
 
+    private CharacterController _characterController;
+    private DialogueController _dialogueController;
 
     // Start is called before the first frame update
     void Start() {
         _characterController = GetComponent<CharacterController>();
+        _dialogueController = FindObjectOfType<DialogueController>();
     }
 
     // Update is called once per frame
     void Update() {
-        // print(_velocity);
-        // print(IsGrounded());
+        if (_dialogueController.HasActiveDialogue()) {
+            return;
+        }
         tryMove();
         TrySwitchCamera();
         if (Input.GetKey(KeyCode.Escape))
