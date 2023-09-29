@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour {
     public int Order = 0;
+    public string Prompt = "INTERACT";
 
     protected bool CanInteract(GameObject source) {
         return true;
@@ -10,7 +11,7 @@ public abstract class Interactable : MonoBehaviour {
     protected abstract void OnInteract(GameObject source);
 
     public string GetPrompt() {
-        return "INTERACT";
+        return Prompt;
     }
 
     public void Interact(GameObject source) {
