@@ -544,7 +544,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4139514544590810099, guid: 7bbb546be5593ee4b942e2e313691c3a,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 98939949}
+      addedObject: {fileID: 98939953}
   m_SourcePrefab: {fileID: 100100000, guid: 7bbb546be5593ee4b942e2e313691c3a, type: 3}
 --- !u!1 &98939947 stripped
 GameObject:
@@ -558,7 +558,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 98939946}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &98939949
+--- !u!114 &98939953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -567,11 +567,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 98939947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49059dcf660874246b1385d7a9b46fb4, type: 3}
+  m_Script: {fileID: 11500000, guid: c157242224b61364abdb6cea9e22ab99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Order: 0
-  DialogueAsset: {fileID: 11400000, guid: 80064d5f91662c446833d16633dafc1c, type: 2}
+  Prompt: INTERACT
+  DialogueAsset: {fileID: 11400000, guid: 957ed30cc046f5240bd02cb57ca5210f, type: 2}
+  ItemAsset: {fileID: 11400000, guid: 4a74d9278e3e9494d9e1ed7048ba5168, type: 2}
 --- !u!1 &141830833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,6 +2247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Order: 0
+  Prompt: INTERACT
   DialogueAsset: {fileID: 11400000, guid: 957ed30cc046f5240bd02cb57ca5210f, type: 2}
 --- !u!4 &1084132248 stripped
 Transform:
@@ -2404,6 +2407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Order: 0
+  Prompt: INTERACT
   item: {fileID: 11400000, guid: 4a74d9278e3e9494d9e1ed7048ba5168, type: 2}
   radius: 1.34
 --- !u!114 &1169995828
@@ -3560,7 +3564,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Order: 3
-  DialogueAsset: {fileID: 11400000, guid: b1057bae184c3014b840bb1a24eca822, type: 2}
+  Prompt: INTERACT
+  DialogueAsset: {fileID: 11400000, guid: 80064d5f91662c446833d16633dafc1c, type: 2}
 --- !u!114 &1885208954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3574,7 +3579,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Order: 2
-  DialogueAsset: {fileID: 11400000, guid: facde3aa839f1e74381b37a397b14f9f, type: 2}
+  Prompt: INTERACT
+  DialogueAsset: {fileID: 11400000, guid: 957ed30cc046f5240bd02cb57ca5210f, type: 2}
 --- !u!114 &1885208955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3588,6 +3594,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Order: 0
+  Prompt: INTERACT
+  CycleInteraction: 0
 --- !u!1001 &1914632416
 PrefabInstance:
   m_ObjectHideFlags: 0
