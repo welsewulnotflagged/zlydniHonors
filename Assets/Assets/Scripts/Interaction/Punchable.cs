@@ -10,7 +10,7 @@ public class Punchable : Interactable {
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    public override void Interact(GameObject source) {
+    protected override void OnInteract(GameObject source) {
         _rigidbody.AddForce(source.transform.TransformDirection(Vector3.forward) * PunchStrength);
     }
 }

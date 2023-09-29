@@ -5,9 +5,27 @@ using System.Linq;
 using UnityEngine;
 
 public class OrderedInteractable : Interactable {
+    public bool CycleInteraction = false;
     private Queue<Interactable> queue;
 
     private void Start() {
+        CollectInteractables();
+    }
+
+    protected override void OnInteract(GameObject source) {
+        if (queue.Count == 0 && CycleInteraction) {
+            CollectInteractables();
+        }
+
+        if (queue.Count > 0) {
+            var interactable = queue.Dequeue();
+            if (interactable) {
+                interactable.Interact(source);
+            }
+        }
+    }
+
+    private void CollectInteractables() {
         queue = new Queue<Interactable>();
         List<Interactable> interactables = new List<Interactable>(GetComponents<Interactable>());
         interactables.Sort((a, b) => a.GetOrder().CompareTo(b.GetOrder()));
@@ -17,13 +35,6 @@ public class OrderedInteractable : Interactable {
             }
         });
         Debug.Log(queue.ToList());
-    }
-
-    public override void Interact(GameObject source) {
-        var interactable = queue.Dequeue();
-        if (interactable) {
-            interactable.Interact(source);
-        }
     }
 
     public int GetOrder() {

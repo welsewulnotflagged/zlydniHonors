@@ -20,7 +20,7 @@ public class Openable : Interactable {
         }
     }
 
-    public override void Interact(GameObject source) {
+    protected override void OnInteract(GameObject source) {
         opened = !opened;
         Debug.Log((source.transform.position - transform.position).normalized);
     }

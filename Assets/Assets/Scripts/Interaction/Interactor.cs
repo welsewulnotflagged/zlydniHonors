@@ -6,7 +6,7 @@ using UnityEngine;
 public class Interactor : MonoBehaviour {
     public float InteractionRange = 5f;
 
-    private GameObject _hitObject;
+    private Interactable _hitObject;
     private DialogueController _dialogueController;
 
     private void Start() {
@@ -15,8 +15,7 @@ public class Interactor : MonoBehaviour {
 
     public void OnGUI() {
         if (_hitObject != null) {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 50, 20), _hitObject.name);
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2 + 20, 80, 20), "PRESS E");
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 50, 20), _hitObject.GetPrompt());
         }
     }
 
@@ -24,7 +23,7 @@ public class Interactor : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, InteractionRange) && hit.collider.gameObject.GetComponent<Interactable>() != null) {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-            _hitObject = hit.collider.gameObject;
+            _hitObject = hit.collider.gameObject.GetComponent<Interactable>();
         } else {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * InteractionRange, Color.red);
             _hitObject = null;

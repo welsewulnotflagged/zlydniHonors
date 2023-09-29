@@ -3,7 +3,7 @@
 public class Inspectable : Interactable {
     public DialogueAsset DialogueAsset;
 
-    public override void Interact(GameObject source) {
+    protected override void OnInteract(GameObject source) {
         var dialogueController = FindObjectOfType<DialogueController>();
         var cameraController = GetComponentInChildren<CameraController>();
 

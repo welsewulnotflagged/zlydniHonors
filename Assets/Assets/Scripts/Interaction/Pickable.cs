@@ -26,7 +26,7 @@ public class Pickable : Interactable {
         Graphics.DrawMeshNow(item.obj.GetComponent<MeshFilter>().sharedMesh, transform.position, Quaternion.identity, 0);
     }
 
-    public override void Interact(GameObject source) {
+    protected override void OnInteract(GameObject source) {
         Destroy(_spawnedObj);
         Debug.Log("PICK UP ITEM" + item.title);
         gameObject.SetActive(false);
