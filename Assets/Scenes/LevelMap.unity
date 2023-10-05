@@ -1912,6 +1912,11 @@ PrefabInstance:
       propertyPath: jumpHeight
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6475231302555564088, guid: afc1dc87f6cb92d46a198f8d70f03d74,
+        type: 3}
+      propertyPath: m_SlopeLimit
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6649433375995685254, guid: afc1dc87f6cb92d46a198f8d70f03d74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3384,9 +3389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85b74d6560b3ea43bb45b90e6577aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryObj: {fileID: 0}
-  ObjContent: {fileID: 0}
-  Items: []
 --- !u!1 &1780228348
 GameObject:
   m_ObjectHideFlags: 0
