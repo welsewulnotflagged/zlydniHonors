@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class DialogueController : MonoBehaviour {
     public TMP_Text mainTextBox;
     public Queue<string> queue = new();
     private CameraController cameraController;
+    private Action _dialogueCallback;
 
 
     public void addDialogue(DialogueAsset dialogueAsset, CameraController cameraController) {
@@ -19,6 +21,10 @@ public class DialogueController : MonoBehaviour {
             dialogueBar.SetActive(true);
             UpdateState();
         }
+    }
+
+    public void SetCallback(Action callback) {
+        _dialogueCallback = callback;
     }
 
     public void UpdateState() {
@@ -35,6 +41,11 @@ public class DialogueController : MonoBehaviour {
             dialogueBar.SetActive(false);
             if (cameraController) {
                 cameraController.Disable(player.gameObject);
+            }
+
+            if (_dialogueCallback != null) {
+                _dialogueCallback.Invoke();
+                _dialogueCallback = null;
             }
         }
     }
