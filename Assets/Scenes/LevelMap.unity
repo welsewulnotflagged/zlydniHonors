@@ -572,7 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Order: 0
   Prompt: INTERACT
-  DialogueAsset: {fileID: 11400000, guid: 957ed30cc046f5240bd02cb57ca5210f, type: 2}
+  DialogueAsset: {fileID: 11400000, guid: 80064d5f91662c446833d16633dafc1c, type: 2}
   ItemAsset: {fileID: 11400000, guid: 4a74d9278e3e9494d9e1ed7048ba5168, type: 2}
 --- !u!1 &141830833
 GameObject:
@@ -3580,7 +3580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Order: 2
   Prompt: INTERACT
-  DialogueAsset: {fileID: 11400000, guid: 957ed30cc046f5240bd02cb57ca5210f, type: 2}
+  DialogueAsset: {fileID: 11400000, guid: facde3aa839f1e74381b37a397b14f9f, type: 2}
 --- !u!114 &1885208955
 MonoBehaviour:
   m_ObjectHideFlags: 0
