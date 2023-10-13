@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TrainTicketerInteractable : Interactable {
     public DialogueAsset DialogueAsset;
     public ItemAsset ItemAsset;
+    public Transform Destination;
     private DialogueController _dialogueController;
     private CameraController _cameraController;
+    private NavMeshAgent _navMeshAgent;
     private InventoryController _inventoryController;
 
     void Start() {
         _dialogueController = FindObjectOfType<DialogueController>();
         _cameraController = GetComponentInChildren<CameraController>();
         _inventoryController = GetComponentInChildren<InventoryController>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     protected override void OnInteract(GameObject source) {
@@ -28,6 +32,9 @@ public class TrainTicketerInteractable : Interactable {
             _dialogueController.UpdateState();
         } else {
             _dialogueController.addDialogue(DialogueAsset, _cameraController);
+            _dialogueController.SetCallback(() => {
+                _navMeshAgent.SetDestination(Destination.position);
+            });
         }
     }
 
@@ -37,6 +44,6 @@ public class TrainTicketerInteractable : Interactable {
 
     private bool CheckTicket() {
         // _inventoryController.HasItem(ItemAsset);
-        return true;
+        return false;
     }
 }
