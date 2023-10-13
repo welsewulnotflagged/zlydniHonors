@@ -9,6 +9,8 @@ public class PlayerContoller : MonoBehaviour {
     private float _gravity = -9.81f;
     private Vector3 _velocity;
     [SerializeField] private float jumpHeight;
+    private InventoryController inventory;
+
 
     private CharacterController _characterController;
     private DialogueController _dialogueController;
@@ -17,6 +19,7 @@ public class PlayerContoller : MonoBehaviour {
     void Start() {
         _characterController = GetComponent<CharacterController>();
         _dialogueController = FindObjectOfType<DialogueController>();
+   
     }
 
     // Update is called once per frame
