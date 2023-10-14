@@ -1,0 +1,17 @@
+.inventoryContainer {
+    background-color: #492818;
+
+}
+
+.inventoryDescription {
+    background-color: #bc5422;
+
+}
+
+.inventoryItem {
+    background-color: #bc5422;
+    width: 150px;
+    height: 150px;
+    margin: 12px;
+    flex-grow: 0;
+}

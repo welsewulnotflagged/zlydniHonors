@@ -4,12 +4,16 @@ using TMPro;
 using UnityEngine;
 
 public class DialogueController : MonoBehaviour {
-    public GameObject dialogueBar;
-    public TMP_Text mainTextBox;
     public Queue<string> queue = new();
     private CameraController cameraController;
     private Action _dialogueCallback;
+    
+    private UIController _uiController;
 
+
+    private void Start() {
+        _uiController = FindObjectOfType<UIController>();
+    }
 
     public void addDialogue(DialogueAsset dialogueAsset, CameraController cameraController) {
         this.cameraController = cameraController;
@@ -17,8 +21,8 @@ public class DialogueController : MonoBehaviour {
             queue.Enqueue(t);
         }
 
-        if (!dialogueBar.activeSelf) {
-            dialogueBar.SetActive(true);
+        if (!_uiController.IsDialogueActive()) {
+            _uiController.ShowDialogue();
             UpdateState();
         }
     }
@@ -32,13 +36,13 @@ public class DialogueController : MonoBehaviour {
         var player = FindObjectOfType<PlayerContoller>();
         if (queue.Count > 0) {
             Debug.Log("start dialog");
-            mainTextBox.text = queue.Dequeue();
+            _uiController.SetDialogueText(queue.Dequeue());
             if (cameraController) {
                 cameraController.Enable(player.gameObject);
             }
         } else {
             Debug.Log("close dialog");
-            dialogueBar.SetActive(false);
+            _uiController.ShowHUD();
             if (cameraController) {
                 cameraController.Disable(player.gameObject);
             }
@@ -51,11 +55,11 @@ public class DialogueController : MonoBehaviour {
     }
 
     public bool HasActiveDialogue() {
-        return dialogueBar.activeSelf;
+        return _uiController.IsDialogueActive();
     } 
 
     public void Update() {
-        if (Input.GetMouseButtonUp(0)) {
+        if (_uiController.IsDialogueActive() && Input.GetMouseButtonUp(0)) {
             UpdateState();
         }
     }
