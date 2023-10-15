@@ -20,8 +20,8 @@
                 <ui:VisualElement name="VisualElement" style="flex-grow: 1; height: 80%; width: 30%; background-color: rgb(188, 84, 34); margin-top: 40px; margin-right: 40px; margin-bottom: 40px; margin-left: 40px;">
                     <ui:VisualElement name="InventoryIcon" style="flex-grow: 1; height: 50%; color: rgb(188, 84, 34); background-color: rgb(188, 84, 34);" />
                     <ui:VisualElement style="flex-grow: 1; height: 50%; background-color: rgb(73, 40, 24); margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; align-items: center;">
-                        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); font-size: 39px;" />
-                        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); font-size: 22px;" />
+                        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InventoryTitle" style="color: rgb(255, 255, 255); font-size: 39px;" />
+                        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InventoryDescription" style="color: rgb(255, 255, 255); font-size: 22px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

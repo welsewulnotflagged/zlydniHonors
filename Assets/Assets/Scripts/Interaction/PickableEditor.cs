@@ -20,7 +20,7 @@ public class PickableEditor : Editor {
         serializedObject.Update();
         EditorGUILayout.Slider(radius, 0, 10, "Radius");
         EditorGUILayout.PropertyField(item);
-        EditorGUILayout.PropertyField(mesh);
+        // EditorGUILayout.PropertyField(mesh);
         serializedObject.ApplyModifiedProperties();
     }
 

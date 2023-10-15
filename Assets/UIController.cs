@@ -7,6 +7,9 @@ public class UIController : MonoBehaviour {
     private VisualElement _hud;
     private VisualElement _dialogue;
     private VisualElement _inventoryContainer;
+    private VisualElement _inventoryIcon;
+    private Label _inventoryTitle;
+    private Label _inventoryDescription;
     private VisualElement _inventoryList;
     private Label _dialogueLabel;
     private UIDocument _document;
@@ -20,6 +23,9 @@ public class UIController : MonoBehaviour {
         _dialogue = _document.rootVisualElement.Q<VisualElement>("DIALOGUE");
         _inventoryContainer = _document.rootVisualElement.Q<VisualElement>("InventoryContainer");
         _inventoryList = _document.rootVisualElement.Q<VisualElement>("InventoryList");
+        _inventoryIcon = _document.rootVisualElement.Q<VisualElement>("InventoryIcon");
+        _inventoryTitle = _document.rootVisualElement.Q<Label>("InventoryTitle");
+        _inventoryDescription = _document.rootVisualElement.Q<Label>("InventoryDescription");
         _dialogueLabel = _document.rootVisualElement.Q<Label>("DialogueLabel");
 
         BindButtons();
@@ -49,13 +55,27 @@ public class UIController : MonoBehaviour {
         _hud.style.display = DisplayStyle.None;
         _inventoryContainer.style.display = DisplayStyle.Flex;
         _inventoryList.Clear();
-        
+
         foreach (var item in _inventoryController.GetAllItems()) {
             var elem = new VisualElement();
             elem.AddToClassList("inventoryItem");
             elem.tooltip = elem.name;
-            elem.style.backgroundImage = new StyleBackground(item.Key.icon); 
+            elem.RegisterCallback((MouseDownEvent e) => { SelectItem(elem, item.Key); });
+            elem.style.backgroundImage = new StyleBackground(item.Key.icon);
             _inventoryList.Add(elem);
+        }
+    }
+
+    public void SelectItem(VisualElement visualElement, ItemAsset itemAsset) {
+        _inventoryIcon.style.backgroundImage = new StyleBackground(itemAsset.icon);
+        _inventoryTitle.text = itemAsset.title;
+        _inventoryDescription.text = itemAsset.description;
+
+        visualElement.AddToClassList("selectedInventoryItem");
+        foreach (var item in _inventoryList.Children()) {
+            if (item != visualElement) {
+                item.RemoveFromClassList("selectedInventoryItem");
+            }
         }
     }
 

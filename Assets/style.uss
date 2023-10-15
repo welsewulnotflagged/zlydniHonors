@@ -5,7 +5,6 @@
 
 .inventoryDescription {
     background-color: #bc5422;
-
 }
 
 .inventoryItem {
@@ -14,4 +13,8 @@
     height: 150px;
     margin: 12px;
     flex-grow: 0;
+}
+.selectedInventoryItem {
+    border-width: 4px;
+    border-color: black;
 }
