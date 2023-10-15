@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour {
     private Label _dialogueLabel;
     private UIDocument _document;
     private InventoryController _inventoryController;
+    private VisualElement _menuContainer;
 
     void OnEnable() {
         _inventoryController = FindObjectOfType<InventoryController>();
@@ -27,21 +28,44 @@ public class UIController : MonoBehaviour {
         _inventoryTitle = _document.rootVisualElement.Q<Label>("InventoryTitle");
         _inventoryDescription = _document.rootVisualElement.Q<Label>("InventoryDescription");
         _dialogueLabel = _document.rootVisualElement.Q<Label>("DialogueLabel");
+        _menuContainer = _document.rootVisualElement.Q<VisualElement>("MenuContainer");
 
         BindButtons();
 
         _inventoryContainer.RegisterCallback<MouseDownEvent>(CloseInventory);
+        _menuContainer.RegisterCallback<MouseDownEvent>(CloseMenu);
+    }
+
+    private void CloseMenu(MouseDownEvent e) {
+        if ((e.target as VisualElement).name == "MenuContainer") {
+            ShowHUD();
+        }
     }
 
     private void BindButtons() {
         var invButton = _document.rootVisualElement.Q<Button>("InventoryButton");
         invButton.clicked += ShowInventory;
+        var menuButton = _document.rootVisualElement.Q<Button>("MenuButton");
+        menuButton.clicked += ShowMenu;
+        
+        _document.rootVisualElement.Q<Button>("ResumeButton").clicked += ShowHUD;
+        _document.rootVisualElement.Q<Button>("ExitButton").clicked += CloseGame;
     }
 
+    private void CloseGame() {
+        Application.Quit();
+    }
+
+    public void ShowMenu() {
+        _hud.style.display = DisplayStyle.None;
+        _menuContainer.style.display = DisplayStyle.Flex;
+    }
+    
     public void ShowHUD() {
         _hud.style.display = DisplayStyle.Flex;
         _dialogue.style.display = DisplayStyle.None;
         _inventoryContainer.style.display = DisplayStyle.None;
+        _menuContainer.style.display = DisplayStyle.None;
     }
 
     public void CloseInventory(MouseDownEvent e) {

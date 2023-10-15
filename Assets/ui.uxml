@@ -7,7 +7,7 @@
                 <ui:ProgressBar value="22" title="my-progress" style="width: 100%; flex-shrink: 0;" />
                 <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; height: 140px;">
                     <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="InventoryButton" style="background-image: url(&apos;project://database/Assets/Assets/Textures/icon_inventory.png?fileID=2800000&amp;guid=a011d31d7633bf44aa816fda69b95f39&amp;type=3#icon_inventory&apos;); width: 140px; height: 140px; background-color: rgba(56, 56, 56, 0);" />
-                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Assets/Assets/Textures/icon_journal.png?fileID=2800000&amp;guid=21ce1b3128633624db5d24075d7f3764&amp;type=3#icon_journal&apos;); width: 140px; height: 140px; background-color: rgba(56, 56, 56, 0);" />
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="MenuButton" style="background-image: url(&apos;project://database/Assets/Assets/Textures/icon_journal.png?fileID=2800000&amp;guid=21ce1b3128633624db5d24075d7f3764&amp;type=3#icon_journal&apos;); width: 140px; height: 140px; background-color: rgba(56, 56, 56, 0);" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
@@ -24,6 +24,13 @@
                         <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InventoryDescription" style="color: rgb(255, 255, 255); font-size: 22px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="MenuContainer" style="flex-grow: 1; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0); display: flex;">
+            <ui:VisualElement name="VisualElement" class="inventoryContainer" style="flex-grow: 0; width: 70%; height: 70%; align-items: center; justify-content: center; background-color: rgb(73, 40, 24); -unity-background-image-tint-color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; visibility: visible; overflow: visible; opacity: 1; flex-direction: column; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;">
+                <ui:Button text="Resume" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ResumeButton" style="white-space: nowrap; -unity-text-align: middle-center; width: 70%; height: 15%; font-size: 61px; margin-top: 20px;" />
+                <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" style="white-space: nowrap; -unity-text-align: middle-center; width: 70%; height: 15%; font-size: 61px; margin-top: 20px;" />
+                <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" style="white-space: normal; -unity-text-align: middle-center; width: 70%; height: 15%; font-size: 61px; margin-top: 20px;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
