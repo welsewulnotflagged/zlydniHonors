@@ -5537,6 +5537,22 @@ MonoBehaviour:
   Prompt: INTERACT
   DialogueAsset: {fileID: 11400000, guid: 80064d5f91662c446833d16633dafc1c, type: 2}
   ItemAsset: {fileID: 11400000, guid: 4a74d9278e3e9494d9e1ed7048ba5168, type: 2}
+--- !u!114 &2082381912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082381903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74aae4dbd65dfd408c13d3cf9da0b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: test
+  Reputation: 0
+  LabelPrefab: {fileID: 4894601849221264442, guid: 9217cb51961feee429a42dd0505b6507,
+    type: 3}
 --- !u!1 &2086499997
 GameObject:
   m_ObjectHideFlags: 0
@@ -5786,6 +5802,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2082381905}
+    - targetCorrespondingSourceObject: {fileID: 4139514544590810099, guid: 7bbb546be5593ee4b942e2e313691c3a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2082381912}
   m_SourcePrefab: {fileID: 100100000, guid: 7bbb546be5593ee4b942e2e313691c3a, type: 3}
 --- !u!1001 &2127174250
 PrefabInstance:

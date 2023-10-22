@@ -1,28 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NonPlayerCharacter : MonoBehaviour {
-    public GameObject dialogBox;
-    private float displayTime = 4.0f;
-    private float timerDisplay;
+    public string Name;
+    public float Reputation;
+    public GameObject LabelPrefab;
+
+    private PlayerContoller _player;
+    private GameObject _uiObject;
+    private Slider _slider;
 
     // Start is called before the first frame update
     void Start() {
-        dialogBox.SetActive(false);
-        timerDisplay = -0.5f;
+        _player = FindObjectOfType<PlayerContoller>();
+        _uiObject = Instantiate(LabelPrefab, transform);
+        _slider = GetComponentInChildren<Slider>();
+
+
+        _uiObject.transform.Translate(Vector3.up);
+        GetComponentInChildren<TextMeshPro>().text = Name;
     }
 
-    // Update is called once per frame
     void Update() {
- 
-    }
-
-    public void displayDialog() {
-        ConversationScript id = GetComponent<ConversationScript>();
-        timerDisplay = displayTime;
-        dialogBox.SetActive(true);
-        id.Greet(3);
-        //id.intelligence = num;
+        _uiObject.transform.LookAt(_uiObject.transform.position + _player.transform.rotation * Vector3.back, _player.transform.rotation * Vector3.up);
+        _uiObject.transform.Rotate(0, 180, 0);
+        _slider.value = Reputation;
     }
 }
