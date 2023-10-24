@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   dialogue:
-  - 'Hello! Sorry this area is underdeveloped yet for deadline submission purposes. '
-  - There is a mechanic coming very soon that lets you use the picked object to get
-    on the train you need and enable the cutscene!
-  - Good bye!
+  - Hello, ticket please.
+  - Your platform will be to your left. Have a good trip!
+  - You can't go in here without a ticket. Please purchase a ticket first.

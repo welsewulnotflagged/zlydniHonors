@@ -23,7 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StarterInstruction.unity
     guid: e3fca19e85ba5b642b7dd704e40173a2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelMap.unity
     guid: 9f85572809797f74aa33543f031a4266
+  - enabled: 1
+    path: Assets/Scenes/Final Level Map.unity
+    guid: e432c46d540a9fc47852ed1ad3d6a20d
   m_configObjects: {}

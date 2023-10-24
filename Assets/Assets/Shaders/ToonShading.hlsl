@@ -1,3 +1,6 @@
+#ifndef MAINLIGHT_INCLUDED
+#define MAINLIGHT_INCLUDED
+
 void ToonShading_float(in float3 Normal, in float ToonRampSmoothness, in float3 ClipSpacePos, in float3 WorldPos, in float4 ToonRampTinting,
 in float ToonRampOffset, out float3 ToonRampOutput, out float3 Direction)
 {
@@ -36,3 +39,5 @@ in float ToonRampOffset, out float3 ToonRampOutput, out float3 Direction)
 #endif
  
 }
+
+#endif
