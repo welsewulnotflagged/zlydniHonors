@@ -11,8 +11,10 @@ public class InventoryController : MonoBehaviour {
     public void Add(ItemAsset item, int count) {
         if (Has(item)) {
             _items[item] += count;
+            Debug.Log("added");
         } else {
             _items[item] = count;
+            Debug.Log("added");
         }
     }
 
@@ -32,6 +34,7 @@ public class InventoryController : MonoBehaviour {
 
     public bool Has(ItemAsset item) {
         return _items.ContainsKey(item);
+        Debug.Log("has key");
     }
 
     public Dictionary<ItemAsset, int> GetAllItems() {
