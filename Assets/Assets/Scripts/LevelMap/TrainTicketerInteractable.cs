@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class TrainTicketerInteractable : Interactable {
     public DialogueAsset DialogueAsset;
+    public DialogueAsset DialogueAsset2;
     public ItemAsset ItemAsset;
     private DialogueController _dialogueController;
     private CameraController _cameraController;
     private InventoryController _inventoryController;
+    private bool introduced; 
 
     void Start() {
         _dialogueController = FindObjectOfType<DialogueController>();
@@ -17,23 +19,22 @@ public class TrainTicketerInteractable : Interactable {
 
     protected override void OnInteract(GameObject source) {
         if (!CheckTicket()) {
-            ShowDialogue();
-        } else {
+            ShowDialogue(); }
+        else {
             UnlockTrain();
         }
+        
     }
 
     private void ShowDialogue() {
-        if (_dialogueController.HasActiveDialogue()) {
-            _dialogueController.UpdateState();
-        } else {
             _dialogueController.addDialogue(DialogueAsset, _cameraController);
-        }
+        
     }
 
     private void UnlockTrain() {
         _inventoryController.Remove(ItemAsset);
-        Destroy(gameObject);
+        _dialogueController.addDialogue(DialogueAsset2, _cameraController); 
+      //  Destroy(gameObject);
     }
 
     private bool CheckTicket() {

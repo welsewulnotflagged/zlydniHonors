@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PointClick.unity
     guid: 645f2206c6ddea544842d8485fc59c97
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StarterInstruction.unity
     guid: e3fca19e85ba5b642b7dd704e40173a2
   - enabled: 0
