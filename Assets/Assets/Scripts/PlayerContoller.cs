@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -14,12 +15,13 @@ public class PlayerContoller : MonoBehaviour {
 
     private CharacterController _characterController;
     private DialogueController _dialogueController;
+    private Animator _animator;
 
     // Start is called before the first frame update
     void Start() {
         _characterController = GetComponent<CharacterController>();
         _dialogueController = FindObjectOfType<DialogueController>();
-   
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -51,6 +53,8 @@ public class PlayerContoller : MonoBehaviour {
             _velocity.y = 0;
         }
 
+        _animator.SetFloat("h", Input.GetAxis("Vertical"));
+        
         transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * turningSpeed, 0);
         // _direction.x = Input.GetAxis("Vertical");
         // _direction.z = transform.forward.magnitude;
