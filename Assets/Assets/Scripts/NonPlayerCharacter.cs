@@ -9,13 +9,13 @@ public class NonPlayerCharacter : MonoBehaviour {
     public float Reputation;
     public GameObject LabelPrefab;
 
-    private PlayerContoller _player;
+    private PlayerController _player;
     private GameObject _uiObject;
     private Slider _slider;
 
     // Start is called before the first frame update
     void Start() {
-        _player = FindObjectOfType<PlayerContoller>();
+        _player = FindObjectOfType<PlayerController>();
         _uiObject = Instantiate(LabelPrefab, transform);
         _slider = GetComponentInChildren<Slider>();
 

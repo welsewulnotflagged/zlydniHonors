@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour {
 
     public void Enable(GameObject other) {
         cameras[currentCameraIndex].Priority = 2;
-        var playerController = other.gameObject.GetComponent<PlayerContoller>();
+        var playerController = other.gameObject.GetComponent<PlayerController>();
         if (playerController) {
             playerController.currentCameraController = this;
         }
@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour {
             camera.Priority = 0;
         }
 
-        other.gameObject.GetComponent<PlayerContoller>().currentCameraController = null;
+        other.gameObject.GetComponent<PlayerController>().currentCameraController = null;
     }
 
     public void OnTriggerExit(Collider other) {

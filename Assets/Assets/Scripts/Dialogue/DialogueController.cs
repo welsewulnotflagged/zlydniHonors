@@ -33,7 +33,7 @@ public class DialogueController : MonoBehaviour {
 
     public void UpdateState() {
         Debug.Log("update state");
-        var player = FindObjectOfType<PlayerContoller>();
+        var player = FindObjectOfType<PlayerController>();
         if (queue.Count > 0) {
             Debug.Log("start dialog");
             _uiController.SetDialogueText(queue.Dequeue());

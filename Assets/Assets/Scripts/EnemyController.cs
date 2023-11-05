@@ -12,13 +12,13 @@ public class EnemyController : MonoBehaviour {
 
     private Transform[] Waypoints;
     private NavMeshAgent _navMeshAgent;
-    private PlayerContoller _playerContoller;
+    private PlayerController _playerController;
     private int CurrentWaypointIndex = 0;
     private bool chasingPlayer;
     private bool canSeePlayer;
 
     public void Start() {
-        _playerContoller = FindObjectOfType<PlayerContoller>();
+        _playerController = FindObjectOfType<PlayerController>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
         if (pathHolder != null) {
@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour {
 
     public void Update() {
         if (canSeePlayer) {
-            _navMeshAgent.SetDestination(_playerContoller.transform.position);
+            _navMeshAgent.SetDestination(_playerController.transform.position);
             chasingPlayer = true;
         } else {
             if (chasingPlayer) {
@@ -96,7 +96,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     public Vector3 GetPlayerPosition() {
-        return _playerContoller.transform.position;
+        return _playerController.transform.position;
     }
 
     public bool CanSeePlayer() {

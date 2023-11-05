@@ -1,8 +1,9 @@
+#if UNITY_EDITOR
 using UnityEditor.Animations;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerContoller : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
     public float speed = 5f;
     public float turningSpeed = 180f;
     public CameraController currentCameraController;
@@ -76,3 +77,5 @@ public class PlayerContoller : MonoBehaviour {
         }
     }
 }
+
+#endif
