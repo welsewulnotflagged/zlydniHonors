@@ -8,6 +8,7 @@ TagManager:
   - NPCs
   - Punchable
   - Announcer
+  - Journal
   layers:
   - Default
   - TransparentFX

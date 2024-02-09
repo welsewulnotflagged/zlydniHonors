@@ -17,3 +17,6 @@ MonoBehaviour:
   - 'The next northbound train will be leaving in 15 minutes.
 
 '
+  choices:
+  - choiceText: Exit
+    nextDialogueID: 0

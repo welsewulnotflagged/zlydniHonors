@@ -10,11 +10,17 @@ public class TrainTicketerInteractable : Interactable {
     private CameraController _cameraController;
     private InventoryController _inventoryController;
     private bool introduced; 
+    public GameObject enemy1;
+    public GameObject enemy2;
+    public GameObject enemy3;
+    public GameObject wall;
 
     void Start() {
         _dialogueController = FindObjectOfType<DialogueController>();
         _inventoryController = FindObjectOfType<InventoryController>();
         _cameraController = GetComponentInChildren<CameraController>();
+        enemy1.SetActive(false);
+        enemy2.SetActive(false);
     }
 
     protected override void OnInteract(GameObject source) {
@@ -34,7 +40,10 @@ public class TrainTicketerInteractable : Interactable {
     private void UnlockTrain() {
         _inventoryController.Remove(ItemAsset);
         _dialogueController.addDialogue(DialogueAsset2, _cameraController); 
-      //  Destroy(gameObject);
+        enemy1.SetActive(true);
+        enemy2.SetActive(true);
+        enemy3.SetActive(true);
+        Destroy(wall);
     }
 
     private bool CheckTicket() {

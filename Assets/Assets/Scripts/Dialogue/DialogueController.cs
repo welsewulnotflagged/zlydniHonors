@@ -7,7 +7,7 @@ public class DialogueController : MonoBehaviour {
     public Queue<string> queue = new();
     private CameraController cameraController;
     private Action _dialogueCallback;
-    
+    private DialogueAsset _dialogueAsset;
     private UIController _uiController;
 
 
@@ -17,9 +17,13 @@ public class DialogueController : MonoBehaviour {
 
     public void addDialogue(DialogueAsset dialogueAsset, CameraController cameraController) {
         this.cameraController = cameraController;
-        foreach (var t in dialogueAsset.dialogue) {
+        foreach (var t in dialogueAsset.dialogue)
+        {
             queue.Enqueue(t);
         }
+        _dialogueAsset = dialogueAsset;
+        _dialogueAsset.choices.Add(DialogueAsset.Choice.exitChoice);
+        
 
         if (!_uiController.IsDialogueActive()) {
             _uiController.ShowDialogue();
@@ -41,16 +45,30 @@ public class DialogueController : MonoBehaviour {
                 cameraController.Enable(player.gameObject);
             }
         } else {
-            Debug.Log("close dialog");
-            _uiController.ShowHUD();
-            if (cameraController) {
-                cameraController.Disable(player.gameObject);
+            if (_dialogueAsset.choices is { Count: > 0 })
+            {
+                foreach (var choice in _dialogueAsset.choices)
+                {
+                   // _uiController.SetDialogueText(choice.choiceText);
+                    _uiController.AddButton(choice);
+                    _dialogueAsset.choices.Clear();
+                }
+                return;
             }
 
-            if (_dialogueCallback != null) {
-                _dialogueCallback.Invoke();
-                _dialogueCallback = null;
-            }
+            Debug.Log("close dialog");
+                _uiController.ShowHUD();
+                if (cameraController)
+                {
+                    cameraController.Disable(player.gameObject);
+                }
+
+                if (_dialogueCallback != null)
+                {
+                    _dialogueCallback.Invoke();
+                    _dialogueCallback = null;
+                }
+            
         }
     }
 
@@ -63,4 +81,6 @@ public class DialogueController : MonoBehaviour {
             UpdateState();
         }
     }
+    
+    //public void 
 }

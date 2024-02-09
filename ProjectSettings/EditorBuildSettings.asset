@@ -26,7 +26,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LevelMap.unity
     guid: 9f85572809797f74aa33543f031a4266
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Final Level Map.unity
     guid: e432c46d540a9fc47852ed1ad3d6a20d
+  - enabled: 1
+    path: Assets/Scenes/FINAL LEVEL FR FR FR FR.unity
+    guid: 82a2e33e8f56a1f42a20cda94b5b4d58
+  - enabled: 1
+    path: Assets/Scenes/LoseScreen.unity
+    guid: b55a0a44cf0a36f41b23ff844dcbee03
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: d0aec1d9601cdf44480ef0cbb37aa79e
   m_configObjects: {}

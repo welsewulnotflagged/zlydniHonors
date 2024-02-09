@@ -115,4 +115,13 @@ public class UIController : MonoBehaviour {
     public void SetDialogueText(string text) {
         _dialogueLabel.text = text;
     }
+
+    public void AddButton(DialogueAsset.Choice btn)
+    {
+        var visualElement = new Button();
+        _dialogue.Add(visualElement);
+        visualElement.text = btn.choiceText;
+    }
+
+
 }

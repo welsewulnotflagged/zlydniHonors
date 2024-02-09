@@ -35,11 +35,13 @@ public class EnemyController : MonoBehaviour {
 
     public void Update() {
         if (canSeePlayer) {
+            Debug.Log("im seeing");
             _navMeshAgent.SetDestination(_playerController.transform.position);
             chasingPlayer = true;
         } else {
             if (chasingPlayer) {
-                _navMeshAgent.SetDestination(Waypoints[CurrentWaypointIndex].transform.position);
+                Debug.Log("im not seeing");
+               _navMeshAgent.SetDestination(Waypoints[CurrentWaypointIndex].transform.position);
                 chasingPlayer = false;
             }
             if (Vector3.Distance(transform.position, Waypoints[CurrentWaypointIndex].position) <= 2.0f) {
@@ -58,6 +60,8 @@ public class EnemyController : MonoBehaviour {
             previousPosition = waypoint.position;
         }
 
+       // Gizmos.DrawLine(transform.position, _playerController.transform.position);
+       // Gizmos.DrawSphere(_playerController.transform.position, 1f);
         Gizmos.DrawLine(previousPosition, startPosition);
     }
 
@@ -73,13 +77,14 @@ public class EnemyController : MonoBehaviour {
     private void FieldOfViewCheck() {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, DetectionRadius, targetMask);
         if (rangeChecks.Length != 0) {
-            Debug.Log("PLAYER IN RANGE");
+          //  Debug.Log("PLAYER IN RANGE");
+            Debug.Log(rangeChecks.Length);
 
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
             if (Vector3.Angle(transform.forward, directionToTarget) < DetectionAngle / 2) {
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                float distanceToTarget = Vector3.Distance(transform.position, target.position) +2 ;
                 Debug.Log("PLAYED SPOTTED AT "+distanceToTarget);
 
                 if (Physics.Raycast(transform.position, directionToTarget, distanceToTarget, targetMask)) {
@@ -96,6 +101,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     public Vector3 GetPlayerPosition() {
+        Debug.Log(_playerController.transform.position);
         return _playerController.transform.position;
     }
 

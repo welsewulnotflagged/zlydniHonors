@@ -1,5 +1,5 @@
-#if UNITY_EDITOR
-using UnityEditor.Animations;
+
+//using UnityEditor.Animations;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float speed = 5f;
     public float turningSpeed = 180f;
     public CameraController currentCameraController;
+    public bool canMove;
 
     private float _gravity = -9.81f;
     private Vector3 _velocity;
@@ -17,26 +18,46 @@ public class PlayerController : MonoBehaviour {
     private CharacterController _characterController;
     private DialogueController _dialogueController;
     private Animator _animator;
+    public JournalController _journalController;
 
     // Start is called before the first frame update
     void Start() {
         _characterController = GetComponent<CharacterController>();
         _dialogueController = FindObjectOfType<DialogueController>();
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
+      //  _journalController = GetComponentInChildren<JournalController>();
     }
 
     // Update is called once per frame
-    void Update() {
-        if (_dialogueController.HasActiveDialogue()) {
+    void Update()
+    {
+        if (_dialogueController.HasActiveDialogue())
+        {
             return;
         }
-        tryMove();
-        TrySwitchCamera();
+
+        if (!canMove)
+        {
+            tryMove();
+            TrySwitchCamera();
+        }
+
+        //tryMove();
+        //TrySwitchCamera();
         if (Input.GetKey(KeyCode.Escape))
         {
             Application.Quit();
         }
+        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {    if (_journalController != null)
+            {
+                _journalController.OpenJournalMenu();
+                _journalController.isOpen = !_journalController.isOpen;
+            }
+        }
     }
+    
 
     private void TrySwitchCamera() {
         if (Input.GetKeyUp(KeyCode.X)) {
@@ -60,7 +81,14 @@ public class PlayerController : MonoBehaviour {
         // _direction.x = Input.GetAxis("Vertical");
         // _direction.z = transform.forward.magnitude;
 
-        _characterController.Move(transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed);
+        var localSpeed = speed;
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            _animator.SetBool("sprint", true);
+            localSpeed *= 2;
+        } else {
+            _animator.SetBool("sprint", false);
+        }
+        _characterController.Move(transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * localSpeed);
 
         if (Input.GetKeyUp(KeyCode.Space) && isGrounded) {
             print("JUMPING");
@@ -71,11 +99,6 @@ public class PlayerController : MonoBehaviour {
         _characterController.Move(_velocity * Time.deltaTime);
     }
 
-    public void OnGUI() {
-        if (currentCameraController != null && currentCameraController.CanSwitch()) {
-            GUI.Label(new Rect(0, Screen.height - 40, 300, 20), "PRESS X TO CHANGE CAMERA");
-        }
-    }
+
 }
 
-#endif

@@ -10,4 +10,6 @@ public class ItemAsset : ScriptableObject {
     public string description;
     public Texture2D icon;
     public GameObject obj;
+
+    
 }
