@@ -53,7 +53,7 @@ public class JournalUIController : MonoBehaviour
         JournalAsset.Choice selectedChoice = _entry.choices.Find(choice => choice.id == currentID);
        // Debug.Log("" + currentID);
         
-        if (selectedChoice != null && _choiceContentAppended)
+        if (selectedChoice != null)
         {
             Debug.Log("testiii");
 
@@ -62,7 +62,7 @@ public class JournalUIController : MonoBehaviour
             Text choiceContentTextArea = uiController.textArea;
             choiceContentTextArea.text += string.Join("/n ", selectedChoice.choiceContent);
             Debug.Log($"Choice content: {selectedChoice.choiceContent}");
-            _choiceContentAppended = !_choiceContentAppended;
+            //_choiceContentAppended = !_choiceContentAppended;
 
         }
         else
