@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8258aaa43a4e3e04bb9e6313bb9d2b9d, type: 3}
+  m_Name: New Journal Entry
+  m_EditorClassIdentifier: 
+  journalEntries:
+  - id: 5
+    entryContent:
+    - Hello! You opened a journal. Try clicking the entries!
+    choices:
+    - choiceText: CLICK
+      nextEntryID: 0
+      id: 0
+      choiceContent: Im In Text!
+    - choiceText: CLICKCLICK
+      nextEntryID: 1
+      id: 1
+      choiceContent: This is insane
+    - choiceText: CLICKCLICKCLICK
+      nextEntryID: 2
+      id: 2
+      choiceContent: Wow it is working
