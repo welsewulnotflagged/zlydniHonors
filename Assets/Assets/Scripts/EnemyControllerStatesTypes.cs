@@ -10,7 +10,9 @@ public class EnemyControllerStatesTypes : MonoBehaviour
    // public Transform player;
    private Transform _player;
    
+   
     public LayerMask whatIsGround, whatIsPlayer;
+    private LockeInteractable locker; 
 
     //patrolling
     public Vector3 walkPoint;
@@ -40,6 +42,8 @@ public class EnemyControllerStatesTypes : MonoBehaviour
         var position = transform.position;
         playerInSightRange = Physics.CheckSphere(position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(position, attackRange, whatIsPlayer);
+        
+        //check locker.isHiding ?
         
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();

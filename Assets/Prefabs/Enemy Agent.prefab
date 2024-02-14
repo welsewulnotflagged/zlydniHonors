@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3459905606913951468}
   - component: {fileID: 4050364121333122195}
   - component: {fileID: 8608251523436414274}
-  - component: {fileID: 8773724987097834260}
   - component: {fileID: 3189708359575138086}
+  - component: {fileID: 4385779848954508376}
   m_Layer: 0
   m_Name: Enemy Agent
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 1.72, y: -9.31, z: 55.616158}
-  m_LocalScale: {x: 1.1768, y: 1.1768, z: 1.1768}
+  m_LocalScale: {x: 0.8439539, y: 0.8439539, z: 0.8439539}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1750694591679135914}
@@ -105,7 +105,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.98265713
   m_Height: 2.3100386
@@ -121,7 +121,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.49999997
-  m_Speed: 10
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 2
   m_AngularSpeed: 120
@@ -133,24 +133,6 @@ NavMeshAgent:
   m_BaseOffset: 0.9999996
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8773724987097834260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3863561146579500271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a63aa60f02bad47a04cdf33df6370b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathHolder: {fileID: 0}
-  DetectionRadius: 10
-  DetectionAngle: 200
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &3189708359575138086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +145,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3608fa31b7e45d428e8a759b73fae3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4385779848954508376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3863561146579500271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae778aededb62784daa93b73e89d9145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 8608251523436414274}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 128
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 320
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 50
+  timeBetweenAttacks: 1
+  projectile: {fileID: 0}
+  sightRange: 100
+  attackRange: 10
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!1 &4495335942607321123
 GameObject:
   m_ObjectHideFlags: 0

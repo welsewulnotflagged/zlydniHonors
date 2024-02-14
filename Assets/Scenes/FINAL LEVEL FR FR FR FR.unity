@@ -7686,41 +7686,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerActualInGame
       objectReference: {fileID: 0}
-    - target: {fileID: 4511049225574048525, guid: b15c90dba1475424590d50bc2ae6a1b7,
-        type: 3}
-      propertyPath: m_BlockingObjects
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5181712259952546381, guid: b15c90dba1475424590d50bc2ae6a1b7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6427275630889725293, guid: b15c90dba1475424590d50bc2ae6a1b7,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6427275630889725293, guid: b15c90dba1475424590d50bc2ae6a1b7,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6427275630889725293, guid: b15c90dba1475424590d50bc2ae6a1b7,
-        type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0.507
-      objectReference: {fileID: 0}
-    - target: {fileID: 6427275630889725293, guid: b15c90dba1475424590d50bc2ae6a1b7,
-        type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6427275630889725293, guid: b15c90dba1475424590d50bc2ae6a1b7,
-        type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 2000
-      objectReference: {fileID: 0}
     - target: {fileID: 6649433375995685254, guid: b15c90dba1475424590d50bc2ae6a1b7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7769,11 +7734,6 @@ PrefabInstance:
     - target: {fileID: 6649433375995685254, guid: b15c90dba1475424590d50bc2ae6a1b7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7015389188249123410, guid: b15c90dba1475424590d50bc2ae6a1b7,
-        type: 3}
-      propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
