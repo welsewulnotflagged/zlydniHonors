@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Unity.VisualScripting;
+using UnityEditor;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UIController : MonoBehaviour {
     private VisualElement _hud;
-    public VisualElement _dialogue;
+    private VisualElement _dialogue;
     private VisualElement _inventoryContainer;
     private VisualElement _inventoryIcon;
     private Label _inventoryTitle;
@@ -19,10 +17,12 @@ public class UIController : MonoBehaviour {
     private InventoryController _inventoryController;
     private VisualElement _menuContainer;
     private DialogueAsset _dialogueAsset;
-    public VisualElement ButtonContainer;
+    private VisualElement _buttonContainer;
+    private DialogueController _dialogueController;
 
     void OnEnable() {
         _inventoryController = FindObjectOfType<InventoryController>();
+        _dialogueController = FindObjectOfType<DialogueController>();
 
         _document = GetComponent<UIDocument>();
         _hud = _document.rootVisualElement.Q<VisualElement>("HUD");
@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour {
         _inventoryDescription = _document.rootVisualElement.Q<Label>("InventoryDescription");
         _dialogueLabel = _document.rootVisualElement.Q<Label>("DialogueLabel");
         _menuContainer = _document.rootVisualElement.Q<VisualElement>("MenuContainer");
-        ButtonContainer = _document.rootVisualElement.Q<VisualElement>("ButtonContainer");
+        _buttonContainer = _document.rootVisualElement.Q<VisualElement>("ButtonContainer");
 
         BindButtons();
 
@@ -53,7 +53,7 @@ public class UIController : MonoBehaviour {
         invButton.clicked += ShowInventory;
         var menuButton = _document.rootVisualElement.Q<Button>("MenuButton");
         menuButton.clicked += ShowMenu;
-        
+
         _document.rootVisualElement.Q<Button>("ResumeButton").clicked += ShowHUD;
         _document.rootVisualElement.Q<Button>("ExitButton").clicked += CloseGame;
     }
@@ -66,7 +66,7 @@ public class UIController : MonoBehaviour {
         _hud.style.display = DisplayStyle.None;
         _menuContainer.style.display = DisplayStyle.Flex;
     }
-    
+
     public void ShowHUD() {
         _hud.style.display = DisplayStyle.Flex;
         _dialogue.style.display = DisplayStyle.None;
@@ -122,36 +122,36 @@ public class UIController : MonoBehaviour {
         _dialogueLabel.text = text;
     }
 
-    public void AddButton(DialogueAsset.Choice dialogueChoice, int choiceIndex)
-    {
+    public void AddDialogueButton(DialogueAsset.Choice choice) {
         Button visualElement = new Button();
-        ButtonContainer.Add(visualElement);
-        visualElement.text = dialogueChoice.choiceText;
-        visualElement.clicked += (delegate {InsertInText(choiceIndex);});
+        _buttonContainer.Add(visualElement);
+        visualElement.text = choice.choiceText;
+        visualElement.AddToClassList("choice-button");
+        visualElement.clickable.clicked += () => InsertInText(choice);
     }
 
-    public void InsertInText(int currentID)
-    {
-        //_dialogue.Children().Where(l => l is Button).ToList().ForEach(button => { _dialogue.Remove(button); });
-        ButtonContainer.Clear();
-        Debug.Log(ButtonContainer.Children());
-        /* DialogueAsset.Choice selectedChoice = _dialogueAsset.choices.Find(choice => choice.id == currentID);
-         if (selectedChoice != null)
-         {
-             Debug.Log($"Choice selected!");
-
-            /* Text choiceContentTextArea = uiController.textArea;
-             choiceContentTextArea.text += string.Join("/n ", selectedChoice.choiceContent);
-             Debug.Log($"Choice content: {selectedChoice.choiceContent}");
-             // _choiceContentAppended = !_choiceContentAppended;
-
-         }
-         else
-         {
-             Debug.Log("no dialogue");
-         }*/
-
+    public void ClearDialogueButtons() {
+        _buttonContainer.Clear();
     }
 
+    public bool HasActiveChoices() {
+        return _buttonContainer.childCount > 0;
+    }
 
+    private void InsertInText(DialogueAsset.Choice choice) {
+        var nextDialogue =
+            AssetDatabase
+                .FindAssets($"t:{typeof(DialogueAsset)}")
+                .Select(assetId => AssetDatabase.LoadAssetAtPath<DialogueAsset>(AssetDatabase.GUIDToAssetPath(assetId)))
+                .FirstOrDefault(asset => asset.id == choice.nextDialogueID);
+
+        if (nextDialogue == null) {
+            Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {choice.nextDialogueID}");
+            return;
+        }
+
+        Debug.Log($"SWITCH TO NEXT DIALOGUE WITH ID {choice.nextDialogueID}");
+        _dialogueController.addDialogue(nextDialogue, _dialogueController.GetActiveCamera());
+        _dialogueController.UpdateState();
+    }
 }

@@ -3,21 +3,13 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "My assets/Dialogue", order = 100)]
 public class DialogueAsset : ScriptableObject {
-    
-        public int id;
-        [TextArea] public string[] dialogue;
-        public List<Choice> choices;
+    public int id;
+    [TextArea] public string[] dialogue;
+    public List<Choice> choices;
 
     [System.Serializable]
-    public class Choice
-    {
+    public class Choice {
         public string choiceText;
         public int nextDialogueID;
-        public int id;
-        //public static Choice exitChoice = new Choice { choiceText = "Exit", nextDialogueID = -1 };
     }
-
-   // public DialogueAsset[] dialogueNodes;
-    
 }
-        
