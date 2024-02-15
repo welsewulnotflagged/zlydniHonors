@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class JournalController : MonoBehaviour
@@ -10,8 +11,9 @@ public class JournalController : MonoBehaviour
     public GameObject journalUI;
     public JournalUIController _UIController;
     //public float fadeDuration = 1f;
-    //public JournalAsset currentEntry;
+    private int currentEntryIndex=0;
     public Text textArea;
+   // public Text textAreaRight;
     public bool isOpen;
 
     public void Start()
@@ -19,7 +21,29 @@ public class JournalController : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    // Start is called before the first frame update
+  /*  public void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (currentEntryIndex < journalAsset.journalEntries.Length)
+            {
+                // Display the next entry
+                textArea.text = string.Join("\n", journalAsset.journalEntries[currentEntryIndex].entryContent);
+                Debug.Log("Displaying Journal Entry: " + string.Join("\n", journalAsset.journalEntries[currentEntryIndex].entryContent));
+                _UIController.UpdateUI(currentEntryIndex, journalAsset);
+            
+                // Increment the current entry index for the next click
+                currentEntryIndex++;
+            }
+            else
+            {
+                // Handle the case when all entries have been displayed
+                Debug.Log("All entries have been displayed.");
+                //currentEntryIndex = 0;
+            }
+        }
+    }*/
+
     public void OpenJournalMenu() 
     {
         Debug.Log(isOpen);
@@ -29,28 +53,18 @@ public class JournalController : MonoBehaviour
             this.gameObject.SetActive(true);
 
             StartCoroutine(ShowUIAfterDelay(2f));
-            // GameObject journalObject = GameObject.FindGameObjectsWithTag("Journal");
-            // DialogueController journal = FindObjectOfType<DialogueController>();
-            foreach (var entry in journalAsset.journalEntries)
+
+            textArea.text = string.Join("\n", journalAsset.journalEntries[0].entryContent[0]);
+            //_UIController.UpdateUI(0, journalAsset);
+           foreach (var entry in journalAsset.journalEntries)
             {
                 textArea.text = string.Join("\n", entry.entryContent);
                 Debug.Log(""+entry.entryContent);
                 _UIController.UpdateUI(journalAsset.journalEntries.Length-1, journalAsset);
+               //_currentEntry++;
             }
             cameraController.Enable(this.gameObject);
             
-            /*   StringBuilder entriesText = new StringBuilder();
-            
-            for (int i = 0; i<=journalAsset.journalEntries.Length; i++)
-            {
-               
-            //   entriesText.AppendLine(string.Join("\n", journalAsset.journalEntries[i].entryContent));
-               _UIController.UpdateUI(i, journalAsset); 
-               textArea.text = string.Join("\n", journalAsset.journalEntries.entryContent[i]);
-                
-            }
-            textArea.text = entriesText.ToString();
-            */
         } else
         {
             this.gameObject.SetActive(false);
@@ -64,13 +78,5 @@ public class JournalController : MonoBehaviour
         yield return new WaitForSeconds(delaySec);
         journalUI.SetActive(true);
     }
-
-   /* public void addEntry(JournalAsset journalAsset, CameraController cameraController)
-    {
-        this.cameraController = cameraController;
-      /*  foreach (var t in JournalAsset.JournalEntry.entryContent)
-        {
-           // queue.Enqueue(t);
-        }
-    }*/
+    
 }

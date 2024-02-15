@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: New Journal Entry
   m_EditorClassIdentifier: 
   journalEntries:
-  - id: 5
+  - id: 0
     entryContent:
-    - Hello! You opened a journal. Try clicking the entries!
+    - So I'm sitting here...
+    - On this train station...
+    - 'BBQ sauce on my tiddies. '
     choices:
     - choiceText: CLICK
-      nextEntryID: 0
+      nextEntryID: 1
       id: 0
       choiceContent: Im In Text!
     - choiceText: CLICKCLICK
@@ -26,6 +28,6 @@ MonoBehaviour:
       id: 1
       choiceContent: This is insane
     - choiceText: CLICKCLICKCLICK
-      nextEntryID: 2
+      nextEntryID: 1
       id: 2
       choiceContent: Wow it is working

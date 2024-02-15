@@ -7686,6 +7686,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerActualInGame
       objectReference: {fileID: 0}
+    - target: {fileID: 1471735598475481767, guid: b15c90dba1475424590d50bc2ae6a1b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517727015192361413, guid: b15c90dba1475424590d50bc2ae6a1b7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 650.784
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517727015192361413, guid: b15c90dba1475424590d50bc2ae6a1b7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 135.60815
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225198367547736167, guid: b15c90dba1475424590d50bc2ae6a1b7,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6649433375995685254, guid: b15c90dba1475424590d50bc2ae6a1b7,
         type: 3}
       propertyPath: m_LocalPosition.x
