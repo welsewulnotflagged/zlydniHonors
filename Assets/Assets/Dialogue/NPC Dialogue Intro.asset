@@ -12,8 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
   m_Name: NPC Dialogue Intro
   m_EditorClassIdentifier: 
-  id: 2
+  id: 1
   dialogue:
   - Hello! Welcome to the train station. You can find the train schedule in the waiting
     hall to your left.
   - What is your question today?
+  choices:
+  - choiceText: a
+    nextDialogueID: 1
+    id: 1
+  - choiceText: b
+    nextDialogueID: 2
+    id: 2
+  - choiceText: c
+    nextDialogueID: 3
+    id: 3

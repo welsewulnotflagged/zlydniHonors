@@ -55,7 +55,6 @@ public class JournalUIController : MonoBehaviour
         
         if (selectedChoice != null)
         {
-            Debug.Log("testiii");
 
             Debug.Log($"Choice selected!");
 

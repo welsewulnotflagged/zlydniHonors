@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
   m_Name: NPC Dialogue Passerbys
   m_EditorClassIdentifier: 
-  id: 2
+  id: 1
   dialogue:
   - ...
+  choices: []

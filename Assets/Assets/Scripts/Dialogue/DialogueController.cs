@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour {
     public Queue<string> queue = new();
@@ -22,7 +23,6 @@ public class DialogueController : MonoBehaviour {
             queue.Enqueue(t);
         }
         _dialogueAsset = dialogueAsset;
-        _dialogueAsset.choices.Add(DialogueAsset.Choice.exitChoice);
         
 
         if (!_uiController.IsDialogueActive()) {
@@ -38,20 +38,30 @@ public class DialogueController : MonoBehaviour {
     public void UpdateState() {
         Debug.Log("update state");
         var player = FindObjectOfType<PlayerController>();
-        if (queue.Count > 0) {
+        if (queue.Count > 0)
+        {
             Debug.Log("start dialog");
             _uiController.SetDialogueText(queue.Dequeue());
-            if (cameraController) {
+            if (cameraController)
+            {
                 cameraController.Enable(player.gameObject);
             }
-        } else {
-            if (_dialogueAsset.choices is { Count: > 0 })
+        }
+        else 
+        {
+            Debug.Log("" + _uiController._dialogue.childCount);
+            //var dialogueCopy = new List<DialogueAsset.Choice>(_dialogueAsset.choices);
+            if (_dialogueAsset.choices is { Count: > 0 } && _uiController.ButtonContainer.childCount == 0 )
             {
-                foreach (var choice in _dialogueAsset.choices)
-                {
-                   // _uiController.SetDialogueText(choice.choiceText);
-                    _uiController.AddButton(choice);
-                    _dialogueAsset.choices.Clear();
+                Debug.Log("IM IN HERE");
+               // _uiController._dialogue.Clear();
+                //foreach (var choice in _dialogueAsset.choices)
+                for (int i = 0; i < _dialogueAsset.choices.Count; i++)
+                { 
+                   // _uiController.SetDialogueText(_dialogueAsset.choices[i].choiceText);
+                    _uiController.AddButton(_dialogueAsset.choices[i], i); 
+                    
+                   // _dialogueAsset.choices.Clear();
                 }
                 return;
             }
@@ -77,10 +87,9 @@ public class DialogueController : MonoBehaviour {
     } 
 
     public void Update() {
-        if (_uiController.IsDialogueActive() && Input.GetMouseButtonUp(0)) {
+        if (_uiController.IsDialogueActive() && Input.GetMouseButtonUp(0)) 
             UpdateState();
-        }
+        
     }
     
-    //public void 
 }
