@@ -140,19 +140,24 @@ public class UIController : MonoBehaviour {
 
     private void InsertInText(DialogueAsset.Choice choice) {
         if (choice.nextDialogueID > 0) {
-            var nextDialogue =
+            var nextDialogues =
                 AssetDatabase
                     .FindAssets($"t:{typeof(DialogueAsset)}")
                     .Select(assetId => AssetDatabase.LoadAssetAtPath<DialogueAsset>(AssetDatabase.GUIDToAssetPath(assetId)))
-                    .FirstOrDefault(asset => asset.id == choice.nextDialogueID);
+                    .ToList();
 
-            if (nextDialogue == null) {
-                Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {choice.nextDialogueID}");
-                return;
+            switch (nextDialogues.Count) {
+                case > 1:
+                    Debug.LogError("LOLITAAA!!!!!!!!!!! FIX YOUR DIALOGS IDS");
+                    return;
+                case 0:
+                    Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {choice.nextDialogueID}");
+                    return;
+                default:
+                    Debug.Log($"SWITCH TO NEXT DIALOGUE WITH ID {choice.nextDialogueID}");
+                    _dialogueController.addDialogue(nextDialogues.First(), _dialogueController.GetActiveCamera());
+                    break;
             }
-            Debug.Log($"SWITCH TO NEXT DIALOGUE WITH ID {choice.nextDialogueID}");
-            
-            _dialogueController.addDialogue(nextDialogue, _dialogueController.GetActiveCamera());
         } else {
             Debug.Log($"DIALOG EXIT");
         }
