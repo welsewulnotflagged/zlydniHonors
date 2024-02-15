@@ -139,19 +139,24 @@ public class UIController : MonoBehaviour {
     }
 
     private void InsertInText(DialogueAsset.Choice choice) {
-        var nextDialogue =
-            AssetDatabase
-                .FindAssets($"t:{typeof(DialogueAsset)}")
-                .Select(assetId => AssetDatabase.LoadAssetAtPath<DialogueAsset>(AssetDatabase.GUIDToAssetPath(assetId)))
-                .FirstOrDefault(asset => asset.id == choice.nextDialogueID);
+        if (choice.nextDialogueID > 0) {
+            var nextDialogue =
+                AssetDatabase
+                    .FindAssets($"t:{typeof(DialogueAsset)}")
+                    .Select(assetId => AssetDatabase.LoadAssetAtPath<DialogueAsset>(AssetDatabase.GUIDToAssetPath(assetId)))
+                    .FirstOrDefault(asset => asset.id == choice.nextDialogueID);
 
-        if (nextDialogue == null) {
-            Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {choice.nextDialogueID}");
-            return;
+            if (nextDialogue == null) {
+                Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {choice.nextDialogueID}");
+                return;
+            }
+            Debug.Log($"SWITCH TO NEXT DIALOGUE WITH ID {choice.nextDialogueID}");
+            
+            _dialogueController.addDialogue(nextDialogue, _dialogueController.GetActiveCamera());
+        } else {
+            Debug.Log($"DIALOG EXIT");
         }
 
-        Debug.Log($"SWITCH TO NEXT DIALOGUE WITH ID {choice.nextDialogueID}");
-        _dialogueController.addDialogue(nextDialogue, _dialogueController.GetActiveCamera());
         _dialogueController.UpdateState();
     }
 }
