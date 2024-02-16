@@ -53,11 +53,8 @@ public class UIController : MonoBehaviour {
     }
 
     private void BindButtons() {
-        var invButton = _document.rootVisualElement.Q<Button>("InventoryButton");
-        invButton.clicked += ShowInventory;
-        var menuButton = _document.rootVisualElement.Q<Button>("MenuButton");
-        menuButton.clicked += ShowMenu;
-
+        _document.rootVisualElement.Q<Button>("InventoryButton").clicked += ShowInventory;
+        _document.rootVisualElement.Q<Button>("MenuButton").clicked += ShowMenu;
         _document.rootVisualElement.Q<Button>("ResumeButton").clicked += ShowHUD;
         _document.rootVisualElement.Q<Button>("ExitButton").clicked += CloseGame;
     }
@@ -102,7 +99,7 @@ public class UIController : MonoBehaviour {
 
     private void HideAllExcept(params string[] ids) {
         foreach (var element in _root.Children()) {
-            element.style.display = ids.Contains(element.name) ? DisplayStyle.None : DisplayStyle.Flex;
+            element.style.display = ids.Contains(element.name) ? DisplayStyle.Flex : DisplayStyle.None;
         }
     }
 
@@ -114,7 +111,7 @@ public class UIController : MonoBehaviour {
             var elem = new VisualElement();
             elem.AddToClassList("inventoryItem");
             elem.tooltip = elem.name;
-            elem.RegisterCallback((MouseDownEvent e) => { SelectItem(elem, item.Key); });
+            elem.RegisterCallback((MouseDownEvent _) => { SelectItem(elem, item.Key); });
             elem.style.backgroundImage = new StyleBackground(item.Key.icon);
             _inventoryList.Add(elem);
         }
