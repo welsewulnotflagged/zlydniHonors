@@ -20,6 +20,24 @@
     border-color: black;
 }
 
+.choices {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
 .choice-button {
-    width: 70%;
+    height: 50px;
+    background-color: whitesmoke;
+    border-color: lightgray;
+}
+.choice-title {
+    align-self: center;
+    -unity-text-align: middle-center;
+}
+.shaded {
+    background-color: rgba(0, 0, 0, 0.7);
 }

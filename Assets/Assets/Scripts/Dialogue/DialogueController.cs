@@ -45,9 +45,7 @@ public class DialogueController : MonoBehaviour {
             }
             
             if (queue.Count == 0 && _dialogueAsset.choices is { Count: > 0 } && !_uiController.HasActiveChoices()) {
-                foreach (var choice in _dialogueAsset.choices) {
-                    _uiController.AddDialogueButton(choice);
-                }
+                _uiController.ShowChoices(_dialogueAsset);
             }
             
             return;
