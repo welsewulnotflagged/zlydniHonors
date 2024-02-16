@@ -1,32 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UIController : MonoBehaviour {
     private VisualElement _hud;
-    public VisualElement _dialogue;
+    private VisualElement _dialogue;
     private VisualElement _inventoryContainer;
     private VisualElement _inventoryIcon;
     private Label _inventoryTitle;
     private Label _inventoryDescription;
     private VisualElement _inventoryList;
     private Label _dialogueLabel;
+    private VisualElement _root;
     private UIDocument _document;
     private InventoryController _inventoryController;
     private VisualElement _menuContainer;
-    private DialogueAsset _dialogueAsset;
-    public VisualElement ButtonContainer;
+    private DialogueController _dialogueController;
+
+    private VisualElement _choiceButtons;
+    private Label _choiceTitle;
 
     void OnEnable() {
         _inventoryController = FindObjectOfType<InventoryController>();
+        _dialogueController = FindObjectOfType<DialogueController>();
 
         _document = GetComponent<UIDocument>();
         _hud = _document.rootVisualElement.Q<VisualElement>("HUD");
         _dialogue = _document.rootVisualElement.Q<VisualElement>("DIALOGUE");
+        _root = _document.rootVisualElement.Q<VisualElement>("Root");
         _inventoryContainer = _document.rootVisualElement.Q<VisualElement>("InventoryContainer");
         _inventoryList = _document.rootVisualElement.Q<VisualElement>("InventoryList");
         _inventoryIcon = _document.rootVisualElement.Q<VisualElement>("InventoryIcon");
@@ -34,7 +36,9 @@ public class UIController : MonoBehaviour {
         _inventoryDescription = _document.rootVisualElement.Q<Label>("InventoryDescription");
         _dialogueLabel = _document.rootVisualElement.Q<Label>("DialogueLabel");
         _menuContainer = _document.rootVisualElement.Q<VisualElement>("MenuContainer");
-        ButtonContainer = _document.rootVisualElement.Q<VisualElement>("ButtonContainer");
+
+        _choiceButtons = _document.rootVisualElement.Q<VisualElement>("ChoiceButtons");
+        _choiceTitle = _document.rootVisualElement.Q<Label>("ChoiceTitle");
 
         BindButtons();
 
@@ -53,7 +57,7 @@ public class UIController : MonoBehaviour {
         invButton.clicked += ShowInventory;
         var menuButton = _document.rootVisualElement.Q<Button>("MenuButton");
         menuButton.clicked += ShowMenu;
-        
+
         _document.rootVisualElement.Q<Button>("ResumeButton").clicked += ShowHUD;
         _document.rootVisualElement.Q<Button>("ExitButton").clicked += CloseGame;
     }
@@ -63,15 +67,30 @@ public class UIController : MonoBehaviour {
     }
 
     public void ShowMenu() {
-        _hud.style.display = DisplayStyle.None;
-        _menuContainer.style.display = DisplayStyle.Flex;
+        HideAllExcept("MenuContainer");
     }
-    
+
+    public void ShowChoices(DialogueAsset dialogueAsset) {
+        HideAllExcept("Choice");
+        SetShaded(true);
+
+        _choiceTitle.text = dialogueAsset.choicesTitle ?? "";
+
+        foreach (var choice in dialogueAsset.choices) {
+            AddChoiceButton(choice);
+        }
+    }
+
+    public void SetShaded(bool shaded) {
+        if (shaded) {
+            _root.AddToClassList("shaded");
+        } else {
+            _root.RemoveFromClassList("shaded");
+        }
+    }
+
     public void ShowHUD() {
-        _hud.style.display = DisplayStyle.Flex;
-        _dialogue.style.display = DisplayStyle.None;
-        _inventoryContainer.style.display = DisplayStyle.None;
-        _menuContainer.style.display = DisplayStyle.None;
+        HideAllExcept("HUD");
     }
 
     public void CloseInventory(MouseDownEvent e) {
@@ -81,9 +100,14 @@ public class UIController : MonoBehaviour {
         }
     }
 
+    private void HideAllExcept(params string[] ids) {
+        foreach (var element in _root.Children()) {
+            element.style.display = ids.Contains(element.name) ? DisplayStyle.None : DisplayStyle.Flex;
+        }
+    }
+
     public void ShowInventory() {
-        _hud.style.display = DisplayStyle.None;
-        _inventoryContainer.style.display = DisplayStyle.Flex;
+        HideAllExcept("InventoryContainer");
         _inventoryList.Clear();
 
         foreach (var item in _inventoryController.GetAllItems()) {
@@ -122,36 +146,47 @@ public class UIController : MonoBehaviour {
         _dialogueLabel.text = text;
     }
 
-    public void AddButton(DialogueAsset.Choice dialogueChoice, int choiceIndex)
-    {
+    public void AddChoiceButton(DialogueAsset.Choice choice) {
         Button visualElement = new Button();
-        ButtonContainer.Add(visualElement);
-        visualElement.text = dialogueChoice.choiceText;
-        visualElement.clicked += (delegate {InsertInText(choiceIndex);});
+        _choiceButtons.Add(visualElement);
+        visualElement.text = choice.choiceText;
+        visualElement.AddToClassList("choice-button");
+        visualElement.clickable.clicked += () => InsertInText(choice);
     }
 
-    public void InsertInText(int currentID)
-    {
-        //_dialogue.Children().Where(l => l is Button).ToList().ForEach(button => { _dialogue.Remove(button); });
-        ButtonContainer.Clear();
-        Debug.Log(ButtonContainer.Children());
-        /* DialogueAsset.Choice selectedChoice = _dialogueAsset.choices.Find(choice => choice.id == currentID);
-         if (selectedChoice != null)
-         {
-             Debug.Log($"Choice selected!");
-
-            /* Text choiceContentTextArea = uiController.textArea;
-             choiceContentTextArea.text += string.Join("/n ", selectedChoice.choiceContent);
-             Debug.Log($"Choice content: {selectedChoice.choiceContent}");
-             // _choiceContentAppended = !_choiceContentAppended;
-
-         }
-         else
-         {
-             Debug.Log("no dialogue");
-         }*/
-
+    public void ClearDialogueButtons() {
+        _choiceButtons.Clear();
     }
 
+    public bool HasActiveChoices() {
+        return _choiceButtons.childCount > 0;
+    }
 
+    private void InsertInText(DialogueAsset.Choice choice) {
+        if (choice.nextDialogueID > 0) {
+            var nextDialogues =
+                AssetDatabase
+                    .FindAssets($"t:{typeof(DialogueAsset)}")
+                    .Select(assetId => AssetDatabase.LoadAssetAtPath<DialogueAsset>(AssetDatabase.GUIDToAssetPath(assetId)))
+                    .ToList();
+
+            switch (nextDialogues.Count) {
+                case > 1:
+                    Debug.LogError("LOLITAAA!!!!!!!!!!! FIX YOUR DIALOGS IDS");
+                    return;
+                case 0:
+                    Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {choice.nextDialogueID}");
+                    return;
+                default:
+                    Debug.Log($"SWITCH TO NEXT DIALOGUE WITH ID {choice.nextDialogueID}");
+                    _dialogueController.addDialogue(nextDialogues.First(), _dialogueController.GetActiveCamera());
+                    break;
+            }
+        } else {
+            Debug.Log($"DIALOG EXIT");
+        }
+
+        _dialogueController.UpdateState();
+        SetShaded(false);
+    }
 }

@@ -14,9 +14,30 @@
     margin: 12px;
     flex-grow: 0;
 }
+
 .selectedInventoryItem {
     border-width: 4px;
     border-color: black;
 }
 
-.
+.choices {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+.choice-button {
+    height: 50px;
+    background-color: whitesmoke;
+    border-color: lightgray;
+}
+.choice-title {
+    align-self: center;
+    -unity-text-align: middle-center;
+}
+.shaded {
+    background-color: rgba(0, 0, 0, 0.7);
+}

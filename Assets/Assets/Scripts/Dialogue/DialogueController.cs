@@ -18,12 +18,12 @@ public class DialogueController : MonoBehaviour {
 
     public void addDialogue(DialogueAsset dialogueAsset, CameraController cameraController) {
         this.cameraController = cameraController;
-        foreach (var t in dialogueAsset.dialogue)
-        {
+        foreach (var t in dialogueAsset.dialogue) {
             queue.Enqueue(t);
         }
+
         _dialogueAsset = dialogueAsset;
-        
+
 
         if (!_uiController.IsDialogueActive()) {
             _uiController.ShowDialogue();
@@ -36,60 +36,47 @@ public class DialogueController : MonoBehaviour {
     }
 
     public void UpdateState() {
-        Debug.Log("update state");
         var player = FindObjectOfType<PlayerController>();
-        if (queue.Count > 0)
-        {
-            Debug.Log("start dialog");
+        if (queue.Count > 0) {
+            _uiController.ClearDialogueButtons();
             _uiController.SetDialogueText(queue.Dequeue());
-            if (cameraController)
-            {
+            if (cameraController) {
                 cameraController.Enable(player.gameObject);
             }
-        }
-        else 
-        {
-            Debug.Log("" + _uiController._dialogue.childCount);
-            //var dialogueCopy = new List<DialogueAsset.Choice>(_dialogueAsset.choices);
-            if (_dialogueAsset.choices is { Count: > 0 } && _uiController.ButtonContainer.childCount == 0 )
-            {
-                Debug.Log("IM IN HERE");
-               // _uiController._dialogue.Clear();
-                //foreach (var choice in _dialogueAsset.choices)
-                for (int i = 0; i < _dialogueAsset.choices.Count; i++)
-                { 
-                   // _uiController.SetDialogueText(_dialogueAsset.choices[i].choiceText);
-                    _uiController.AddButton(_dialogueAsset.choices[i], i); 
-                    
-                   // _dialogueAsset.choices.Clear();
-                }
-                return;
-            }
-
-            Debug.Log("close dialog");
-                _uiController.ShowHUD();
-                if (cameraController)
-                {
-                    cameraController.Disable(player.gameObject);
-                }
-
-                if (_dialogueCallback != null)
-                {
-                    _dialogueCallback.Invoke();
-                    _dialogueCallback = null;
-                }
             
+            if (queue.Count == 0 && _dialogueAsset.choices is { Count: > 0 } && !_uiController.HasActiveChoices()) {
+                _uiController.ShowChoices(_dialogueAsset);
+            }
+            
+            return;
+        }
+        
+       
+
+
+        Debug.Log("close dialog");
+        _uiController.ShowHUD();
+        if (cameraController) {
+            cameraController.Disable(player.gameObject);
+        }
+
+        if (_dialogueCallback != null) {
+            _dialogueCallback.Invoke();
+            _dialogueCallback = null;
         }
     }
+
 
     public bool HasActiveDialogue() {
         return _uiController.IsDialogueActive();
-    } 
+    }
 
     public void Update() {
-        if (_uiController.IsDialogueActive() && Input.GetMouseButtonUp(0)) 
+        if (_uiController.IsDialogueActive() && Input.GetMouseButtonUp(0) && !_uiController.HasActiveChoices())
             UpdateState();
-        
     }
-    
+
+    public CameraController GetActiveCamera() {
+        return cameraController;
+    }
 }
