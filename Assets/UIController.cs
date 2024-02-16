@@ -100,13 +100,9 @@ public class UIController : MonoBehaviour {
         }
     }
 
-    private void HideAllExcept(string id) {
+    private void HideAllExcept(params string[] ids) {
         foreach (var element in _root.Children()) {
-            if (element.name != id) {
-                element.style.display = DisplayStyle.None;
-            } else {
-                element.style.display = DisplayStyle.Flex;
-            }
+            element.style.display = ids.Contains(element.name) ? DisplayStyle.None : DisplayStyle.Flex;
         }
     }
 
