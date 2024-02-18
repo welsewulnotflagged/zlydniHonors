@@ -51,8 +51,7 @@ public class DialogueController : MonoBehaviour {
             return;
         }
         
-       
-
+        
 
         Debug.Log("close dialog");
         _uiController.ShowHUD();

@@ -395,6 +395,21 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 2000
       objectReference: {fileID: 0}
+    - target: {fileID: 2708582987311439831, guid: 149985826eb2673448b1e341f110269d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726912219926492269, guid: 149985826eb2673448b1e341f110269d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 739.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726912219926492269, guid: 149985826eb2673448b1e341f110269d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 87.98
+      objectReference: {fileID: 0}
     - target: {fileID: 2858116844856247477, guid: 149985826eb2673448b1e341f110269d,
         type: 3}
       propertyPath: uiController
@@ -404,6 +419,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173764030924039114, guid: 149985826eb2673448b1e341f110269d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5556152718058626499, guid: 149985826eb2673448b1e341f110269d,
         type: 3}
@@ -423,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 5810168084392359714, guid: 149985826eb2673448b1e341f110269d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7077137504998583438, guid: 149985826eb2673448b1e341f110269d,
         type: 3}
@@ -434,6 +454,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367248855569062976, guid: 149985826eb2673448b1e341f110269d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 739.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367248855569062976, guid: 149985826eb2673448b1e341f110269d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 87.98
       objectReference: {fileID: 0}
     - target: {fileID: 7469454558576609466, guid: 149985826eb2673448b1e341f110269d,
         type: 3}
@@ -676,7 +706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3389dde7ed46c740b556ffd3494cd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journalAsset: {fileID: 11400000, guid: c449b83a6db4daf4b9ac1f57e9d2d72a, type: 2}
   cameraController: {fileID: 2954477167088406375}
   journalUI: {fileID: 1471735598475481767}
   _UIController: {fileID: 7162808686583128368}

@@ -165,11 +165,16 @@ public class UIController : MonoBehaviour {
                 AssetDatabase
                     .FindAssets($"t:{typeof(DialogueAsset)}")
                     .Select(assetId => AssetDatabase.LoadAssetAtPath<DialogueAsset>(AssetDatabase.GUIDToAssetPath(assetId)))
+                    .Where(asset => asset.id == choice.nextDialogueID)
                     .ToList();
 
             switch (nextDialogues.Count) {
                 case > 1:
                     Debug.LogError("LOLITAAA!!!!!!!!!!! FIX YOUR DIALOGS IDS");
+                    foreach ( var dialogueAsset in nextDialogues)
+                    {
+                        Debug.Log("haiii im a duplicate" + dialogueAsset.id);
+                    }
                     return;
                 case 0:
                     Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {choice.nextDialogueID}");

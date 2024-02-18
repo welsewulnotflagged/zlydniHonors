@@ -1,91 +1,93 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class JournalUIController : MonoBehaviour
 {
-  //  public Text journalEntryText;
     public Transform choicesContainer; 
     public Button choiceButtonPrefab; 
     public Text[] choiceTextboxes;
     private JournalAsset _journalAsset;
-    private JournalAsset.JournalEntry _entry;
-    private bool _choiceSelected;
+    private bool _choiceAppended;
+    private Text textArea;
+    public JournalAsset nextEntry;
     [FormerlySerializedAs("_UIController")] public JournalController uiController;
     
-    public void Update()
+    public void UpdateUI(JournalAsset selectedEntry)
     {
-        
-    }
-    
-    public void UpdateUI(int entryID, JournalAsset journalAsset)
-    {
-        _entry = journalAsset.journalEntries[entryID];
-        Debug.Log(""+entryID);
-
+        _journalAsset = selectedEntry;
+       // _entry = _journalAsset.journalEntries[entryID];
+       
+           
         foreach (Transform child in choicesContainer)
         {
             Destroy(child.gameObject);
         }
 
-        if (_entry.choices != null)
+        if (_journalAsset.choices != null)
         {
-            for (int i = 0; i < _entry.choices.Count; i++)
+            for (int i = 0; i < _journalAsset.choices.Count; i++)
             {
-                CreateChoiceButton(_entry.choices[i].choiceText, _entry.choices[i].nextEntryID, i);
+                CreateChoiceButton(_journalAsset.choices[i]);
                 Debug.Log("button created");
             }
         }
     }
     
-    private void CreateChoiceButton(string choiceText, int nextEntryID, int choiceIndex)
+    private void CreateChoiceButton(JournalAsset.Choice choiceInfo)
     {
        
         Button choiceButton = Instantiate(choiceButtonPrefab, choicesContainer);
         choiceButton.gameObject.SetActive(true);
 
-        choiceButton.GetComponentInChildren<Text>().text = choiceText;
+        choiceButton.GetComponentInChildren<Text>().text = choiceInfo.choiceText;
         
-        choiceButton.onClick.AddListener(() => OnChoiceSelected(choiceIndex));
+        choiceButton.onClick.AddListener(() => OnChoiceSelected(choiceInfo.nextEntryID));
 
     }
     
-    private void OnChoiceSelected(int currentID) //got rid of nextEntryId. put it back
+    public void OnChoiceSelected(int currentID) 
     {
-        if (!_choiceSelected)
+        _choiceAppended = !_choiceAppended;
+        
+        if (!_choiceAppended)
         {
-            JournalAsset.Choice selectedChoice = _entry.choices.Find(choice => choice.id == currentID);
+            JournalAsset.Choice selectedChoice = _journalAsset.choices.Find(choice => choice.id == currentID);
 
             if (selectedChoice != null)
             {
 
                 Debug.Log($"Choice selected!");
-
-                Text choiceContentTextArea = uiController.textArea;
-                choiceContentTextArea.text += string.Join("/n ", selectedChoice.choiceContent);
-                Debug.Log($"Choice content: {selectedChoice.choiceContent}");
+                Debug.Log($"Choice content: {selectedChoice.choiceText}");
                 currentID = selectedChoice.nextEntryID;
-                _choiceSelected = !_choiceSelected;
-
+                 // check this
+                
             }
             else
             {
                 Debug.Log("no journal");
             }
         }
-        else
+        else if (_choiceAppended)
         {
             Debug.Log("Choice already selected. Should display next entry");
-            JournalAsset.JournalEntry nextEntry = FindEntryByID(_entry.choices[currentID].nextEntryID);
+            
+            nextEntry = FindEntryByID(currentID);
+            
             if (nextEntry != null)
             {
                 Text choiceContentTextArea = uiController.textArea;
-                choiceContentTextArea.text += string.Join("\n", nextEntry.entryContent);
-            
+                UpdateUI(nextEntry);
+                foreach (Transform child in choicesContainer)
+                {
+                    Destroy(child.gameObject);
+                }
             }
             else
             {
@@ -93,27 +95,35 @@ public class JournalUIController : MonoBehaviour
             }
         }
     }
-    private JournalAsset.JournalEntry FindEntryByID(int entryID)
-    {
-        if (_journalAsset != null)
-        {
-            JournalAsset.JournalEntry foundEntry = _journalAsset.journalEntries.FirstOrDefault(entry => entry.id == entryID);
 
-            if (foundEntry != null)
-            {
-                return foundEntry;
-            }
-            else
-            {
-                Debug.LogWarning($"Journal entry with ID {entryID} not found.");
-                return null;
-            }
-        }
-        else
+    private JournalAsset FindEntryByID(int entryID)
+    {
+        var nextEntries =
+            AssetDatabase
+                .FindAssets($"t:{typeof(JournalAsset)}")
+                .Select(assetId => AssetDatabase.LoadAssetAtPath<JournalAsset>(AssetDatabase.GUIDToAssetPath(assetId)))
+                .Where(asset => asset.id == entryID)
+                .ToList();
+
+        switch (nextEntries.Count)
         {
-            // _journalAsset is null
-            Debug.LogWarning("_journalAsset is null. Ensure it's properly initialized.");
-            return null;
+            case > 1:
+                Debug.LogError("LOLITAAA!!!!!!!!!!! FIX YOUR JOURNAL :D IDS");
+                foreach (var journalAsset in nextEntries)
+                {
+                    Debug.Log("haiii im a duplicate" + journalAsset.id);
+                }
+
+                return null;
+            case 0:
+                Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {entryID}");
+                return null;
+            default:
+                Debug.Log($"SWITCH TO NEXT DIALOGUE WITH ID {entryID}");
+               // _journalAsset.addDialogue(nextDialogues.First(), _dialogueController.GetActiveCamera());
+
+                return nextEntries.First();
         }
     }
+    
 }

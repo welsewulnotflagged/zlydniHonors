@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
   m_Name: NPC Dialogue Pickup
   m_EditorClassIdentifier: 
-  id: 2
+  id: 3
   dialogue:
   - ...
   - ...
   - 'Yeah? Buying a ticket? Tell me where you are going. '
+  choices: []
+  choicesTitle: 

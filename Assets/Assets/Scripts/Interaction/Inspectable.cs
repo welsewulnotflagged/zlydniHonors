@@ -5,6 +5,7 @@ public class Inspectable : Interactable {
 
     protected override void OnInteract(GameObject source) {
         var dialogueController = FindObjectOfType<DialogueController>();
+        var journalController = FindObjectOfType<JournalController>(); 
         var cameraController = GetComponentInChildren<CameraController>();
 
         if (dialogueController.HasActiveDialogue()) {

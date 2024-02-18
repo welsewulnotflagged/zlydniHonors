@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
   m_Name: Announcer Dialogue
   m_EditorClassIdentifier: 
-  id: 2
+  id: 7
   dialogue:
   - 'The next northbound train will be leaving in 15 minutes.
 
@@ -20,3 +20,4 @@ MonoBehaviour:
   choices:
   - choiceText: Exit
     nextDialogueID: 0
+  choicesTitle: 

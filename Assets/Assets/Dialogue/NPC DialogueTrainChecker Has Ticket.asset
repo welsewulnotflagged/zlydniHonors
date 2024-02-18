@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
   m_Name: NPC DialogueTrainChecker Has Ticket
   m_EditorClassIdentifier: 
-  id: 2
+  id: 6
   dialogue:
   - Hello, ticket please.
   - Your platform will be to your left. Have a good trip!
+  choices: []
+  choicesTitle: 

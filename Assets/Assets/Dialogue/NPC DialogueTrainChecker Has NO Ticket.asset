@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   dialogue:
+  - ...
+  - ...
   - Hello, ticket please.
   - You need a ticket to go in here. Please purchase a ticket first. You can get
     one downstairs.
+  choices: []
+  choicesTitle: 

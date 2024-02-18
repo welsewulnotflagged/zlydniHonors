@@ -12,22 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8258aaa43a4e3e04bb9e6313bb9d2b9d, type: 3}
   m_Name: New Journal Entry
   m_EditorClassIdentifier: 
-  journalEntries:
-  - id: 0
-    entryContent:
-    - So I'm sitting here...
-    - On this train station...
-    - 'BBQ sauce on my tiddies. '
-    choices:
-    - choiceText: CLICK
-      nextEntryID: 1
-      id: 0
-      choiceContent: Im In Text!
-    - choiceText: CLICKCLICK
-      nextEntryID: 1
-      id: 1
-      choiceContent: This is insane
-    - choiceText: CLICKCLICKCLICK
-      nextEntryID: 1
-      id: 2
-      choiceContent: Wow it is working
+  id: 0
+  entryContent:
+  - Finally, arrived. This is a written thank you for the people who called out to
+    me when I forgot my bag on the bus.
+  - 'Hopefully, they will read my gratitude someday on these very pages. '
+  - 'Not sure I could''ve moved on in peace if I didn''t have my journal and pencil
+    on me. '
+  - "This is a lot of heavy load to leave behind, but times are always changing,
+    aren't they?  \n"
+  choices:
+  - choiceText: 'They are. '
+    nextEntryID: 1
+    id: 1
+    choiceContent: 
+  - choiceText: You are just running.
+    nextEntryID: 2
+    id: 2
+    choiceContent: 
