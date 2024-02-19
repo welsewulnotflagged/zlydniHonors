@@ -67,7 +67,6 @@ public class JournalUIController : MonoBehaviour
                 Debug.Log($"Choice content: {selectedChoice.choiceText}");
                 currentID = selectedChoice.nextEntryID;
                  // check this
-                
             }
             else
             {
