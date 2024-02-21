@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
         _characterController = GetComponent<CharacterController>();
         _dialogueController = FindObjectOfType<DialogueController>();
         _animator = GetComponentInChildren<Animator>();
-         _journalController.OpenJournalMenu();
+         // _journalController.OpenJournalMenu();
       //  _journalController = GetComponentInChildren<JournalController>();
     }
 

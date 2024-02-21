@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour {
     public Queue<string> queue = new();
@@ -17,22 +15,19 @@ public class DialogueController : MonoBehaviour {
         _uiController = FindObjectOfType<UIController>();
     }
 
-    public void addDialogue(DialogueAsset dialogueAsset, CameraController cameraController)
-    {
+    public void addDialogue(DialogueAsset dialogueAsset, CameraController cameraController) {
         this.cameraController = cameraController;
-        foreach (var t in dialogueAsset.dialogue)
-        {
+        foreach (var t in dialogueAsset.dialogue) {
             queue.Enqueue(t);
         }
 
-        if (JournalUIController.Instance.choicesMade.Exists(choice => choice.id == "IdToSearchFor"))
-        {
+        // if (JournalUIController.Instance.choicesMade.Exists(choice => choice.id == "IdToSearchFor")) {
             // This choice id was selected by the player
-            Debug.Log("Found");
-        }
+            // Debug.Log("Found");
+        // }
 
 
-    _dialogueAsset = dialogueAsset;
+        _dialogueAsset = dialogueAsset;
 
 
         if (!_uiController.IsDialogueActive()) {
@@ -53,15 +48,14 @@ public class DialogueController : MonoBehaviour {
             if (cameraController) {
                 cameraController.Enable(player.gameObject);
             }
-            
+
             if (queue.Count == 0 && _dialogueAsset.choices is { Count: > 0 } && !_uiController.HasActiveChoices()) {
                 _uiController.ShowChoices(_dialogueAsset);
             }
-            
+
             return;
         }
-        
-        
+
 
         Debug.Log("close dialog");
         _uiController.ShowHUD();

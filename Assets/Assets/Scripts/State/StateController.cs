@@ -1,0 +1,20 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class StateController : MonoBehaviour {
+    public readonly Dictionary<string, State> states = new();
+
+
+    public bool GetBoolState(string id) {
+        return states.TryGetValue(id, out var state) ? (bool) state.GetValue() : false;
+    }
+
+    public void AddBoolState(DialogueChoice choice) {
+        this.AddBoolState(choice.ID, true);
+    }
+
+    public void AddBoolState(string id, bool value) {
+        states[id] = new BooleanState(id, value);
+    }
+}

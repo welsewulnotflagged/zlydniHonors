@@ -12,8 +12,8 @@ public class DialogueJournalMatcher : MonoBehaviour
 
     public JournalUIController _journalUIController;
     // Start is called before the first frame update
-    public void CompareDialogueAndJournalID(DialogueAsset.Choice choiceDialogueID, JournalAsset journalAssetID)
-    {
+    // public void CompareDialogueAndJournalID(DialogueAsset.Choice choiceDialogueID, JournalAsset journalAssetID)
+    // {
      //   _journalUIController.FindEntryByID(choice.nextDialogueID);
-    }
+    // }
 }

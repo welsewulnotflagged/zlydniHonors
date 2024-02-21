@@ -21,10 +21,12 @@ public class UIController : MonoBehaviour {
 
     private VisualElement _choiceButtons;
     private Label _choiceTitle;
+    private StateController _stateController;
 
     void OnEnable() {
         _inventoryController = FindObjectOfType<InventoryController>();
         _dialogueController = FindObjectOfType<DialogueController>();
+        _stateController = FindObjectOfType<StateController>();
 
         _document = GetComponent<UIDocument>();
         _hud = _document.rootVisualElement.Q<VisualElement>("HUD");
@@ -144,10 +146,15 @@ public class UIController : MonoBehaviour {
         _dialogueLabel.text = text;
     }
 
-    public void AddChoiceButton(DialogueAsset.Choice choice) {
+    public void AddChoiceButton(DialogueChoice choice) {
+        if (!string.IsNullOrEmpty(choice.TriggerState) && !_stateController.GetBoolState(choice.TriggerState)) {
+            Debug.Log($"SKIPPED CHOICE BUTTON {choice.ID} due to trigger {choice.TriggerState}");
+            return;
+        }
+
         Button visualElement = new Button();
         _choiceButtons.Add(visualElement);
-        visualElement.text = choice.choiceText;
+        visualElement.text = choice.ChoiceText;
         visualElement.AddToClassList("choice-button");
         visualElement.clickable.clicked += () => InsertInText(choice);
     }
@@ -160,33 +167,14 @@ public class UIController : MonoBehaviour {
         return _choiceButtons.childCount > 0;
     }
 
-    private void InsertInText(DialogueAsset.Choice choice) {
-        if (choice.nextDialogueID > -1) {
-            var nextDialogues =
-                AssetDatabase
-                    .FindAssets($"t:{typeof(DialogueAsset)}")
-                    .Select(assetId => AssetDatabase.LoadAssetAtPath<DialogueAsset>(AssetDatabase.GUIDToAssetPath(assetId)))
-                    .Where(asset => asset.id == choice.nextDialogueID)
-                    .ToList();
+    private void InsertInText(DialogueChoice choice) {
+        if (!string.IsNullOrEmpty(choice.AffectState)) {
+            _stateController.AddBoolState(choice);
+        }
 
-            switch (nextDialogues.Count) {
-                case > 1: //dupes
-                    Debug.LogError("FIX YOUR DIALOGS IDS");
-                    foreach ( var dialogueAsset in nextDialogues)
-                    {
-                        Debug.Log("haiii im a duplicate" + dialogueAsset.id);
-                    }
-                    return;
-                case 0: //null
-                    Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {choice.nextDialogueID}");
-                    return;
-                default:
-                    Debug.Log($"SWITCH TO NEXT DIALOGUE WITH ID {choice.nextDialogueID}");
-                    _dialogueController.addDialogue(nextDialogues.First(), _dialogueController.GetActiveCamera());
-                  /* _journalUIController.nextEntry = _journalUIController.FindEntryByID(choice.nextDialogueID);
-                    Debug.Log("entry added?: " + _journalUIController.nextEntry);*/
-                    break;
-            }
+        if (!string.IsNullOrEmpty(choice.NextDialogueID)) {
+            var nextDialogue = AssetDatabaseUtility.INSTANCE.GetDialog(choice.NextDialogueID);
+            _dialogueController.addDialogue(nextDialogue, _dialogueController.GetActiveCamera());
         } else {
             Debug.Log($"DIALOG EXIT");
         }

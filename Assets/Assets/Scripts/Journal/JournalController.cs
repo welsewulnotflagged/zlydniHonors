@@ -41,10 +41,11 @@ public class JournalController : MonoBehaviour
     public void Start()
     {
         
-     //   this.gameObject.SetActive(false);
-     next.onClick.AddListener(() => ChangePage(1));
+     //   this.gameObject.SetActive(false); 
+     // doesn't launch :(
+     // next.onClick.AddListener(() => ChangePage(1));
      
-     previous.onClick.AddListener(() => ChangePage(-1));
+     // previous.onClick.AddListener(() => ChangePage(-1));
     }
 
     public void ChangePage(int page)
