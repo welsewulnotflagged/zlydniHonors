@@ -21,6 +21,9 @@ public class TrainTicketerInteractable : Interactable {
         _cameraController = GetComponentInChildren<CameraController>();
         enemy1.SetActive(false);
         enemy2.SetActive(false);
+        enemy3.SetActive(false);
+
+        
     }
 
     protected override void OnInteract(GameObject source) {
@@ -42,7 +45,7 @@ public class TrainTicketerInteractable : Interactable {
         _dialogueController.addDialogue(DialogueAsset2, _cameraController); 
         enemy1.SetActive(true);
         enemy2.SetActive(true);
-        enemy3.SetActive(true);
+     //   enemy3.SetActive(true);
         Destroy(wall);
     }
 

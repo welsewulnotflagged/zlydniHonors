@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,18 @@ public class JournalUIController : MonoBehaviour
     private bool _choiceAppended;
     private Text textArea;
     public JournalAsset nextEntry;
+    public List<JournalAsset.Choice> choicesMade;
+    public static JournalUIController Instance;
     [FormerlySerializedAs("_UIController")] public JournalController uiController;
-    
+
+    public void Start()
+    {
+        if (!Instance)
+        {
+            Instance = this;
+        }
+    }
+
     public void UpdateUI(JournalAsset selectedEntry)
     {
         _journalAsset = selectedEntry;
@@ -48,36 +59,47 @@ public class JournalUIController : MonoBehaviour
 
         choiceButton.GetComponentInChildren<Text>().text = choiceInfo.choiceText;
         
-        choiceButton.onClick.AddListener(() => OnChoiceSelected(choiceInfo.nextEntryID));
+        choiceButton.onClick.AddListener(() =>
+        {
+            // choicesMade = JournalUIController.Instance.choicesMade;
+            // JournalAsset.Choice newChoice = new JournalAsset.Choice();
+            // newChoice.choiceText = "";
+            // newChoice.id = "ActionEscape-Success";
+
+            choicesMade.Add(choiceInfo);
+            OnChoiceSelected(choiceInfo.nextEntryID);
+        });
 
     }
     
-    public void OnChoiceSelected(int currentID) 
+    public void OnChoiceSelected(int nextEntryID) 
     {
+        // Ensure this entry is only appended once.
         _choiceAppended = !_choiceAppended;
         
-        if (!_choiceAppended)
-        {
-            JournalAsset.Choice selectedChoice = _journalAsset.choices.Find(choice => choice.id == currentID);
-
-            if (selectedChoice != null)
-            {
-
-                Debug.Log($"Choice selected!");
-                Debug.Log($"Choice content: {selectedChoice.choiceText}");
-                currentID = selectedChoice.nextEntryID;
-                 // check this
-            }
-            else
-            {
-                Debug.Log("no journal");
-            }
-        }
-        else if (_choiceAppended)
+        // if (!_choiceAppended)
+        // {
+        //     JournalAsset.Choice selectedChoice = _journalAsset.choices.Find(choice => choice.id == currentID);
+        //
+        //     if (selectedChoice != null)
+        //     {
+        //
+        //         Debug.Log($"Choice selected!");
+        //         Debug.Log($"Choice content: {selectedChoice.choiceText}");
+        //         currentID = selectedChoice.nextEntryID;
+        //          // check this
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("no journal");
+        //     }
+        // }
+        // else 
+        if (_choiceAppended)
         {
             Debug.Log("Choice already selected. Should display next entry");
             
-            nextEntry = FindEntryByID(currentID);
+            nextEntry = FindEntryByID(nextEntryID);
             
             if (nextEntry != null)
             {
@@ -95,7 +117,7 @@ public class JournalUIController : MonoBehaviour
         }
     }
 
-    private JournalAsset FindEntryByID(int entryID)
+    public JournalAsset FindEntryByID(int entryID)
     {
         var nextEntries =
             AssetDatabase

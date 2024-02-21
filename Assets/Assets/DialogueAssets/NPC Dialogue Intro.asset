@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8258aaa43a4e3e04bb9e6313bb9d2b9d, type: 3}
-  m_Name: New Journal Entry 2
+  m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
+  m_Name: NPC Dialogue Intro
   m_EditorClassIdentifier: 
-  id: 2
-  entryContent:
-  - Running where? I don't even know where. Better take a look at that train schedule.
-  - I think the person over there might help...
+  id: 0
+  dialogue:
+  - ...
+  - ...
+  - ...
+  - You can find the train schedule in the waiting hall to your right.
   choices: []
+  choicesTitle: 

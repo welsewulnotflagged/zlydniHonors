@@ -10,19 +10,29 @@ public class DialogueController : MonoBehaviour {
     private Action _dialogueCallback;
     private DialogueAsset _dialogueAsset;
     private UIController _uiController;
+    private JournalUIController _journalUIController;
 
 
     private void Start() {
         _uiController = FindObjectOfType<UIController>();
     }
 
-    public void addDialogue(DialogueAsset dialogueAsset, CameraController cameraController) {
+    public void addDialogue(DialogueAsset dialogueAsset, CameraController cameraController)
+    {
         this.cameraController = cameraController;
-        foreach (var t in dialogueAsset.dialogue) {
+        foreach (var t in dialogueAsset.dialogue)
+        {
             queue.Enqueue(t);
         }
 
-        _dialogueAsset = dialogueAsset;
+        if (JournalUIController.Instance.choicesMade.Exists(choice => choice.id == "IdToSearchFor"))
+        {
+            // This choice id was selected by the player
+            Debug.Log("Found");
+        }
+
+
+    _dialogueAsset = dialogueAsset;
 
 
         if (!_uiController.IsDialogueActive()) {

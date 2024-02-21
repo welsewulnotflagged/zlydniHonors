@@ -14,17 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   entryContent:
-  - 'They really are! I need to look for the train schedule... '
-  - "Longer\t"
-  - "Entry\t"
-  - 'Than one symbol. '
-  choices:
-  - choiceText: a
-    nextEntryID: 2
-    id: 2
-  - choiceText: b
-    nextEntryID: 3
-    id: 3
-  - choiceText: c
-    nextEntryID: 4
-    id: 4
+  - They really are! What time is it, anyway?..
+  - I need to look for the train schedule.
+  - I think the person over there might help...
+  choices: []

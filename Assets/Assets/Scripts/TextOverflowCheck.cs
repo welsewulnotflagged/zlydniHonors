@@ -7,7 +7,7 @@ public class TextOverflowCheck : MonoBehaviour
 {
     public Text leftPageTextArea;
     public Text rightPageTextArea;
-    private int maxCharacterCount = 400;
+    public static int maxCharacterCount = 418;
     public string overflowText = "";
 
 
@@ -19,7 +19,7 @@ public class TextOverflowCheck : MonoBehaviour
 
     public void CheckAndHandleOverflow(string ogText)
     {
-        maxCharacterCount = 400;
+        maxCharacterCount = 418;
         if (TextOverflow(ogText, maxCharacterCount))
         {
             int excessLength = ogText.Length - maxCharacterCount;
@@ -50,27 +50,5 @@ public class TextOverflowCheck : MonoBehaviour
         return text.Length > maxCharacters;
     }
 
-    /* private void MoveExcessText(string newText, Text sourceTextArea, int sourceMaxCharacters, Text destinationTextArea,
-        int destinationMaxCharacters)
-    {
-        if (TextOverflow(newText, maxCharacterCount))
-        {
-            // Calculate the excess text length
-            int excessLength = newText.Length - maxCharacterCount;
-
-            // Ensure that the start index is not negative
-            int startIndex = Mathf.Max(0, newText.Length - excessLength);
-
-            // Extract the excess text
-            string excessText = newText.Substring(startIndex, excessLength);
-
-            // Append the excess text to the right page
-            rightPageTextArea.text += excessText;
-
-            // Update the left page with the remaining text
-        }
-
-        // No overflow, update the left page normally
-        leftPageTextArea.text = newText;
-    }*/
+    
 }

@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour {
     private InventoryController _inventoryController;
     private VisualElement _menuContainer;
     private DialogueController _dialogueController;
+    public JournalUIController _journalUIController;
 
     private VisualElement _choiceButtons;
     private Label _choiceTitle;
@@ -160,7 +161,7 @@ public class UIController : MonoBehaviour {
     }
 
     private void InsertInText(DialogueAsset.Choice choice) {
-        if (choice.nextDialogueID > 0) {
+        if (choice.nextDialogueID > -1) {
             var nextDialogues =
                 AssetDatabase
                     .FindAssets($"t:{typeof(DialogueAsset)}")
@@ -169,19 +170,21 @@ public class UIController : MonoBehaviour {
                     .ToList();
 
             switch (nextDialogues.Count) {
-                case > 1:
-                    Debug.LogError("LOLITAAA!!!!!!!!!!! FIX YOUR DIALOGS IDS");
+                case > 1: //dupes
+                    Debug.LogError("FIX YOUR DIALOGS IDS");
                     foreach ( var dialogueAsset in nextDialogues)
                     {
                         Debug.Log("haiii im a duplicate" + dialogueAsset.id);
                     }
                     return;
-                case 0:
+                case 0: //null
                     Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {choice.nextDialogueID}");
                     return;
                 default:
                     Debug.Log($"SWITCH TO NEXT DIALOGUE WITH ID {choice.nextDialogueID}");
                     _dialogueController.addDialogue(nextDialogues.First(), _dialogueController.GetActiveCamera());
+                  /* _journalUIController.nextEntry = _journalUIController.FindEntryByID(choice.nextDialogueID);
+                    Debug.Log("entry added?: " + _journalUIController.nextEntry);*/
                     break;
             }
         } else {

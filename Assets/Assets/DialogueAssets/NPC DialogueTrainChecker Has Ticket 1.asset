@@ -10,18 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
-  m_Name: NPC Dialogue Intro
+  m_Name: NPC DialogueTrainChecker Has Ticket 1
   m_EditorClassIdentifier: 
-  id: 0
+  id: 9
   dialogue:
-  - Hello! Welcome to the train station. You can find the train schedule in the waiting
-    hall to your left.
-  - What is your question today?
+  - 'CITY_NAME : 12.00'
+  - 'CITY_NAME : 13.00'
+  - 'CITY_NAME : 14.00'
+  - 'CITY_NAME : LEAVES IN 5 MINTUES'
   choices:
-  - choiceText: a
-    nextDialogueID: 1
-  - choiceText: b
-    nextDialogueID: 2
-  - choiceText: c
-    nextDialogueID: 3
+  - choiceText: 'I need to write this down... '
+    nextDialogueID: 0
   choicesTitle: 

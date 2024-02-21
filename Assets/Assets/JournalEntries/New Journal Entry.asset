@@ -20,13 +20,11 @@ MonoBehaviour:
   - 'Not sure I could''ve moved on in peace if I didn''t have my journal and pencil
     on me. '
   - "This is a lot of heavy load to leave behind, but times are always changing,
-    aren't they?  \n"
+    aren't they? \n"
   choices:
   - choiceText: 'They are. '
     nextEntryID: 1
-    id: 1
-    choiceContent: 
+    id: 0-yes
   - choiceText: You are just running.
     nextEntryID: 2
-    id: 2
-    choiceContent: 
+    id: 0-no

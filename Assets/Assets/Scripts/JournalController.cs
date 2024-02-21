@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Hardware;
 using UnityEngine;
@@ -9,27 +11,68 @@ using UnityEngine.UI;
 
 public class JournalController : MonoBehaviour
 {
+    // 800 characters of journal content
+    // You only display 2 * max character count ata  time
+    // And then offset the start of that substring by currentPage * 2*maxCharacter
+    // Only display the next button if there is more text than is displayed by current page
+    // You can calculate the current text every time you display the journal
+    // As the entries might be added from anywhere. 
+    // The content of the journal is now a string, only a 2 * max character is displayed at any time.
     //public JournalAsset journalAsset;
     public CameraController cameraController;
     public GameObject journalUI;
 
     public JournalUIController _UIController;
 
+    public Button next;
+    public Button previous;
+
     //public float fadeDuration = 1f;
     int clickedEntryIndex = 0;
+    public int currentPage = 0;
+    public string journalContent;
 
     public Text textArea;
 
     // public Text textAreaRight;
     public bool isOpen;
+    private bool allowPlayerInput;
 
     public void Start()
     {
-        this.gameObject.SetActive(false);
+        
+     //   this.gameObject.SetActive(false);
+     next.onClick.AddListener(() => ChangePage(1));
+     
+     previous.onClick.AddListener(() => ChangePage(-1));
     }
 
+    public void ChangePage(int page)
+    {
+        if (page < 0)
+        {
+            if (currentPage > 0)
+            {
+                // Update page offset
+                currentPage += page;
+            }
+        }
+        else
+        {
+            // The total number of current pages equals the  
+            if (currentPage < Mathf.Ceil(journalContent.Length / TextOverflowCheck.maxCharacterCount*2))
+            {
+                currentPage += page;
+            }
+        }
+    }
     public void Update()
     {
+        if (allowPlayerInput)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0) && _UIController.choicesContainer.childCount == 0)
         {
             JournalAsset _foundJournalAsset;
@@ -44,6 +87,7 @@ public class JournalController : MonoBehaviour
                 {
                     //textArea.text = string.Join("\n", _foundJournalAsset.entryContent[clickedEntryIndex]);
                     textArea.text += " " + _foundJournalAsset.entryContent[clickedEntryIndex];
+                    // journalContent += " " + _foundJournalAsset.entryContent[clickedEntryIndex];
                     Debug.Log("clickedID:" + clickedEntryIndex);
                     clickedEntryIndex++;
                 }
@@ -53,6 +97,11 @@ public class JournalController : MonoBehaviour
                     Debug.Log("All entries have been displayed.");
                     clickedEntryIndex = 0;
                     _UIController.UpdateUI(_foundJournalAsset);
+                    if (_UIController.choicesContainer.childCount == 0)
+                    { 
+                        allowPlayerInput = !allowPlayerInput;// stop registering clicks before finding new asset?
+                    }
+                    //allowPlayerInput = !allowPlayerInput; stop registering clicks before finding new asset?
                 }
             }
 
@@ -88,7 +137,7 @@ public class JournalController : MonoBehaviour
         journalUI.SetActive(true);
     }
 
-    private JournalAsset FindEntryByID(int entryID)
+    public JournalAsset FindEntryByID(int entryID)
     {
         var nextEntries =
             AssetDatabase

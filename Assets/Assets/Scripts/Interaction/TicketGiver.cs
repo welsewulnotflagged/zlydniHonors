@@ -10,7 +10,7 @@ public class TicketGiver : Interactable
 
     // Start is called before the first frame update
     protected override void OnInteract(GameObject source) 
-    {
+    { 
         var dialogueController = FindObjectOfType<DialogueController>();
         var cameraController = GetComponentInChildren<CameraController>();
 
@@ -21,7 +21,7 @@ public class TicketGiver : Interactable
             dialogueController.SetCallback(()=>{var ticketObject = Instantiate(ticket);
         ticketObject.transform.position = spawnPos.position; });
         }
-
-        
     }
+    
+    //REDO THIS SEPARATELY FROM THE DIALOGUE SYSTEM. THIS SUCKS
 }
