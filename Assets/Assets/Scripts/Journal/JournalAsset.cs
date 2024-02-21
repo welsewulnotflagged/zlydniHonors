@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "My assets/JournalEntry", order = 100)]
 public class JournalAsset : ScriptableObject
 {
-    public int id;
+    public string id;
     public static string entryTitle;
 
     [System.Serializable]
@@ -22,9 +23,10 @@ public class JournalAsset : ScriptableObject
     [System.Serializable]
     public class Choice
     {
-        public string choiceText;
-        public int nextEntryID;
         public string id;
-       // [TextArea] public string choiceContent;
+        public string choiceText;
+        public string nextEntryID;
+        public string TriggerState;
+        public bool SaveState;
     }
 }

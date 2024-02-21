@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -17,7 +18,8 @@ public class UIController : MonoBehaviour {
     private InventoryController _inventoryController;
     private VisualElement _menuContainer;
     private DialogueController _dialogueController;
-    public JournalUIController _journalUIController;
+    private JournalUIController _journalUIController;
+    private DialogueChoiceButtonController _dialogueChoiceButtonController;
 
     private VisualElement _choiceButtons;
     private Label _choiceTitle;
@@ -27,6 +29,7 @@ public class UIController : MonoBehaviour {
         _inventoryController = FindObjectOfType<InventoryController>();
         _dialogueController = FindObjectOfType<DialogueController>();
         _stateController = FindObjectOfType<StateController>();
+        _dialogueChoiceButtonController = new DialogueChoiceButtonController(_stateController, _dialogueController, this);
 
         _document = GetComponent<UIDocument>();
         _hud = _document.rootVisualElement.Q<VisualElement>("HUD");
@@ -66,7 +69,7 @@ public class UIController : MonoBehaviour {
         Application.Quit();
     }
 
-    public void ShowMenu() {
+    private void ShowMenu() {
         HideAllExcept("MenuContainer");
     }
 
@@ -77,7 +80,10 @@ public class UIController : MonoBehaviour {
         _choiceTitle.text = dialogueAsset.choicesTitle ?? "";
 
         foreach (var choice in dialogueAsset.choices) {
-            AddChoiceButton(choice);
+            var button = _dialogueChoiceButtonController.CreateButton(choice);
+            if (button != null) {
+                _choiceButtons.Add(button);
+            }
         }
     }
 
@@ -146,18 +152,6 @@ public class UIController : MonoBehaviour {
         _dialogueLabel.text = text;
     }
 
-    public void AddChoiceButton(DialogueChoice choice) {
-        if (!string.IsNullOrEmpty(choice.TriggerState) && !_stateController.GetBoolState(choice.TriggerState)) {
-            Debug.Log($"SKIPPED CHOICE BUTTON {choice.ID} due to trigger {choice.TriggerState}");
-            return;
-        }
-
-        Button visualElement = new Button();
-        _choiceButtons.Add(visualElement);
-        visualElement.text = choice.ChoiceText;
-        visualElement.AddToClassList("choice-button");
-        visualElement.clickable.clicked += () => InsertInText(choice);
-    }
 
     public void ClearDialogueButtons() {
         _choiceButtons.Clear();
@@ -165,21 +159,5 @@ public class UIController : MonoBehaviour {
 
     public bool HasActiveChoices() {
         return _choiceButtons.childCount > 0;
-    }
-
-    private void InsertInText(DialogueChoice choice) {
-        if (!string.IsNullOrEmpty(choice.AffectState)) {
-            _stateController.AddBoolState(choice);
-        }
-
-        if (!string.IsNullOrEmpty(choice.NextDialogueID)) {
-            var nextDialogue = AssetDatabaseUtility.INSTANCE.GetDialog(choice.NextDialogueID);
-            _dialogueController.addDialogue(nextDialogue, _dialogueController.GetActiveCamera());
-        } else {
-            Debug.Log($"DIALOG EXIT");
-        }
-
-        _dialogueController.UpdateState();
-        SetShaded(false);
     }
 }

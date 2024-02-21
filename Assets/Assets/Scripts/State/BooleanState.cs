@@ -1,4 +1,7 @@
-﻿public class BooleanState : State {
+﻿using System;
+
+[Serializable]
+public class BooleanState : State {
     private readonly string _id;
     private readonly bool _value;
 

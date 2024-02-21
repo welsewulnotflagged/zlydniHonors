@@ -12,7 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
   m_Name: TEST_DIALOGUE_2
   m_EditorClassIdentifier: 
-  id: 
-  dialogue: []
-  choices: []
-  choicesTitle: 
+  id: TEST_DIALOGUE_2
+  dialogue:
+  - "\u0445\u0443\u0439 \u0454 ?"
+  choices:
+  - ID: TEST_DIALOGUE_2_1
+    ChoiceText: "\u0445\u0443\u0439 \u0454"
+    NextDialogueID: 
+    TriggerState: TEST_DIALOGUE_1_1
+    SaveState: 0
+  - ID: TEST_DIALOGUE_2_2
+    ChoiceText: "\u0445\u0443\u0439 \u043D\u0435\u043C\u0430"
+    NextDialogueID: 
+    TriggerState: TEST_DIALOGUE_1_2
+    SaveState: 0
+  choicesTitle: "\u0445\u0443\u0439 \u0454?"

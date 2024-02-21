@@ -9,74 +9,70 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class JournalUIController : MonoBehaviour
-{
-    public Transform choicesContainer; 
-    public Button choiceButtonPrefab; 
+public class JournalUIController : MonoBehaviour {
+    public Transform choicesContainer;
+    public Button choiceButtonPrefab;
     public Text[] choiceTextboxes;
     private JournalAsset _journalAsset;
     private bool _choiceAppended;
     private Text textArea;
     public JournalAsset nextEntry;
-    public List<JournalAsset.Choice> choicesMade;
-    public static JournalUIController Instance;
-    [FormerlySerializedAs("_UIController")] public JournalController uiController;
+    private StateController _stateController;
 
-    public void Start()
-    {
-        if (!Instance)
-        {
-            Instance = this;
-        }
+    [FormerlySerializedAs("_UIController")]
+    public JournalController uiController;
+
+    private void Start() {
+        _stateController = FindObjectOfType<StateController>();
     }
 
-    public void UpdateUI(JournalAsset selectedEntry)
-    {
+    public void UpdateUI(JournalAsset selectedEntry) {
         _journalAsset = selectedEntry;
-       // _entry = _journalAsset.journalEntries[entryID];
-       
-           
-        foreach (Transform child in choicesContainer)
-        {
+        // _entry = _journalAsset.journalEntries[entryID];
+
+
+        foreach (Transform child in choicesContainer) {
             Destroy(child.gameObject);
         }
 
-        if (_journalAsset.choices != null)
-        {
-            for (int i = 0; i < _journalAsset.choices.Count; i++)
-            {
+        if (_journalAsset.choices != null) {
+            for (int i = 0; i < _journalAsset.choices.Count; i++) {
                 CreateChoiceButton(_journalAsset.choices[i]);
                 Debug.Log("button created");
             }
         }
     }
-    
-    private void CreateChoiceButton(JournalAsset.Choice choiceInfo)
-    {
-       
+
+    private void CreateChoiceButton(JournalAsset.Choice choiceInfo) {
+        if (!string.IsNullOrEmpty(choiceInfo.TriggerState) && !_stateController.GetBoolState(choiceInfo.TriggerState)) {
+            Debug.Log($"SKIP journal choice {choiceInfo.id} because of {choiceInfo.TriggerState}");
+            return;
+        }
+
         Button choiceButton = Instantiate(choiceButtonPrefab, choicesContainer);
         choiceButton.gameObject.SetActive(true);
 
         choiceButton.GetComponentInChildren<Text>().text = choiceInfo.choiceText;
-        
-        choiceButton.onClick.AddListener(() =>
-        {
+
+        choiceButton.onClick.AddListener(() => {
             // choicesMade = JournalUIController.Instance.choicesMade;
             // JournalAsset.Choice newChoice = new JournalAsset.Choice();
             // newChoice.choiceText = "";
             // newChoice.id = "ActionEscape-Success";
 
-            choicesMade.Add(choiceInfo);
+            // choicesMade.Add(choiceInfo);
+            if (choiceInfo.SaveState) {
+                _stateController.AddBoolState(choiceInfo);
+            }
+
             OnChoiceSelected(choiceInfo.nextEntryID);
         });
-
     }
-    
-    public void OnChoiceSelected(int nextEntryID) 
-    {
+
+    public void OnChoiceSelected(string nextEntryID) {
         // Ensure this entry is only appended once.
         _choiceAppended = !_choiceAppended;
-        
+
         // if (!_choiceAppended)
         // {
         //     JournalAsset.Choice selectedChoice = _journalAsset.choices.Find(choice => choice.id == currentID);
@@ -95,56 +91,20 @@ public class JournalUIController : MonoBehaviour
         //     }
         // }
         // else 
-        if (_choiceAppended)
-        {
+        if (_choiceAppended) {
             Debug.Log("Choice already selected. Should display next entry");
-            
-            nextEntry = FindEntryByID(nextEntryID);
-            
-            if (nextEntry != null)
-            {
+
+            nextEntry = AssetDatabaseUtility.INSTANCE.GetJournalAsset(nextEntryID);
+
+            if (nextEntry != null) {
                 Text choiceContentTextArea = uiController.textArea;
                 UpdateUI(nextEntry);
-                foreach (Transform child in choicesContainer)
-                {
+                foreach (Transform child in choicesContainer) {
                     Destroy(child.gameObject);
                 }
-            }
-            else
-            {
+            } else {
                 Debug.Log("no entry available");
             }
         }
     }
-
-    public JournalAsset FindEntryByID(int entryID)
-    {
-        var nextEntries =
-            AssetDatabase
-                .FindAssets($"t:{typeof(JournalAsset)}")
-                .Select(assetId => AssetDatabase.LoadAssetAtPath<JournalAsset>(AssetDatabase.GUIDToAssetPath(assetId)))
-                .Where(asset => asset.id == entryID)
-                .ToList();
-
-        switch (nextEntries.Count)
-        {
-            case > 1:
-                Debug.LogError("LOLITAAA!!!!!!!!!!! FIX YOUR JOURNAL :D IDS");
-                foreach (var journalAsset in nextEntries)
-                {
-                    Debug.Log("haiii im a duplicate" + journalAsset.id);
-                }
-
-                return null;
-            case 0:
-                Debug.LogError($"CAN'T FIND DIALOGUE WITH ID {entryID}");
-                return null;
-            default:
-                Debug.Log($"SWITCH TO NEXT DIALOGUE WITH ID {entryID}");
-               // _journalAsset.addDialogue(nextDialogues.First(), _dialogueController.GetActiveCamera());
-
-                return nextEntries.First();
-        }
-    }
-    
 }

@@ -13,6 +13,10 @@ public class StateController : MonoBehaviour {
     public void AddBoolState(DialogueChoice choice) {
         this.AddBoolState(choice.ID, true);
     }
+    
+    public void AddBoolState(JournalAsset.Choice choice) {
+        this.AddBoolState(choice.id, true);
+    }
 
     public void AddBoolState(string id, bool value) {
         states[id] = new BooleanState(id, value);

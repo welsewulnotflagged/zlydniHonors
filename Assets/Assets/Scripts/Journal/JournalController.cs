@@ -78,7 +78,7 @@ public class JournalController : MonoBehaviour
         {
             JournalAsset _foundJournalAsset;
 
-            _foundJournalAsset = _UIController.nextEntry != null ? _UIController.nextEntry : FindEntryByID(0);
+            _foundJournalAsset = _UIController.nextEntry != null ? _UIController.nextEntry : FindEntryByID("0");
             TextOverflowCheck textChecker = FindObjectOfType<TextOverflowCheck>();
 
 
@@ -138,7 +138,7 @@ public class JournalController : MonoBehaviour
         journalUI.SetActive(true);
     }
 
-    public JournalAsset FindEntryByID(int entryID)
+    public JournalAsset FindEntryByID(string entryID)
     {
         var nextEntries =
             AssetDatabase

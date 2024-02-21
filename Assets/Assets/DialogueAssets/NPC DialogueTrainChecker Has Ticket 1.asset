@@ -19,6 +19,9 @@ MonoBehaviour:
   - 'CITY_NAME : 14.00'
   - 'CITY_NAME : LEAVES IN 5 MINTUES'
   choices:
-  - choiceText: 'I need to write this down... '
-    nextDialogueID: 0
+  - ID: 91
+    ChoiceText: 
+    NextDialogueID: 
+    TriggerState: 
+    SaveState: 0
   choicesTitle: 

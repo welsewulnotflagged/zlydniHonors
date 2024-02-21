@@ -19,8 +19,14 @@ MonoBehaviour:
   - 'Yeah? Buying a ticket? Tell me where you are going. '
   - empty
   choices:
-  - choiceText: Where can I find the train schedule?
-    nextDialogueID: 0
-  - choiceText: 'Honestly? Don''t even know. '
-    nextDialogueID: 1
+  - ID: 31
+    ChoiceText: 
+    NextDialogueID: 
+    TriggerState: 
+    SaveState: 0
+  - ID: 32
+    ChoiceText: 
+    NextDialogueID: 
+    TriggerState: 
+    SaveState: 0
   choicesTitle: 

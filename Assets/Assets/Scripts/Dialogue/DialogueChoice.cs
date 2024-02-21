@@ -9,7 +9,7 @@ public class DialogueChoice {
     [AllowsNull]
     public string NextDialogueID;
     [AllowsNull] 
-    public string AffectState;
-    [AllowsNull] 
     public string TriggerState;
+
+    public bool SaveState;
 }
