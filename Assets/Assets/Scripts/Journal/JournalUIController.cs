@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -14,7 +7,6 @@ public class JournalUIController : MonoBehaviour {
     public Button choiceButtonPrefab;
     public Text[] choiceTextboxes;
     private JournalAsset _journalAsset;
-    private bool _choiceAppended;
     private Text textArea;
     public JournalAsset nextEntry;
     private StateController _stateController;
@@ -64,10 +56,10 @@ public class JournalUIController : MonoBehaviour {
             // choicesMade.Add(choiceInfo);
             if (choiceInfo.SaveState) {
                 _stateController.AddBoolState(choiceInfo);
-            }// this is for save in inspector lol
-            
+            } // this is for save in inspector lol
+
             // if trigger from dialogue is triggered then create more buttons from respective journal asset
-            
+
 
             OnChoiceSelected(choiceInfo.nextEntryID);
         });
@@ -75,41 +67,19 @@ public class JournalUIController : MonoBehaviour {
 
     public void OnChoiceSelected(string nextEntryID) {
         // Ensure this entry is only appended once.
-        _choiceAppended = !_choiceAppended;
 
-        // if (!_choiceAppended)
-        // {
-        //     JournalAsset.Choice selectedChoice = _journalAsset.choices.Find(choice => choice.id == currentID);
-        //
-        //     if (selectedChoice != null)
-        //     {
-        //
-        //         Debug.Log($"Choice selected!");
-        //         Debug.Log($"Choice content: {selectedChoice.choiceText}");
-        //         currentID = selectedChoice.nextEntryID;
-        //          // check this
-        //     }
-        //     else
-        //     {
-        //         Debug.Log("no journal");
-        //     }
-        // }
-        // else 
-        if (_choiceAppended) {
-            Debug.Log("Choice already selected. Should display next entry");
+        Debug.Log("Choice already selected. Should display next entry");
 
-            nextEntry = AssetDatabaseUtility.INSTANCE.GetJournalAsset(nextEntryID);
+        nextEntry = AssetDatabaseUtility.INSTANCE.GetJournalAsset(nextEntryID);
 
-            if (nextEntry != null) {
-                Text choiceContentTextArea = uiController.textArea;
-                UpdateUI(nextEntry);
-                uiController.waitingForButton = false;
-                foreach (Transform child in choicesContainer) {
-                    Destroy(child.gameObject);
-                }
-            } else {
-                Debug.Log("no entry available");
+        if (nextEntry != null) {
+            uiController.waitingForButton = false;
+            uiController.HandleClick();
+            foreach (Transform child in choicesContainer) {
+                Destroy(child.gameObject);
             }
+        } else {
+            Debug.Log("no entry available");
         }
     }
 }
