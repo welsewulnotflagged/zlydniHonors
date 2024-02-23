@@ -25,5 +25,5 @@ MonoBehaviour:
     ChoiceText: "\u043D\u0435 \u0431\u0443\u0434\u0443"
     NextDialogueID: 
     TriggerState: 
-    SaveState: 1
+    SaveState: 0
   choicesTitle: "\u0445\u0443\u0439 \u0431\u0443\u0434\u0435\u0448?"

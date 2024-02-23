@@ -36,16 +36,16 @@ public class JournalController : MonoBehaviour
 
     // public Text textAreaRight;
     public bool isOpen;
-    private bool allowPlayerInput;
+    private bool notAllowPlayerInput;
+    public bool waitingForButton;
 
     public void Start()
     {
-        
-     //   this.gameObject.SetActive(false); 
-     // doesn't launch :(
-     // next.onClick.AddListener(() => ChangePage(1));
-     
-     // previous.onClick.AddListener(() => ChangePage(-1));
+        //   this.gameObject.SetActive(false); 
+        // doesn't launch :(
+        // next.onClick.AddListener(() => ChangePage(1));
+
+        // previous.onClick.AddListener(() => ChangePage(-1));
     }
 
     public void ChangePage(int page)
@@ -61,15 +61,16 @@ public class JournalController : MonoBehaviour
         else
         {
             // The total number of current pages equals the  
-            if (currentPage < Mathf.Ceil(journalContent.Length / TextOverflowCheck.maxCharacterCount*2))
+            if (currentPage < Mathf.Ceil(journalContent.Length / TextOverflowCheck.maxCharacterCount * 2))
             {
                 currentPage += page;
             }
         }
     }
+
     public void Update()
     {
-        if (allowPlayerInput)
+        if (notAllowPlayerInput)
         {
             return;
         }
@@ -84,23 +85,29 @@ public class JournalController : MonoBehaviour
 
             if (_foundJournalAsset != null)
             {
+                if (waitingForButton)
+                {
+                    clickedEntryIndex = _foundJournalAsset.entryContent.Length;
+                }
+
                 if (clickedEntryIndex < _foundJournalAsset.entryContent.Length)
                 {
-                    //textArea.text = string.Join("\n", _foundJournalAsset.entryContent[clickedEntryIndex]);
                     textArea.text += " " + _foundJournalAsset.entryContent[clickedEntryIndex];
-                    // journalContent += " " + _foundJournalAsset.entryContent[clickedEntryIndex];
+
                     Debug.Log("clickedID:" + clickedEntryIndex);
                     clickedEntryIndex++;
                 }
-                else
+
+                if (clickedEntryIndex >= _foundJournalAsset.entryContent.Length)
                 {
                     // handle the case when all entries have been displayed
                     Debug.Log("All entries have been displayed.");
                     clickedEntryIndex = 0;
                     _UIController.UpdateUI(_foundJournalAsset);
-                    if (_UIController.choicesContainer.childCount == 0)
-                    { 
-                        allowPlayerInput = !allowPlayerInput;// stop registering clicks before finding new asset?
+                    if (_foundJournalAsset.choices.Count == 0 || (_UIController.choicesContainer.childCount == 0 &&
+                                                                  _foundJournalAsset.choices.Count > 0))
+                    {
+                        notAllowPlayerInput = !notAllowPlayerInput; // stop registering clicks before finding new asset?
                     }
                     //allowPlayerInput = !allowPlayerInput; stop registering clicks before finding new asset?
                 }
@@ -119,11 +126,11 @@ public class JournalController : MonoBehaviour
 
         if (!isOpen)
         {
+            notAllowPlayerInput = false;
             this.gameObject.SetActive(true);
-
+            cameraController.Enable(this.gameObject);
             StartCoroutine(ShowUIAfterDelay(2f));
             //   textArea.text = string.Join("\n", journalAsset.entryContent[0]);
-            cameraController.Enable(this.gameObject);
         }
         else
         {

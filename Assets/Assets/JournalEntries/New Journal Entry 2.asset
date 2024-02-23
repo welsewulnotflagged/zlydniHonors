@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   entryContent:
-  - Running where? I don't even know where. Better take a look at that train schedule.
   - I think the person over there might help...
   choices: []

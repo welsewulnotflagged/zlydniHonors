@@ -46,6 +46,7 @@ public class JournalUIController : MonoBehaviour {
     private void CreateChoiceButton(JournalAsset.Choice choiceInfo) {
         if (!string.IsNullOrEmpty(choiceInfo.TriggerState) && !_stateController.GetBoolState(choiceInfo.TriggerState)) {
             Debug.Log($"SKIP journal choice {choiceInfo.id} because of {choiceInfo.TriggerState}");
+            uiController.waitingForButton = true;
             return;
         }
 
@@ -63,7 +64,10 @@ public class JournalUIController : MonoBehaviour {
             // choicesMade.Add(choiceInfo);
             if (choiceInfo.SaveState) {
                 _stateController.AddBoolState(choiceInfo);
-            }
+            }// this is for save in inspector lol
+            
+            // if trigger from dialogue is triggered then create more buttons from respective journal asset
+            
 
             OnChoiceSelected(choiceInfo.nextEntryID);
         });
@@ -99,6 +103,7 @@ public class JournalUIController : MonoBehaviour {
             if (nextEntry != null) {
                 Text choiceContentTextArea = uiController.textArea;
                 UpdateUI(nextEntry);
+                uiController.waitingForButton = false;
                 foreach (Transform child in choicesContainer) {
                     Destroy(child.gameObject);
                 }

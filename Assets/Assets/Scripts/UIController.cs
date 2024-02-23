@@ -85,6 +85,12 @@ public class UIController : MonoBehaviour {
                 _choiceButtons.Add(button);
             }
         }
+
+        if (_choiceButtons.childCount == 0)
+        {
+            var button = _dialogueChoiceButtonController.CreateExitButton();
+            _choiceButtons.Add(button);
+        }
     }
 
     public void SetShaded(bool shaded) {

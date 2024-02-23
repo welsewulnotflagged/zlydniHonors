@@ -13,9 +13,9 @@ public class DialogueChoiceButtonController {
         _uiController = uiController;
     }
 
-    private bool ShouldSkip(DialogueChoice choice) {
+    private bool ShouldSkip(DialogueChoice choice) { // going to change shouldSkip goal a bit. instead of return now checks for null and displays pre determined buttons.
         return !string.IsNullOrEmpty(choice.TriggerState) && !_stateController.GetBoolState(choice.TriggerState);
-    }
+    } 
 
     [AllowsNull]
     public Button CreateButton(DialogueChoice choice) {
@@ -29,6 +29,21 @@ public class DialogueChoiceButtonController {
         visualElement.text = choice.ChoiceText;
         visualElement.AddToClassList("choice-button");
         visualElement.clickable.clicked += () => HandleButton(choice);
+
+        return visualElement;
+    }
+
+    public Button CreateExitButton()
+    {
+        Button visualElement = new Button();
+
+        visualElement.text = "Exit";
+        visualElement.AddToClassList("choice-button");
+        visualElement.clickable.clicked += () =>
+        {
+            _dialogueController.UpdateState();
+            _uiController.SetShaded(false);
+        };
 
         return visualElement;
     }

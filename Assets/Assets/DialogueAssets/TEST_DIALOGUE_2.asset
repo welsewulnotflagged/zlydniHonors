@@ -20,7 +20,7 @@ MonoBehaviour:
     ChoiceText: "\u0445\u0443\u0439 \u0454"
     NextDialogueID: 
     TriggerState: TEST_DIALOGUE_1_1
-    SaveState: 0
+    SaveState: 1
   - ID: TEST_DIALOGUE_2_2
     ChoiceText: "\u0445\u0443\u0439 \u043D\u0435\u043C\u0430"
     NextDialogueID: 

@@ -22,9 +22,13 @@ MonoBehaviour:
   - "This is a lot of heavy load to leave behind, but times are always changing,
     aren't they? \n"
   choices:
-  - choiceText: 'They are. '
+  - id: 0-yes
+    choiceText: 'They are. '
     nextEntryID: 1
-    id: 0-yes
-  - choiceText: You are just running.
+    TriggerState: 
+    SaveState: 0
+  - id: 0-no
+    choiceText: ...
     nextEntryID: 2
-    id: 0-no
+    TriggerState: 
+    SaveState: 0

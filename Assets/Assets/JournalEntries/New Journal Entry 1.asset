@@ -17,4 +17,9 @@ MonoBehaviour:
   - They really are! What time is it, anyway?..
   - I need to look for the train schedule.
   - I think the person over there might help...
-  choices: []
+  choices:
+  - id: test 14
+    choiceText: HUI YES!
+    nextEntryID: 3
+    TriggerState: TEST_DIALOGUE_1_1
+    SaveState: 0
