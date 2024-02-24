@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class JournalController : MonoBehaviour {
@@ -15,6 +16,10 @@ public class JournalController : MonoBehaviour {
     public bool isOpen;
     public Transform choicesContainer;
     public Button choiceButtonPrefab;
+    public Transform turningPagesContainer;
+    public Button turnPreviousPagePrefab;
+    public Button turnNextPagePrefab;
+
 
     private StateController _stateController;
     private readonly List<JournalAsset> _unlockedJournals = new(); // keep track on unlocked journals
@@ -28,6 +33,8 @@ public class JournalController : MonoBehaviour {
         // init default journal
         AddJournal(AssetDatabaseUtility.INSTANCE.GetJournalAsset("0"));
         _stateController = FindObjectOfType<StateController>();
+        CreateTurnPreviousPageButton();
+        CreateTurnNextPageButton();
     }
 
     private void ChangePage(bool next) {
@@ -37,7 +44,7 @@ public class JournalController : MonoBehaviour {
             _currentPage += 2;
             //TODO MAKE A LIMIT SO IT DOESN'T SCROLLING OUT OF BOUNDS :(
         } else {
-            if (_currentPage - 2 <= 0) {
+            if (_currentPage - 2 < 0) {
                 return;
             }
 
@@ -71,7 +78,7 @@ public class JournalController : MonoBehaviour {
             HandleClick();
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+        if (Input.GetKeyDown(KeyCode.RightArrow /* || or button click*/)) {
             ChangePage(true);
         }
 
@@ -81,6 +88,7 @@ public class JournalController : MonoBehaviour {
     }
 
     public void HandleClick() {
+        
         int pagesCount = _pages.Count;
         if (_activeAsset && _activeAsset.entryContent.Length > _entryIndex) {
             _entries.Add(_activeAsset.entryContent[_entryIndex++]);
@@ -193,5 +201,21 @@ public class JournalController : MonoBehaviour {
 
     public bool HasActiveButtons() {
         return choicesContainer.childCount > 0;
+    }
+
+    private void CreateTurnPreviousPageButton()
+    {
+        var button = Instantiate(turnPreviousPagePrefab, turningPagesContainer);
+        button.gameObject.SetActive(true);
+
+        button.onClick.AddListener(() => ChangePage(false) );
+    }
+    
+    private void CreateTurnNextPageButton()
+    {
+        var button = Instantiate(turnNextPagePrefab, turningPagesContainer);
+        button.gameObject.SetActive(true);
+
+        button.onClick.AddListener(() => ChangePage(true) );
     }
 }

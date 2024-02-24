@@ -526,11 +526,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 40
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60.000004
   orthographic: 0
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -554,8 +554,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599308815}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.35123342, y: 0.6137055, z: -0.35123315, w: 0.6137067}
-  m_LocalPosition: {x: -46.38386, y: -28.65379, z: 19.098848}
+  m_LocalRotation: {x: -0.10904355, y: -0.7228349, z: 0.11724785, w: -0.67221445}
+  m_LocalPosition: {x: -48.31402, y: -28.10652, z: 18.695526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -964,7 +964,27 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7313002490634837363, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 7608982186562170628, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 496645677078758183, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 5601679066682845534, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 5872750253692404282, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 9066203679133979343, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 17957416952714631, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 5639866237143227999, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 3453188810947037694, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 2313135667378155810, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 2755434626508132555, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 5470886408887372873, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 6009466092187727417, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 2794371663865444328, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 3107619972891728449, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 6051238176845905835, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 8796030647206160144, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 9022862578213023707, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 1709785691224617410, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+    - {fileID: 8309112807051906450, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7244824292172622842, guid: 2629a6e7478200e4886dae9ff18889ac,
@@ -1634,6 +1654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aaf6891804e683418a8ea33085f8244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _journalAsset: {fileID: 0}
+  _dialogueAsset: {fileID: 0}
   _uiController: {fileID: 0}
   _journalUIController: {fileID: 0}
 --- !u!1 &1913702429 stripped

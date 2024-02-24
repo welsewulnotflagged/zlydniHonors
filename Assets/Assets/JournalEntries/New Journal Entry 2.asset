@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   entryContent:
+  - I need to look for the train schedule.
   - I think the person over there might help...
+  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. '
   choices: []
