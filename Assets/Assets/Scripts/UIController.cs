@@ -18,7 +18,6 @@ public class UIController : MonoBehaviour {
     private InventoryController _inventoryController;
     private VisualElement _menuContainer;
     private DialogueController _dialogueController;
-    private JournalUIController _journalUIController;
     private DialogueChoiceButtonController _dialogueChoiceButtonController;
 
     private VisualElement _choiceButtons;

@@ -1,107 +1,99 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Hardware;
+using System.Text;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class JournalController : MonoBehaviour {
-    // 800 characters of journal content
-    // You only display 2 * max character count ata  time
-    // And then offset the start of that substring by currentPage * 2*maxCharacter
-    // Only display the next button if there is more text than is displayed by current page
-    // You can calculate the current text every time you display the journal
-    // As the entries might be added from anywhere. 
-    // The content of the journal is now a string, only a 2 * max character is displayed at any time.
-    //public JournalAsset journalAsset;
     public CameraController cameraController;
     public GameObject journalUI;
 
-    public JournalUIController _UIController;
-
-    public Button next;
-    public Button previous;
-
-    //public float fadeDuration = 1f;
-    int clickedEntryIndex = 0;
-    public int currentPage = 0;
-    public string journalContent;
-
-    public Text textArea;
-
-    // public Text textAreaRight;
+    public Text textAreaLeft;
+    public Text textAreaRight;
     public bool isOpen;
-    private bool notAllowPlayerInput;
-    public bool waitingForButton;
+    public Transform choicesContainer;
+    public Button choiceButtonPrefab;
 
-    public void Start() {
-        //   this.gameObject.SetActive(false); 
-        // doesn't launch :(
-        // next.onClick.AddListener(() => ChangePage(1));
+    private StateController _stateController;
+    private readonly List<JournalAsset> _unlockedJournals = new(); // keep track on unlocked journals
+    private readonly List<string> _entries = new();
+    private readonly List<string> _pages = new();
+    private JournalAsset _activeAsset; // current asset to display entries from
+    private int _currentPage;
+    private int _entryIndex;
 
-        // previous.onClick.AddListener(() => ChangePage(-1));
+    private void Start() {
+        // init default journal
+        AddJournal(AssetDatabaseUtility.INSTANCE.GetJournalAsset("0"));
+        _stateController = FindObjectOfType<StateController>();
     }
 
-    public void ChangePage(int page) {
-        if (page < 0) {
-            if (currentPage > 0) {
-                // Update page offset
-                currentPage += page;
-            }
+    private void ChangePage(bool next) {
+        SplitByPages();
+        Debug.Log(_currentPage);
+        if (next) {
+            _currentPage += 2;
+            //TODO MAKE A LIMIT SO IT DOESN'T SCROLLING OUT OF BOUNDS :(
         } else {
-            // The total number of current pages equals the  
-            if (currentPage < Mathf.Ceil(journalContent.Length / TextOverflowCheck.maxCharacterCount * 2)) {
-                currentPage += page;
+            if (_currentPage - 2 <= 0) {
+                return;
             }
+
+            _currentPage -= 2;
         }
+
+        textAreaLeft.text = _pages[_currentPage];
+        if (_pages.Count > _currentPage + 1) {
+            textAreaRight.text = _pages[_currentPage + 1];
+        } else {
+            textAreaRight.text = "";
+        }
+    }
+
+    private void RefreshText() {
+        SplitByPages();
+        textAreaLeft.text = _pages[_currentPage];
+        if (_pages.Count > 1) {
+            textAreaRight.text = _pages[_currentPage + 1];
+        }
+    }
+
+    public void AddJournal(JournalAsset journalAsset) {
+        _unlockedJournals.Add(journalAsset);
+        _activeAsset = journalAsset;
+        _entryIndex = 0;
     }
 
     public void Update() {
-        if (notAllowPlayerInput) {
-            return;
+        if (Input.GetMouseButtonDown(0) && !HasActiveButtons()) {
+            HandleClick();
         }
 
-        if (Input.GetMouseButtonDown(0) && _UIController.choicesContainer.childCount == 0) {
-            HandleClick();
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            ChangePage(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            ChangePage(false);
         }
     }
 
     public void HandleClick() {
-        var _foundJournalAsset = _UIController.nextEntry != null ? _UIController.nextEntry : AssetDatabaseUtility.INSTANCE.GetJournalAsset("0");
-        TextOverflowCheck textChecker = FindObjectOfType<TextOverflowCheck>();
-
-
-        if (_foundJournalAsset != null) {
-            if (waitingForButton) {
-                clickedEntryIndex = _foundJournalAsset.entryContent.Length;
-            }
-
-            if (clickedEntryIndex < _foundJournalAsset.entryContent.Length) {
-                textArea.text += " " + _foundJournalAsset.entryContent[clickedEntryIndex];
-
-                Debug.Log("clickedID:" + clickedEntryIndex);
-                clickedEntryIndex++;
-            }
-
-            if (clickedEntryIndex >= _foundJournalAsset.entryContent.Length) {
-                // handle the case when all entries have been displayed
-                Debug.Log("All entries have been displayed.");
-                clickedEntryIndex = 0;
-                _UIController.UpdateUI(_foundJournalAsset);
-                if (_foundJournalAsset.choices.Count == 0 || (_UIController.choicesContainer.childCount == 0 &&
-                                                              _foundJournalAsset.choices.Count > 0)) {
-                    notAllowPlayerInput = !notAllowPlayerInput; // stop registering clicks before finding new asset?
-                }
-                //allowPlayerInput = !allowPlayerInput; stop registering clicks before finding new asset?
-            }
+        int pagesCount = _pages.Count;
+        if (_activeAsset && _activeAsset.entryContent.Length > _entryIndex) {
+            _entries.Add(_activeAsset.entryContent[_entryIndex++]);
+            RefreshText();
         }
 
-        if (textChecker != null) {
-            textChecker.CheckAndHandleOverflow(textArea.text);
+        if (_activeAsset && _activeAsset.entryContent.Length == _entryIndex && _activeAsset.choices.Count > 0) {
+            UpdateButtons(_activeAsset);
+        }
+
+        // switch only non even pages
+        if (pagesCount != 0 && _pages.Count % 2 != 0 && pagesCount != _pages.Count) {
+            ChangePage(true);
         }
     }
 
@@ -109,13 +101,11 @@ public class JournalController : MonoBehaviour {
         Debug.Log(isOpen);
 
         if (!isOpen) {
-            notAllowPlayerInput = false;
-            this.gameObject.SetActive(true);
-            cameraController.Enable(this.gameObject);
+            gameObject.SetActive(true);
+            cameraController.Enable(gameObject);
             StartCoroutine(ShowUIAfterDelay(2f));
-            //   textArea.text = string.Join("\n", journalAsset.entryContent[0]);
         } else {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
             journalUI.SetActive(false);
         }
     }
@@ -123,5 +113,85 @@ public class JournalController : MonoBehaviour {
     IEnumerator ShowUIAfterDelay(float delaySec) {
         yield return new WaitForSeconds(delaySec);
         journalUI.SetActive(true);
+    }
+
+    private void SplitByPages() {
+        var text = _entries.Aggregate((a, b) => a + b);
+        var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        var parts = new StringBuilder();
+
+        _pages.Clear();
+
+        foreach (var word in words) {
+            if (parts.Length + word.Length < 400) {
+                parts.Append(word);
+                parts.Append(' ');
+            } else {
+                _pages.Add(parts.ToString());
+                parts.Clear();
+                parts.Append(word);
+                parts.Append(' ');
+            }
+        }
+
+        if (parts.Length > 0) {
+            _pages.Add(parts.ToString());
+        }
+    }
+
+    private void UpdateButtons(JournalAsset selectedEntry) {
+        foreach (Transform child in choicesContainer) {
+            Destroy(child.gameObject);
+        }
+
+        if (selectedEntry.choices == null) return;
+
+        foreach (var choice in selectedEntry.choices) {
+            CreateChoiceButton(choice);
+            Debug.Log("button created");
+        }
+    }
+
+    private void CreateChoiceButton(JournalAsset.Choice choiceInfo) {
+        if (!string.IsNullOrEmpty(choiceInfo.TriggerState) && !_stateController.GetBoolState(choiceInfo.TriggerState)) {
+            Debug.Log($"SKIP journal choice {choiceInfo.id} because of {choiceInfo.TriggerState}");
+            return;
+        }
+
+        var button = Instantiate(choiceButtonPrefab, choicesContainer);
+        button.gameObject.SetActive(true);
+
+        button.GetComponentInChildren<Text>().text = choiceInfo.choiceText;
+
+        button.onClick.AddListener(() => {
+            if (choiceInfo.SaveState) {
+                _stateController.AddBoolState(choiceInfo);
+            }
+
+            OnChoiceSelected(choiceInfo.nextEntryID);
+        });
+    }
+
+    public void OnChoiceSelected(string nextEntryID) {
+        // Ensure this entry is only appended once.
+
+        Debug.Log("Choice already selected. Should display next entry");
+
+        var nextEntry = AssetDatabaseUtility.INSTANCE.GetJournalAsset(nextEntryID);
+
+        if (nextEntry != null) {
+            // uiController.waitingForButton = false;
+            AddJournal(nextEntry);
+            HandleClick();
+            foreach (Transform child in choicesContainer) {
+                Destroy(child.gameObject);
+            }
+        } else {
+            Debug.Log("no entry available");
+        }
+    }
+
+    public bool HasActiveButtons() {
+        return choicesContainer.childCount > 0;
     }
 }
