@@ -8,7 +8,6 @@ public class DialogueController : MonoBehaviour {
     private Action _dialogueCallback;
     private DialogueAsset _dialogueAsset;
     private UIController _uiController;
-    private JournalUIController _journalUIController;
 
 
     private void Start() {
@@ -20,16 +19,7 @@ public class DialogueController : MonoBehaviour {
         foreach (var t in dialogueAsset.dialogue) {
             queue.Enqueue(t);
         }
-
-        // if (JournalUIController.Instance.choicesMade.Exists(choice => choice.id == "IdToSearchFor")) {
-            // This choice id was selected by the player
-            // Debug.Log("Found");
-        // }
-
-
         _dialogueAsset = dialogueAsset;
-
-
         if (!_uiController.IsDialogueActive()) {
             _uiController.ShowDialogue();
             UpdateState();
