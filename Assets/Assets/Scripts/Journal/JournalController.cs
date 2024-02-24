@@ -5,8 +5,10 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Hardware;
+using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class JournalController : MonoBehaviour {
@@ -37,6 +39,14 @@ public class JournalController : MonoBehaviour {
     public bool isOpen;
     private bool notAllowPlayerInput;
     public bool waitingForButton;
+    
+    public List<string> textStrings;
+    public List<GameObject> textAreaList;
+    private int textAreaIndex;
+    public static int maxCharacterCount = 418;
+
+    public GameObject textAreaPrefab;
+    public Transform textAreaContainer;
 
     public void Start() {
         //   this.gameObject.SetActive(false); 
@@ -45,20 +55,7 @@ public class JournalController : MonoBehaviour {
 
         // previous.onClick.AddListener(() => ChangePage(-1));
     }
-
-    public void ChangePage(int page) {
-        if (page < 0) {
-            if (currentPage > 0) {
-                // Update page offset
-                currentPage += page;
-            }
-        } else {
-            // The total number of current pages equals the  
-            if (currentPage < Mathf.Ceil(journalContent.Length / TextOverflowCheck.maxCharacterCount * 2)) {
-                currentPage += page;
-            }
-        }
-    }
+    
 
     public void Update() {
         if (notAllowPlayerInput) {
@@ -81,9 +78,25 @@ public class JournalController : MonoBehaviour {
             }
 
             if (clickedEntryIndex < _foundJournalAsset.entryContent.Length) {
+                
+                foreach (var line in _foundJournalAsset.entryContent.ToString().Split(" "))
+                {   
+                    textStrings.Add(line);
+                }
+                
+                for (int i = 0; i < textStrings.Count; i++)
+                {
+                    if (textArea.text.Length + textStrings[i].Length > 418)
+                    {
+                        GameObject areaObject = Instantiate(textAreaPrefab, textAreaContainer);
+                        textAreaList.Add(areaObject);
+                        textArea.text = " ";
+                        Debug.Log("Next page");
+                        //turnPage method
+                    }
+                }
+                
                 textArea.text += " " + _foundJournalAsset.entryContent[clickedEntryIndex];
-
-                Debug.Log("clickedID:" + clickedEntryIndex);
                 clickedEntryIndex++;
             }
 
@@ -94,15 +107,14 @@ public class JournalController : MonoBehaviour {
                 _UIController.UpdateUI(_foundJournalAsset);
                 if (_foundJournalAsset.choices.Count == 0 || (_UIController.choicesContainer.childCount == 0 &&
                                                               _foundJournalAsset.choices.Count > 0)) {
-                    notAllowPlayerInput = !notAllowPlayerInput; // stop registering clicks before finding new asset?
+                    notAllowPlayerInput = !notAllowPlayerInput; 
                 }
-                //allowPlayerInput = !allowPlayerInput; stop registering clicks before finding new asset?
             }
         }
 
-        if (textChecker != null) {
+       /* if (textChecker != null) {
             textChecker.CheckAndHandleOverflow(textArea.text);
-        }
+        }*/
     }
 
     public void OpenJournalMenu() {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -48,26 +49,18 @@ public class JournalUIController : MonoBehaviour {
         choiceButton.GetComponentInChildren<Text>().text = choiceInfo.choiceText;
 
         choiceButton.onClick.AddListener(() => {
-            // choicesMade = JournalUIController.Instance.choicesMade;
-            // JournalAsset.Choice newChoice = new JournalAsset.Choice();
-            // newChoice.choiceText = "";
-            // newChoice.id = "ActionEscape-Success";
-
-            // choicesMade.Add(choiceInfo);
+            
             if (choiceInfo.SaveState) {
                 _stateController.AddBoolState(choiceInfo);
             } // this is for save in inspector lol
 
             // if trigger from dialogue is triggered then create more buttons from respective journal asset
-
-
+            
             OnChoiceSelected(choiceInfo.nextEntryID);
         });
     }
 
     public void OnChoiceSelected(string nextEntryID) {
-        // Ensure this entry is only appended once.
-
         Debug.Log("Choice already selected. Should display next entry");
 
         nextEntry = AssetDatabaseUtility.INSTANCE.GetJournalAsset(nextEntryID);
