@@ -23,14 +23,17 @@ public class UIController : MonoBehaviour {
     private VisualElement _choiceButtons;
     private Label _choiceTitle;
     private StateController _stateController;
+    private AssetDatabaseUtility _assetDataBaseUtility;
 
     void OnEnable() {
         _inventoryController = FindObjectOfType<InventoryController>();
         _dialogueController = FindObjectOfType<DialogueController>();
         _stateController = FindObjectOfType<StateController>();
-        _dialogueChoiceButtonController = new DialogueChoiceButtonController(_stateController, _dialogueController, this);
+        _assetDataBaseUtility = FindObjectOfType<AssetDatabaseUtility>();
+        _dialogueChoiceButtonController = new DialogueChoiceButtonController(_stateController, _dialogueController, this, _assetDataBaseUtility);
 
         _document = GetComponent<UIDocument>();
+        
         _hud = _document.rootVisualElement.Q<VisualElement>("HUD");
         _dialogue = _document.rootVisualElement.Q<VisualElement>("DIALOGUE");
         _root = _document.rootVisualElement.Q<VisualElement>("Root");
