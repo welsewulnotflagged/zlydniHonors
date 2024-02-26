@@ -17,7 +17,8 @@ public class TicketGiver : Interactable
         if (dialogueController.HasActiveDialogue()) {
             dialogueController.UpdateState();
         } else {
-            dialogueController.addDialogue(DialogueAsset, cameraController);
+                dialogueController.addDialogue(DialogueAsset, cameraController);
+
             dialogueController.SetCallback(()=>{var ticketObject = Instantiate(ticket);
         ticketObject.transform.position = spawnPos.position; });
         }

@@ -6,11 +6,13 @@ public class DialogueChoiceButtonController {
     private StateController _stateController;
     private DialogueController _dialogueController;
     private UIController _uiController;
+    private AssetDatabaseUtility _assetDatabaseUtility;
 
-    public DialogueChoiceButtonController(StateController stateController, DialogueController dialogueController, UIController uiController) {
+    public DialogueChoiceButtonController(StateController stateController, DialogueController dialogueController, UIController uiController, AssetDatabaseUtility assetDatabaseUtility) {
         _stateController = stateController;
         _dialogueController = dialogueController;
         _uiController = uiController;
+        _assetDatabaseUtility = assetDatabaseUtility;
     }
 
     private bool ShouldSkip(DialogueChoice choice) { // going to change shouldSkip goal a bit. instead of return now checks for null and displays pre determined buttons.
@@ -54,7 +56,7 @@ public class DialogueChoiceButtonController {
         }
 
         if (!string.IsNullOrEmpty(choice.NextDialogueID)) {
-            var nextDialogue = AssetDatabaseUtility.INSTANCE.GetDialog(choice.NextDialogueID);
+            var nextDialogue = _assetDatabaseUtility.GetDialog(choice.NextDialogueID);
             _dialogueController.addDialogue(nextDialogue, _dialogueController.GetActiveCamera());
         } else {
             Debug.Log($"DIALOG EXIT");

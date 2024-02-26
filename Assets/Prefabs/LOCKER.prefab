@@ -479,7 +479,7 @@ MonoBehaviour:
   playerModel: {fileID: 0}
   lockerDoor: {fileID: 47166950283883421}
   hidingSpot: {fileID: 8197530500565034441}
-  player: {fileID: 0}
+  player: {fileID: 2167292672620199998, guid: b15c90dba1475424590d50bc2ae6a1b7, type: 3}
   cameraController: {fileID: 8136144998969435897}
 --- !u!65 &3852983197025670872
 BoxCollider:

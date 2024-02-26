@@ -1,16 +1,21 @@
 ﻿using UnityEngine;
 
-public class Inspectable : Interactable {
+public class Inspectable : Interactable
+{
     public DialogueAsset DialogueAsset;
 
-    protected override void OnInteract(GameObject source) {
+    protected override void OnInteract(GameObject source)
+    {
         var dialogueController = FindObjectOfType<DialogueController>();
-        var journalController = FindObjectOfType<JournalController>(); 
+        var journalController = FindObjectOfType<JournalController>();
         var cameraController = GetComponentInChildren<CameraController>();
 
-        if (dialogueController.HasActiveDialogue()) {
+        if (dialogueController.HasActiveDialogue())
+        {
             dialogueController.UpdateState();
-        } else {
+        }
+        else
+        {
             dialogueController.addDialogue(DialogueAsset, cameraController);
         }
     }

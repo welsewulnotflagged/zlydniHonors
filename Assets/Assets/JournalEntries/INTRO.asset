@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8258aaa43a4e3e04bb9e6313bb9d2b9d, type: 3}
   m_Name: INTRO
   m_EditorClassIdentifier: 
-  id: BEGINNING_ENTRY
+  id: 0
   entryContent:
   - Finally, arrived. This is a written thank you for the people who called out to
     me when I forgot my bag on the bus.

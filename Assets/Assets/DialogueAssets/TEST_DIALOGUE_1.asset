@@ -23,5 +23,5 @@ MonoBehaviour:
     ChoiceText: 'I better write this down. '
     NextDialogueID: 
     TriggerState: 
-    SaveState: 0
+    SaveState: 1
   choicesTitle: 

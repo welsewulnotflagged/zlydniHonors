@@ -26,7 +26,7 @@ public class LockeInteractable : Interactable
        
         if (cameraController){
             if (!isHiding) {
-        playerOriginalPosition = playerModel.transform.position;
+      //  playerOriginalPosition = playerModel.transform.position;
         cameraController.Enable(player.gameObject);
         Debug.Log("Switching cameras");
         StartHiding();
@@ -43,11 +43,11 @@ public class LockeInteractable : Interactable
         
         isHiding = true;
         player.canMove = true;
-
+        
        // Vector3 hidingCoord =  hidingSpot.position;
 
-        playerModel.transform.position = hidingSpot.position;
-        Debug.Log(playerModel.transform.position);
+      //  playerModel.transform.position = hidingSpot.position;
+        playerModel.SetActive(false);
 
         CameraController cameraNew = GetComponent<CameraController>();
        
@@ -67,7 +67,8 @@ public class LockeInteractable : Interactable
         isHiding = false;
         player.canMove = false;
 
-        playerModel.transform.position = OGposition;
+       // playerModel.transform.position = OGposition;
+        playerModel.SetActive(true);
         cameraController.Disable(player.gameObject);
     }
 
