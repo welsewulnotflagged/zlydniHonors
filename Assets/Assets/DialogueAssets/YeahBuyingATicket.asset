@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
+  m_Name: YeahBuyingATicket
+  m_EditorClassIdentifier: 
+  id: TICKET_START_DIALOGUE
+  dialogue:
+  - ...
+  - ...
+  - 'Yeah? Buying a ticket? Tell me where you are going. '
+  choices:
+  - ID: TICKET_TIMETABLE_DIALOGUE_1
+    ChoiceText: Uh, where is the time table?
+    NextDialogueID: 
+    TriggerState: 
+    SaveState: 0
+  - ID: TICKET_TIMETABLE_DIALOGUE_2
+    ChoiceText: 'One-way ticket to //CityName. '
+    NextDialogueID: 
+    TriggerState: TIMETABLE_INFO_1
+    SaveState: 0
+  choicesTitle: 
