@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
   m_Name: SoWhat
   m_EditorClassIdentifier: 
-  id: 1
+  id: SCHEDULE_DELAY_NPC
   dialogue:
   - ...
-  - ...
-  - 'So what is it? '
-  choices: []
+  - Ah, schedule delays are very annoying...
+  choices:
+  - ID: SCHEDULE_DELAY_NPC_REPLY1
+    ChoiceText: Where are you headed?
+    NextDialogueID: SCHEDULE_DELAY_NPC_1
+    TriggerState: 
+    SaveState: 0
   choicesTitle: 
