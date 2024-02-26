@@ -12,18 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
   m_Name: TEST_DIALOGUE_1
   m_EditorClassIdentifier: 
-  id: TEST_DIALOGUE_1
+  id: TIMETABLE_INFO
   dialogue:
-  - "\u0445\u0443\u0439 \u0431\u0443\u0434\u0435\u0448?"
+  - 'CITY_NAME : 12.00'
+  - 'CITY_NAME : 13.00'
+  - 'CITY_NAME : 14.00'
+  - 'CITY_NAME : Leaves in 5'
   choices:
-  - ID: TEST_DIALOGUE_1_1
-    ChoiceText: "\u0431\u0443\u0434\u0443"
-    NextDialogueID: 
-    TriggerState: 
-    SaveState: 1
-  - ID: TEST_DIALOGUE_1_2
-    ChoiceText: "\u043D\u0435 \u0431\u0443\u0434\u0443"
+  - ID: TIMETABLE_INFO_1
+    ChoiceText: 'I better write this down. '
     NextDialogueID: 
     TriggerState: 
     SaveState: 0
-  choicesTitle: "\u0445\u0443\u0439 \u0431\u0443\u0434\u0435\u0448?"
+  choicesTitle: 

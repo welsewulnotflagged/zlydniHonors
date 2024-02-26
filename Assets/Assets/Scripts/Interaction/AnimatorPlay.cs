@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class AnimatorPlay : MonoBehaviour
 {
-    Animator animator;
+   public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponentInParent<Animator>();
+       // animator = GetComponent<Animator>();
+       animator.SetBool("isTalking", false);
     }
 
     // Update is called once per frame

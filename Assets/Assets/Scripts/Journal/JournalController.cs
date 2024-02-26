@@ -16,9 +16,9 @@ public class JournalController : MonoBehaviour {
     public bool isOpen;
     public Transform choicesContainer;
     public Button choiceButtonPrefab;
-    public Transform turningPagesContainer;
-    public Button turnPreviousPagePrefab;
-    public Button turnNextPagePrefab;
+   // public Transform turningPagesContainer;
+   // public Button turnPreviousPagePrefab;
+   // public Button turnNextPagePrefab;
 
 
     private StateController _stateController;
@@ -33,8 +33,8 @@ public class JournalController : MonoBehaviour {
         // init default journal
         AddJournal(AssetDatabaseUtility.INSTANCE.GetJournalAsset("0"));
         _stateController = FindObjectOfType<StateController>();
-        CreateTurnPreviousPageButton();
-        CreateTurnNextPageButton();
+        // CreateTurnPreviousPageButton();
+        // CreateTurnNextPageButton();
     }
 
     private void ChangePage(bool next) {
@@ -203,19 +203,19 @@ public class JournalController : MonoBehaviour {
         return choicesContainer.childCount > 0;
     }
 
-    private void CreateTurnPreviousPageButton()
-    {
-        var button = Instantiate(turnPreviousPagePrefab, turningPagesContainer);
-        button.gameObject.SetActive(true);
-
-        button.onClick.AddListener(() => ChangePage(false) );
-    }
-    
-    private void CreateTurnNextPageButton()
-    {
-        var button = Instantiate(turnNextPagePrefab, turningPagesContainer);
-        button.gameObject.SetActive(true);
-
-        button.onClick.AddListener(() => ChangePage(true) );
-    }
+   // // private void CreateTurnPreviousPageButton()
+   //  {
+   //      var button = Instantiate(turnPreviousPagePrefab, turningPagesContainer);
+   //      button.gameObject.SetActive(true);
+   //
+   //      button.onClick.AddListener(() => ChangePage(false) );
+   //  }
+   //  
+   //  private void CreateTurnNextPageButton()
+   //  {
+   //      var button = Instantiate(turnNextPagePrefab, turningPagesContainer);
+   //      button.gameObject.SetActive(true);
+   //
+   //      button.onClick.AddListener(() => ChangePage(true) );
+   //  }
 }

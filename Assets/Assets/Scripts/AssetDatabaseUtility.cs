@@ -40,7 +40,16 @@ public sealed class AssetDatabaseUtility {
     private Dictionary<string, T> FindAllByType<T>(Type assetType, Func<T, string> idFunc) where T : ScriptableObject {
         return AssetDatabase
             .FindAssets($"t:{assetType}")
-            .Select(assetId => AssetDatabase.LoadAssetAtPath<T>(AssetDatabase.GUIDToAssetPath(assetId)))
+            .Select(assetId => {
+                var asset = AssetDatabase.LoadAssetAtPath<T>(AssetDatabase.GUIDToAssetPath(assetId));
+                        if (asset is JournalAsset journalAsset) {
+                                Debug.Log($"LOADING ASSET ID {journalAsset.id}");
+                        } else if (asset is DialogueAsset dialogueAsset) {
+                            Debug.Log($"LOADING ASSET ID {dialogueAsset.id}");
+                        }
+        
+                        return asset;
+                   })
             .ToDictionary(asset => idFunc.Invoke(asset), asset => asset);
     }
 }

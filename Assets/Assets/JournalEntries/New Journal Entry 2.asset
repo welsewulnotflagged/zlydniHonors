@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8258aaa43a4e3e04bb9e6313bb9d2b9d, type: 3}
   m_Name: New Journal Entry 2
   m_EditorClassIdentifier: 
-  id: 2
+  id: LOOK_FOR_THE_SCHEDULE_HINT_1
   entryContent:
   - I need to look for the train schedule.
   - I think the person over there might help...
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
   choices: []
