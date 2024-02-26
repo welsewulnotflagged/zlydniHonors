@@ -12,18 +12,23 @@ public sealed class AssetDatabaseUtility {
     private readonly Dictionary<string, JournalAsset> _journals = new();
     private readonly Dictionary<string, JournalAsset.Choice> _journalChoices = new();
 
-    private AssetDatabaseUtility() {
-        _dialogues = FindAllByType<DialogueAsset>(typeof(DialogueAsset), asset => asset.id);
-        _dialogueChoices = _dialogues.Values
-            .SelectMany(dialogue => dialogue.choices)
-            .ToDictionary(choice => choice.ID, choice => choice);
-        
-        _journals = FindAllByType<JournalAsset>(typeof(JournalAsset), asset => asset.id);
-        _journalChoices = _journals.Values
-            .SelectMany(journal => journal.choices)
-            .ToDictionary(choice => choice.id, choice => choice);
-    }
 
+    private AssetDatabaseUtility() {
+        if (_dialogues == null) {
+            _dialogues = FindAllByType<DialogueAsset>(typeof(DialogueAsset), asset => asset.id);
+            _dialogueChoices = _dialogues.Values
+                .SelectMany(dialogue => dialogue.choices)
+                .ToDictionary(choice => choice.ID, choice => choice);
+        }
+
+
+        if (_journals == null) {
+            _journals = FindAllByType<JournalAsset>(typeof(JournalAsset), asset => asset.id);
+            _journalChoices = _journals.Values
+                .SelectMany(journal => journal.choices)
+                .ToDictionary(choice => choice.id, choice => choice);
+        }
+    }
 
     public DialogueChoice GetDialogChoice(string id) {
         return _dialogueChoices[id];
