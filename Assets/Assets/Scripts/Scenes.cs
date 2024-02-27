@@ -7,6 +7,6 @@ public class Scenes : MonoBehaviour {
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene("Final Level Map");
+        SceneManager.LoadScene("Level1DesignedOut");
     }
 }

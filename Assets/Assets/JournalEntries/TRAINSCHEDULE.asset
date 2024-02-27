@@ -18,8 +18,23 @@ MonoBehaviour:
   - I need to look for the train schedule.
   - I think the person over there might help...
   choices:
-  - id: test 14
-    choiceText: HUI YES!
-    nextEntryID: 3
-    TriggerState: TEST_DIALOGUE_1_1
+  - id: CITYNAME_13_MIN1
+    choiceText: 13:00
+    nextEntryID: DESTINATION_USURE
+    TriggerState: TIMETABLE_INFO_1
+    SaveState: 0
+  - id: CITYNAME_14_MIN1
+    choiceText: 14:00
+    nextEntryID: DESTINATION_USURE
+    TriggerState: TIMETABLE_INFO_2
+    SaveState: 0
+  - id: CITYNAME_15_MIN1
+    choiceText: 15:00
+    nextEntryID: DESTINATION_USURE
+    TriggerState: TIMETABLE_INFO_3
+    SaveState: 0
+  - id: CITYNAME_5_MIN1
+    choiceText: 'I guess I''m picking the closest one. '
+    nextEntryID: DESTINATION_DECIDED
+    TriggerState: TIMETABLE_INFO_4
     SaveState: 0

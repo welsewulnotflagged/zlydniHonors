@@ -22,12 +22,12 @@ MonoBehaviour:
   - "This is a lot of heavy load to leave behind, but times are always changing,
     aren't they? \n"
   choices:
-  - id: 0-yes
-    choiceText: LOOK_FOR_THE_SCHEDULE_HINT
-    nextEntryID: 1
+  - id: yes
+    choiceText: They really are!
+    nextEntryID: LOOK_FOR_THE_SCHEDULE_HINT
     TriggerState: 
     SaveState: 0
-  - id: 0-no
+  - id: no
     choiceText: ...
     nextEntryID: LOOK_FOR_THE_SCHEDULE_HINT_1
     TriggerState: 

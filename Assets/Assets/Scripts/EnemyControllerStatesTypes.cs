@@ -8,7 +8,7 @@ public class EnemyControllerStatesTypes : MonoBehaviour
     public NavMeshAgent agent;
 
    // public Transform player;
-   private Transform _player;
+   public Transform _player;
    
    
     public LayerMask whatIsGround, whatIsPlayer;
@@ -22,10 +22,10 @@ public class EnemyControllerStatesTypes : MonoBehaviour
     //attacking
     public float timeBetweenAttacks;
     private bool _alreadyAttacked;
-    public GameObject projectile;
+   // public GameObject projectile;
     
     //States
-    public float sightRange, attackRange;
+    public float sightRange;// attackRange;
 
     public bool playerInSightRange, playerInAttackRange;
     // Start is called before the first frame update
@@ -41,13 +41,13 @@ public class EnemyControllerStatesTypes : MonoBehaviour
         //check range
         var position = transform.position;
         playerInSightRange = Physics.CheckSphere(position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(position, attackRange, whatIsPlayer);
+      //  playerInAttackRange = Physics.CheckSphere(position, attackRange, whatIsPlayer);
         
         //check locker.isHiding ?
         
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+       // if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
 
     private void Patroling()
@@ -67,7 +67,7 @@ public class EnemyControllerStatesTypes : MonoBehaviour
         agent.SetDestination(_player.position);
     }
 
-    private void AttackPlayer()
+   /* private void AttackPlayer()
     {
         agent.SetDestination(transform.position);
         transform.LookAt(_player);
@@ -80,7 +80,7 @@ public class EnemyControllerStatesTypes : MonoBehaviour
 
             _alreadyAttacked = true;
         }
-    }
+    }*/
 
     private void SearchWalkPoint()
     {
