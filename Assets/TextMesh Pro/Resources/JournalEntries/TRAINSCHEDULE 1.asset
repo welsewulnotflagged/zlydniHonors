@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8258aaa43a4e3e04bb9e6313bb9d2b9d, type: 3}
+  m_Name: TRAINSCHEDULE 1
+  m_EditorClassIdentifier: 
+  id: DESTINATION_DECIDED
+  entryContent:
+  - So be it. Whatever waits for me ahead...
+  - Living in unrest is never easy. How a writer is supposed to write for the people,
+    when we are constantly watched?
+  - 'Oh, I regret and despise many things. Better keep this journal close.  '
+  choices:
+  - id: DELAYED_TRAIN_NPC_REPLY
+    choiceText: We are no comrades...
+    nextEntryID: DELAYED_TRAIN_NPC
+    TriggerState: SCHEDULE_DELAY_NPC_REPLY6
+    SaveState: 0
+  - id: DELAYED_TRAIN_NPC_REPLY2
+    choiceText: ...
+    nextEntryID: 
+    TriggerState: SCHEDULE_DELAY_NPC_REPLY6
+    SaveState: 0

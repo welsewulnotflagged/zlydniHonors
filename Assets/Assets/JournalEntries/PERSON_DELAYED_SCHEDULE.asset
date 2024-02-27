@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8258aaa43a4e3e04bb9e6313bb9d2b9d, type: 3}
+  m_Name: PERSON_DELAYED_SCHEDULE
+  m_EditorClassIdentifier: 
+  id: DESTINATION_USURE
+  entryContent:
+  - 'Not certain I can wait this long. This diary be my witness, but I feel I''m
+    being watched. '
+  - Pretty sure I saw someone in the uniform, blending in with the crowd at the entrance...
+  - 'Hell, why is it even so depressing. Resisting only to be punished for art of
+    writing. '
+  choices:
+  - id: DESTINATION_USURE1
+    choiceText: ...
+    nextEntryID: DESTINATION_DECIDED
+    TriggerState: 
+    SaveState: 0

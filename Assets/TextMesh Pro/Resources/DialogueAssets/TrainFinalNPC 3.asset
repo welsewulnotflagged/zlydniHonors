@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
+  m_Name: TrainFinalNPC 3
+  m_EditorClassIdentifier: 
+  id: TRAIN_FINAL_NPC3
+  dialogue:
+  - ...
+  - ...
+  - 'Obviously. Have I not mentioned I live in ///name too? '
+  - 'Must''ve been in my mind. '
+  - 'Anyway, yes, I am visiting him and coming back to my husband. Was selling some
+    kettle in the city on my grandson''s behalf. What a good, good kid, looks after
+    out sheep diligently. '
+  - 'I wish there were more people out there like him, especially now. '
+  - 'Whatever! I will stop with this sentiment now and won''t take up more of your
+    time. The train is boarding now. '
+  - ...
+  choices: []
+  choicesTitle: 

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
+  m_Name: TimeTableInfo
+  m_EditorClassIdentifier: 
+  id: TIMETABLE_INFO
+  dialogue:
+  - 'CITY_NAME : 12.00'
+  - 'CITY_NAME : 13.00'
+  - 'CITY_NAME : 14.00'
+  - 'CITY_NAME : Leaves in 5'
+  choices:
+  - ID: TIMETABLE_INFO_1
+    ChoiceText: '12:00. I better write this down. '
+    NextDialogueID: 
+    TriggerState: 
+    SaveState: 1
+  - ID: TIMETABLE_INFO_2
+    ChoiceText: '13:00. I better write this down. '
+    NextDialogueID: 
+    TriggerState: 
+    SaveState: 1
+  - ID: TIMETABLE_INFO_3
+    ChoiceText: '14:00. I better write this down. '
+    NextDialogueID: 
+    TriggerState: 
+    SaveState: 1
+  - ID: TIMETABLE_INFO_4
+    ChoiceText: '5 minutes? I better write this down. '
+    NextDialogueID: 
+    TriggerState: 
+    SaveState: 1
+  choicesTitle: 
