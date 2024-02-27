@@ -19,7 +19,7 @@ public class JournalController : MonoBehaviour {
    // public Transform turningPagesContainer;
    // public Button turnPreviousPagePrefab;
    // public Button turnNextPagePrefab;
-   private AssetDatabaseUtility _assetDatabaseUtility;
+   private AssetsController _assetsController;
 
 
     private StateController _stateController;
@@ -32,8 +32,8 @@ public class JournalController : MonoBehaviour {
 
     private void Start() {
         // init default journal
-        _assetDatabaseUtility = FindObjectOfType<AssetDatabaseUtility>();
-        AddJournal(_assetDatabaseUtility.GetJournalAsset("0"));
+        _assetsController = FindObjectOfType<AssetsController>();
+        AddJournal(_assetsController.GetJournalAsset("0"));
         _stateController = FindObjectOfType<StateController>();
         // CreateTurnPreviousPageButton();
         // CreateTurnNextPageButton();
@@ -187,7 +187,7 @@ public class JournalController : MonoBehaviour {
 
         Debug.Log("Choice already selected. Should display next entry");
 
-        var nextEntry = _assetDatabaseUtility.GetJournalAsset(nextEntryID);
+        var nextEntry = _assetsController.GetJournalAsset(nextEntryID);
 
         if (nextEntry != null) {
             // uiController.waitingForButton = false;

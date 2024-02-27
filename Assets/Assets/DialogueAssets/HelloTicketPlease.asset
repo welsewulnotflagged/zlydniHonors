@@ -16,12 +16,12 @@ MonoBehaviour:
   dialogue:
   - Hello, ticket please.
   choices:
-  - ID: 
+  - ID: v
     ChoiceText: I don't have one?
     NextDialogueID: NO_TICKET_DIALOGUE_CHECKER
     TriggerState: 
     SaveState: 0
-  - ID: 
+  - ID: vv
     ChoiceText: 'Here. '
     NextDialogueID: HAS_TICKET_DIALOGUE_CHECKER
     TriggerState: 
