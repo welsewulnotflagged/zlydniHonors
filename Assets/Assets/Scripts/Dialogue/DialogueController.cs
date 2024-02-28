@@ -21,7 +21,7 @@ public class DialogueController : MonoBehaviour {
             queue.Enqueue(t);
         }
         _dialogueAsset = dialogueAsset;
-        if (!_uiController.IsDialogueActive()) {
+        if (!_uiController.IsDialogueActive() && !_uiController.HasActiveChoices()) {
             _uiController.ShowDialogue();
             UpdateState();
         }
@@ -34,6 +34,7 @@ public class DialogueController : MonoBehaviour {
     public void UpdateState() {
         var player = FindObjectOfType<PlayerController>();
         if (queue.Count > 0) {
+            _uiController.ShowDialogue();
             _uiController.ClearDialogueButtons();
             _uiController.SetDialogueText(queue.Dequeue());
             if (cameraController) {
@@ -66,7 +67,7 @@ public class DialogueController : MonoBehaviour {
     }
 
     public void Update() {
-        if (_uiController.IsDialogueActive() && Input.GetMouseButtonUp(0) && !_uiController.HasActiveChoices())
+        if (Input.GetMouseButtonDown(0) && _uiController.IsDialogueActive() && !_uiController.HasActiveChoices())
             UpdateState();
     }
 

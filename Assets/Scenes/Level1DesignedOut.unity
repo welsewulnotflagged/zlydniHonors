@@ -3121,6 +3121,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8184828866077354604, guid: 02d6fdc58121201409f39b7942505036,
         type: 3}
+      propertyPath: stateTicket
+      value: TIMETABLE_INFO_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184828866077354604, guid: 02d6fdc58121201409f39b7942505036,
+        type: 3}
+      propertyPath: dialogueAssetTicket
+      value: 
+      objectReference: {fileID: 11400000, guid: 471182d0f36ad6f4aa25f8862cbc724d,
+        type: 2}
+    - target: {fileID: 8184828866077354604, guid: 02d6fdc58121201409f39b7942505036,
+        type: 3}
+      propertyPath: dialogueAssetNoTicket
+      value: 
+      objectReference: {fileID: 11400000, guid: 01a4b517cbe2dca4abd9b397bb2ddb19,
+        type: 2}
+    - target: {fileID: 8184828866077354604, guid: 02d6fdc58121201409f39b7942505036,
+        type: 3}
       propertyPath: DialogueAsset.Array.size
       value: 1
       objectReference: {fileID: 0}
