@@ -63,6 +63,7 @@ public class DialogueChoiceButtonController {
             Debug.Log($"DIALOG EXIT");
         }
 
+        _uiController.ClearDialogueButtons();
         _dialogueController.UpdateState();
         _uiController.SetShaded(false);
     }
