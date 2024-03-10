@@ -18,7 +18,7 @@ public class StateController : MonoBehaviour {
         this.AddBoolState(choice.id, true);
     }
 
-    public void AddBoolState(string id, bool value)
+    public void AddBoolState(string id, bool value=true)
     {
         if (states.ContainsKey(id)) return;
         states[id] = new BooleanState(id, value);

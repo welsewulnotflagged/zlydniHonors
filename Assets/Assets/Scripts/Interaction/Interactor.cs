@@ -14,7 +14,7 @@ public class Interactor : MonoBehaviour {
     }
 
     public void OnGUI() {
-        if (_hitObject != null) {
+        if (_hitObject != null && !_dialogueController.HasActiveDialogue()) {
             GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 50, 20), _hitObject.GetPrompt());
         }
     }
