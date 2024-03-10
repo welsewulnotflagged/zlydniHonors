@@ -19,6 +19,7 @@ namespace Assets.Scripts
         private VisualElement _menuContainer;
         private DialogueController _dialogueController;
         private DialogueChoiceButtonController _dialogueChoiceButtonController;
+      //  private ProgressBar _progressBar;
 
         private VisualElement _choiceButtons;
         private Label _choiceTitle;
@@ -43,6 +44,7 @@ namespace Assets.Scripts
             _inventoryDescription = _document.rootVisualElement.Q<Label>("InventoryDescription");
             _dialogueLabel = _document.rootVisualElement.Q<Label>("DialogueLabel");
             _menuContainer = _document.rootVisualElement.Q<VisualElement>("MenuContainer");
+          //  _progressBar = _document.rootVisualElement.Q<ProgressBar>("Reputation");
 
             _choiceButtons = _document.rootVisualElement.Q<VisualElement>("ChoiceButtons");
             _choiceTitle = _document.rootVisualElement.Q<Label>("ChoiceTitle");

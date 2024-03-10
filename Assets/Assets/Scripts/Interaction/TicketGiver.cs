@@ -23,6 +23,4 @@ public class TicketGiver : Interactable
         ticketObject.transform.position = spawnPos.position; });
         }
     }
-    
-    //REDO THIS SEPARATELY FROM THE DIALOGUE SYSTEM. THIS SUCKS
 }

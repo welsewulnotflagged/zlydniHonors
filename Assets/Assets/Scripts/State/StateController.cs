@@ -23,4 +23,5 @@ public class StateController : MonoBehaviour {
         if (states.ContainsKey(id)) return;
         states[id] = new BooleanState(id, value);
     }
+    
 }
