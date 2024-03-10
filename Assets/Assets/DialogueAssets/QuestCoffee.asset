@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7933ff9d98e5a04f9ec015a8229dfcc, type: 3}
+  m_Name: QuestCoffee
+  m_EditorClassIdentifier: 
+  id: ASKING_FOR_COFFEE
+  dialogue:
+  - ...
+  - 'Oh! Hey! Hey, sir! '
+  - 'Do you have a moment? '
+  - ...
+  choices:
+  - ID: COFFEE_AGREED
+    ChoiceText: What is it?
+    NextDialogueID: COFFEE_AGREED_PROCEED
+    TriggerState: 
+    SaveState: 0
+  choicesTitle: 

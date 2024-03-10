@@ -1476,16 +1476,6 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 273151186}
-    - target: {fileID: 4385779848954508376, guid: 3c220bf8ada2ecc4485fb147883109d3,
-        type: 3}
-      propertyPath: sightRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4385779848954508376, guid: 3c220bf8ada2ecc4485fb147883109d3,
-        type: 3}
-      propertyPath: walkPoint.x
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3331,10 +3321,6 @@ PrefabInstance:
     - {fileID: 8356631959773947486, guid: 02d6fdc58121201409f39b7942505036, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6827723927763212404, guid: 02d6fdc58121201409f39b7942505036,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 640606686}
     - targetCorrespondingSourceObject: {fileID: 6014934371855324034, guid: 02d6fdc58121201409f39b7942505036,
         type: 3}
       insertIndex: -1
@@ -3349,12 +3335,6 @@ Transform:
 --- !u!1 &640606683 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6014934371855324034, guid: 02d6fdc58121201409f39b7942505036,
-    type: 3}
-  m_PrefabInstance: {fileID: 640606681}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &640606684 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6827723927763212404, guid: 02d6fdc58121201409f39b7942505036,
     type: 3}
   m_PrefabInstance: {fileID: 640606681}
   m_PrefabAsset: {fileID: 0}
@@ -3375,21 +3355,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &640606686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640606684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49059dcf660874246b1385d7a9b46fb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Order: 0
-  Prompt: INTERACT
-  DialogueAsset: {fileID: 0}
 --- !u!1001 &686263138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4591,8 +4556,33 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 407407625}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8295473677642144312, guid: 2629a6e7478200e4886dae9ff18889ac,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 691855362}
   m_SourcePrefab: {fileID: 100100000, guid: 2629a6e7478200e4886dae9ff18889ac, type: 3}
+--- !u!1 &691855361 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8295473677642144312, guid: 2629a6e7478200e4886dae9ff18889ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 691855360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &691855362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691855361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49059dcf660874246b1385d7a9b46fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 0
+  Prompt: INTERACT
+  DialogueAsset: {fileID: 0}
 --- !u!1 &718839540
 GameObject:
   m_ObjectHideFlags: 0
@@ -7282,7 +7272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Order: 0
   Prompt: INTERACT
-  DialogueAsset: {fileID: 0}
+  DialogueAsset: {fileID: 11400000, guid: 64c7231e597c24046b7512997db4a5d4, type: 2}
 --- !u!1001 &1605225341
 PrefabInstance:
   m_ObjectHideFlags: 0
