@@ -22,12 +22,11 @@ public class TrainTicketerInteractable : Interactable {
         enemy1.SetActive(false);
         enemy2.SetActive(false);
         enemy3.SetActive(false);
-
-        
+   
     }
 
     protected override void OnInteract(GameObject source) {
-        if (!CheckTicket()) {
+        if (!CheckKey()) {
             ShowDialogue(); }
         else {
             UnlockTrain();
@@ -43,13 +42,13 @@ public class TrainTicketerInteractable : Interactable {
     private void UnlockTrain() {
         _inventoryController.Remove(ItemAsset);
         _dialogueController.addDialogue(DialogueAsset2, _cameraController); 
-        enemy1.SetActive(true);
-        enemy2.SetActive(true);
+    //    enemy1.SetActive(true);
+       // enemy2.SetActive(true);
      //   enemy3.SetActive(true);
         Destroy(wall);
     }
 
-    private bool CheckTicket() {
+    private bool CheckKey() {
         return _inventoryController.Has(ItemAsset);
     }
 }
