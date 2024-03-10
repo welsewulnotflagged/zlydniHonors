@@ -42,8 +42,8 @@ public class TrainTicketerInteractable : Interactable {
     private void UnlockTrain() {
         _inventoryController.Remove(ItemAsset);
         _dialogueController.addDialogue(DialogueAsset2, _cameraController); 
-        enemy1.SetActive(true);
-        enemy2.SetActive(true);
+    //    enemy1.SetActive(true);
+       // enemy2.SetActive(true);
      //   enemy3.SetActive(true);
         Destroy(wall);
     }
