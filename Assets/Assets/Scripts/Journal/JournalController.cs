@@ -41,7 +41,7 @@ public class JournalController : MonoBehaviour {
 
     private void ChangePage(bool next) {
         SplitByPages();
-        Debug.Log(_currentPage);
+        Debug.Log("flip page");
         if (next) {
             _currentPage += 2;
             //TODO MAKE A LIMIT SO IT DOESN'T SCROLLING OUT OF BOUNDS :(
@@ -64,7 +64,7 @@ public class JournalController : MonoBehaviour {
     private void RefreshText() {
         SplitByPages();
         textAreaLeft.text = _pages[_currentPage];
-        if (_pages.Count > 1) {
+        if (_pages.Count > 1 && _pages.Count % 2 == 0) {
             textAreaRight.text = _pages[_currentPage + 1];
         }
     }

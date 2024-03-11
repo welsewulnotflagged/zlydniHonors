@@ -1,5 +1,7 @@
 
 //using UnityEditor.Animations;
+
+using Assets.Scripts;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -19,20 +21,22 @@ public class PlayerController : MonoBehaviour {
     private DialogueController _dialogueController;
     private Animator _animator;
     public JournalController _journalController;
+    private UIController _uiController;
 
     // Start is called before the first frame update
     void Start() {
         _characterController = GetComponent<CharacterController>();
         _dialogueController = FindObjectOfType<DialogueController>();
         _animator = GetComponentInChildren<Animator>();
-         // _journalController.OpenJournalMenu();
-      //  _journalController = GetComponentInChildren<JournalController>();
+        _uiController = FindObjectOfType<UIController>();
+        // _journalController.OpenJournalMenu();
+        //  _journalController = GetComponentInChildren<JournalController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_dialogueController.HasActiveDialogue())
+        if (_dialogueController.HasActiveDialogue() || _uiController.HasActiveChoices())
         {
             return;
         }

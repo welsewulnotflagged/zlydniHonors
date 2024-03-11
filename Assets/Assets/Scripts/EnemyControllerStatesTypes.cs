@@ -31,7 +31,7 @@ public class EnemyControllerStatesTypes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _player = GameObject.Find("ostap animated lowpoly").transform;
+        _player = FindFirstObjectByType<PlayerController>().transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
