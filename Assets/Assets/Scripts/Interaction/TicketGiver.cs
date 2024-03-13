@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class TicketGiver : DialogueWithTriggerInteractable {
-    public GameObject ticket;
+    public ItemAsset ticket;
     public Transform spawnPos;
     public DialogueAsset dialogueAssetNoTicket;
     public DialogueAsset dialogueAssetTicket;
@@ -17,7 +17,7 @@ public class TicketGiver : DialogueWithTriggerInteractable {
         if (_stateController.GetBoolState(stateTicket)) {
             _dialogueController.addDialogue(dialogueAssetTicket, cameraController);
             _dialogueController.SetCallback(() => {
-                var ticketObject = Instantiate(ticket);
+                var ticketObject = Instantiate(ticket.obj);
                 _stateController.AddBoolState(triggerToNotStart);
                 ticketObject.transform.position = spawnPos.position;
             });

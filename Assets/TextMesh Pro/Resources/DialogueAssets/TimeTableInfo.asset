@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: TIMETABLE_INFO
   dialogue:
-  - 'CITY_NAME : 12.00'
-  - 'CITY_NAME : 13.00'
-  - 'CITY_NAME : 14.00'
-  - 'CITY_NAME : Leaves in 5'
+  - 'KYIV : 12.00'
+  - 'KAMIANETS-PODILSKY : 13.00'
+  - 'VINNITSYA : 14.00'
+  - 'MEDZHYBIZH : Leaves in 15'
   choices:
   - ID: TIMETABLE_INFO_1
     ChoiceText: '12:00. I better write this down. '
@@ -35,7 +35,7 @@ MonoBehaviour:
     TriggerState: 
     SaveState: 1
   - ID: TIMETABLE_INFO_4
-    ChoiceText: '5 minutes? I better write this down. '
+    ChoiceText: '15 minutes? I better write this down. '
     NextDialogueID: 
     TriggerState: 
     SaveState: 1

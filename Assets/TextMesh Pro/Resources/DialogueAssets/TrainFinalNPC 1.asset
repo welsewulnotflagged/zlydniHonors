@@ -14,16 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: TRAIN_FINAL_NPC1
   dialogue:
-  - ...
-  - ...
   - I don't recognize you.
-  - But how could we be strangers? We are travelling to the same village, it seems.
+  - But how could we be strangers? We are travelling to the same place, it seems.
   - 'My name is Valentina. Seemargol, you must have not heard that before, ha! '
   - And your name...?
   - ...
   choices:
   - ID: TRAIN_FINAL_NPC_REPLY1
-    ChoiceText: '[Truth]'
+    ChoiceText: 'Bohdan. Nechytaylo. '
     NextDialogueID: TRAIN_FINAL_NPC2
     TriggerState: 
     SaveState: 0

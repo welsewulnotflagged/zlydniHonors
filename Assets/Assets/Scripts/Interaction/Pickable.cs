@@ -17,7 +17,7 @@ public class Pickable : Interactable {
             var collider = gameObject.AddComponent<SphereCollider>();
             collider.radius = radius;
             collider.isTrigger = true;
-            _spawnedObj = Instantiate(item.obj, transform);
+           // _spawnedObj = Instantiate(item.obj, transform);
         }
     }
 
@@ -29,9 +29,9 @@ public class Pickable : Interactable {
     }
 
     protected override void OnInteract(GameObject source) {
-        Destroy(_spawnedObj);
         Debug.Log("PICK UP ITEM" + item.title);
         _inventoryController.Add(item, 1);
         gameObject.SetActive(false);
+        Destroy(this);
     }
 }

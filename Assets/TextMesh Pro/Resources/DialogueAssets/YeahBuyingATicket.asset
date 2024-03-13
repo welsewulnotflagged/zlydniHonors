@@ -15,8 +15,8 @@ MonoBehaviour:
   id: TICKET_START_DIALOGUE
   dialogue:
   - ...
-  - ...
   - 'Yeah? Buying a ticket? Tell me where you are going. '
+  - ...
   choices:
   - ID: TICKET_TIMETABLE_DIALOGUE_1
     ChoiceText: Uh, where is the time table?

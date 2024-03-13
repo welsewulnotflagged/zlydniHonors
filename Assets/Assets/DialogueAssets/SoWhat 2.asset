@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: SCHEDULE_DELAY_NPC_2
   dialogue:
-  - ...
-  - ...
   - 'Yes, of course. '
   - The first controlled city and the haven of revolution.
   - 'Glory, glory. '
@@ -23,7 +21,7 @@ MonoBehaviour:
   - ...
   choices:
   - ID: SCHEDULE_DELAY_NPC_REPLY4
-    ChoiceText: To //city name, apparently. Says so on the ticket.
+    ChoiceText: To Medzhybizh, apparently. Says so on the ticket.
     NextDialogueID: SCHEDULE_DELAY_NPC_3
     TriggerState: 
     SaveState: 0

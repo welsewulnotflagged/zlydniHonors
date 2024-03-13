@@ -34,6 +34,6 @@ MonoBehaviour:
     SaveState: 0
   - id: CITYNAME_5_MIN
     choiceText: 'I guess I''m picking the closest one. '
-    nextEntryID: DESTINATION_DECIDED
+    nextEntryID: DESTINATION_USURE
     TriggerState: TIMETABLE_INFO_4
     SaveState: 0

@@ -15,7 +15,6 @@ MonoBehaviour:
   id: SCHEDULE_DELAY_NPC_3
   dialogue:
   - ...
-  - ...
   - Travelling without purpose is dangerous these times.
   - What are you, a renegade?
   - I'm just kidding.

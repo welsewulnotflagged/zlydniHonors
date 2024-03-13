@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: DESTINATION_USURE
   entryContent:
-  - 'Not certain I can wait this long. This diary be my witness, but I feel I''m
-    being watched. '
+  - Ah. What time is it?
+  - 'Not certain I can too  long. This diary be my witness, but I feel I''m being
+    watched. '
   - Pretty sure I saw someone in the uniform, blending in with the crowd at the entrance...
   - 'Hell, why is it even so depressing. Resisting only to be punished for art of
     writing. '
@@ -24,4 +25,4 @@ MonoBehaviour:
     choiceText: ...
     nextEntryID: DESTINATION_DECIDED
     TriggerState: 
-    SaveState: 0
+    SaveState: 1

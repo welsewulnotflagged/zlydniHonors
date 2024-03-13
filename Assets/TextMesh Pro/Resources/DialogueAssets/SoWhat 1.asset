@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: SCHEDULE_DELAY_NPC_1
   dialogue:
-  - ...
   - 'Huh? '
   - Oh, I'm headed to the capital, Kharkov. have you been there?
   - 'You look like you have. '

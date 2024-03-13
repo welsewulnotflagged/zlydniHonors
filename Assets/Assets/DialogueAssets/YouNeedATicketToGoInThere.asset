@@ -15,6 +15,6 @@ MonoBehaviour:
   id: NO_TICKET_DIALOGUE_CHECKER
   dialogue:
   - You need a ticket to go in here. Please purchase a ticket first. You can get
-    one downstairs.
+    one at the entrance.
   choices: []
   choicesTitle: 
