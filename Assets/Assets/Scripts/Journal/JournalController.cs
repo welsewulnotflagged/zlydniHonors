@@ -20,6 +20,7 @@ public class JournalController : MonoBehaviour {
    // public Button turnPreviousPagePrefab;
    // public Button turnNextPagePrefab;
    private AssetsController _assetsController;
+   private PlayerController _playerController;
 
 
     private StateController _stateController;
@@ -37,6 +38,10 @@ public class JournalController : MonoBehaviour {
         _stateController = FindObjectOfType<StateController>();
         // CreateTurnPreviousPageButton();
         // CreateTurnNextPageButton();
+    }
+
+    private void Awake() {
+        _playerController = FindObjectOfType<PlayerController>();
     }
 
     private void ChangePage(bool next) {
@@ -112,9 +117,11 @@ public class JournalController : MonoBehaviour {
 
         if (!isOpen) {
             gameObject.SetActive(true);
+            _playerController.ToggleNotification(false);
             cameraController.Enable(gameObject);
             StartCoroutine(ShowUIAfterDelay(2f));
         } else {
+            _playerController.ToggleNotification(false);
             gameObject.SetActive(false);
             journalUI.SetActive(false);
         }

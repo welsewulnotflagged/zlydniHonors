@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public float turningSpeed = 180f;
     public CameraController currentCameraController;
     public bool canMove;
+    private GameObject _notificationIndicator;
 
     private float _gravity = -9.81f;
     private Vector3 _velocity;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
     public JournalController _journalController;
     private UIController _uiController;
 
+    
     // Start is called before the first frame update
     void Start() {
         _characterController = GetComponent<CharacterController>();
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour {
         _uiController = FindObjectOfType<UIController>();
         // _journalController.OpenJournalMenu();
         //  _journalController = GetComponentInChildren<JournalController>();
+        _notificationIndicator = GameObject.Find("IndicatorNewEntry");
+        ToggleNotification(false);
     }
 
     // Update is called once per frame
@@ -72,7 +76,10 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
- 
+
+    public void ToggleNotification(bool show) {
+        _notificationIndicator.SetActive(show);
+    } 
 
     private void tryMove() {
         bool isGrounded = _characterController.isGrounded;

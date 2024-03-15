@@ -310,8 +310,8 @@ MonoBehaviour:
     may leave your character with some ideas to write down. Open up the journal by
     pressing Q and writing something down by pressing LMB.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -906,8 +906,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CLOSE TIP
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2311,8 +2311,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Train Schedule
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2401,7 +2401,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3428,7 +3428,7 @@ Transform:
   m_GameObject: {fileID: 599308815}
   serializedVersion: 2
   m_LocalRotation: {x: -0.10904355, y: -0.7228349, z: 0.11724785, w: -0.67221445}
-  m_LocalPosition: {x: 36.926064, y: -28.098898, z: 14.983008}
+  m_LocalPosition: {x: -42.223934, y: -28.098898, z: 14.983008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3536,7 +3536,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -4055,10 +4055,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066a8d824c544bd42a2e10d3129c3d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repCanvas: {fileID: 0}
-  slider: {fileID: 0}
-  questFinished: 0
-  isApproved: 0
 --- !u!1001 &671737630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6842,11 +6838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b09461e4187a34fa3cdf6a5eab8c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Order: 0
-  Prompt: INTERACT
-  itemAsset: {fileID: 11400000, guid: f5d85893abc9916429f3aa8b40c87c00, type: 2}
-  spawnPos: {fileID: 1324928097}
-  _dialogueAsset: {fileID: 11400000, guid: f67731ac5f731c142a2e16c97a50f45e, type: 2}
 --- !u!65 &737198451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7027,8 +7018,8 @@ MonoBehaviour:
   m_text: 'Enemies are on your tail! Avoid getting caught by pressing SHIFT to run
     and E to hide in the lockers! '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7590,12 +7581,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdf2965d09f30274e87ceb3bd0f35307, type: 3}
---- !u!1 &850773974 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7221397134523899525, guid: c34471c1bb84bb74687bf720473b92d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 7066118230513511014}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &850773975 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8424117129899791684, guid: c34471c1bb84bb74687bf720473b92d6,
@@ -8070,7 +8055,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0400703d3de01e0469bc8720f61daa34, type: 2}
+  - {fileID: 2100000, guid: 232fc8cf3f19b954b94a6a792f08607f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8638,18 +8623,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1051595891}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1084904473 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 262789406944500649, guid: c34471c1bb84bb74687bf720473b92d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 7066118230513511014}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1086841300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 820398568051285474, guid: 5392abf36e369a04181330d7cceb11a9,
@@ -9041,7 +9014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e134ab51546b0bf4ab0cf6928dde52f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFrozen: 0
 --- !u!114 &1178210367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9054,9 +9026,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84e24fb0da3e5d4e8abb194d38a15c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: {fileID: 1696782837}
-  triggersEnemies: 0
-  enemies: []
 --- !u!4 &1195169332 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7959916960378448669, guid: 6e551fb60116b774688138e8fdb18db5,
@@ -9391,8 +9360,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CLOSE TIP
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9677,12 +9646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84e24fb0da3e5d4e8abb194d38a15c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: {fileID: 2058894147}
-  triggersEnemies: 1
-  enemies:
-  - {fileID: 1028750650}
-  - {fileID: 1967283480}
-  - {fileID: 852751643}
 --- !u!114 &1386836851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9695,7 +9658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e134ab51546b0bf4ab0cf6928dde52f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFrozen: 0
 --- !u!1001 &1399996581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9888,9 +9850,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84e24fb0da3e5d4e8abb194d38a15c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: {fileID: 65591749}
-  triggersEnemies: 0
-  enemies: []
 --- !u!114 &1437037410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9903,7 +9862,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e134ab51546b0bf4ab0cf6928dde52f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFrozen: 0
 --- !u!1001 &1466767670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9985,7 +9943,7 @@ PrefabInstance:
     - target: {fileID: 6649433375995685254, guid: b15c90dba1475424590d50bc2ae6a1b7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.71
+      value: -40.44
       objectReference: {fileID: 0}
     - target: {fileID: 6649433375995685254, guid: b15c90dba1475424590d50bc2ae6a1b7,
         type: 3}
@@ -10171,8 +10129,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CLOSE TIP
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11189,13 +11147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30f72bf5afb62c49991f6771e4ae0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Order: 0
-  Prompt: INTERACT
-  itemAsset: {fileID: 11400000, guid: 62842952167452c4aa954d16f667d319, type: 2}
-  dialogueAssetNoCoffee: {fileID: 11400000, guid: 64c7231e597c24046b7512997db4a5d4,
-    type: 2}
-  dialogueAssetCoffee: {fileID: 11400000, guid: 9b5395898e2cb6e4cb02abf07a20946f,
-    type: 2}
 --- !u!114 &1649946752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11208,10 +11159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066a8d824c544bd42a2e10d3129c3d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repCanvas: {fileID: 850773974}
-  slider: {fileID: 1084904473}
-  questFinished: 0
-  isApproved: 0
 --- !u!1 &1662155706
 GameObject:
   m_ObjectHideFlags: 0
@@ -11273,8 +11220,8 @@ MonoBehaviour:
     help. Approval level is indicated by the bar above the characters. Try talking
     to them! '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11881,11 +11828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b09461e4187a34fa3cdf6a5eab8c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Order: 0
-  Prompt: INTERACT
-  itemAsset: {fileID: 11400000, guid: 62842952167452c4aa954d16f667d319, type: 2}
-  spawnPos: {fileID: 1300716089}
-  _dialogueAsset: {fileID: 11400000, guid: 4de19bdd08e0c7444be4262a1e05d308, type: 2}
 --- !u!65 &1766071669
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11919,11 +11861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b09461e4187a34fa3cdf6a5eab8c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Order: 0
-  Prompt: INTERACT
-  itemAsset: {fileID: 11400000, guid: 62842952167452c4aa954d16f667d319, type: 2}
-  spawnPos: {fileID: 1300716089}
-  _dialogueAsset: {fileID: 11400000, guid: 4de19bdd08e0c7444be4262a1e05d308, type: 2}
 --- !u!4 &1766071674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2543989257937215420, guid: 2629a6e7478200e4886dae9ff18889ac,
@@ -12371,13 +12308,13 @@ MonoBehaviour:
   Prompt: INTERACT
   triggerToStart: 
   triggerToNotStart: 
-  ticket: {fileID: 11400000, guid: 9268792d25fc73045895a7b0b8436c4f, type: 2}
+  ticket: {fileID: 11400000, guid: c68d34818c3c16d43bdfa849c4a11afe, type: 2}
   spawnPos: {fileID: 1214447927}
   dialogueAssetNoTicket: {fileID: 11400000, guid: 560ecfeaaa56c814bb0ee277bd51dab3,
     type: 2}
-  dialogueAssetTicket: {fileID: 11400000, guid: a73eecd15881abb41a6583a95b0b56c3,
+  dialogueAssetTicket: {fileID: 11400000, guid: 560ecfeaaa56c814bb0ee277bd51dab3,
     type: 2}
-  stateTicket: 
+  stateTicket: TIMETABLE_INFO_1
 --- !u!1001 &1922862546
 PrefabInstance:
   m_ObjectHideFlags: 0
