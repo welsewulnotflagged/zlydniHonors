@@ -40,7 +40,6 @@ public class LockeInteractable : Interactable
 
     void StartHiding()
     {
-        
         isHiding = true;
         player.canMove = true;
         
@@ -50,16 +49,9 @@ public class LockeInteractable : Interactable
         playerModel.SetActive(false);
 
         CameraController cameraNew = GetComponent<CameraController>();
-       
+        Debug.Log(""+isHiding);
+
     }
-
-  /*  IEnumerator HideTimer(Vector3 OGposition)
-    {
-        yield return new WaitForSeconds(hideDuration);
-
-        // Stop hiding
-        StopHiding(OGposition);
-    } */
 
     void StopHiding(Vector3 OGposition)
     {
@@ -70,7 +62,15 @@ public class LockeInteractable : Interactable
        // playerModel.transform.position = OGposition;
         playerModel.SetActive(true);
         cameraController.Disable(player.gameObject);
+        Debug.Log(""+isHiding);
+
     }
 
-    
+    public bool IsHiding()
+    {
+        Debug.Log("Im hidden:" + isHiding);
+        return isHiding;
+    }
+
+
 }

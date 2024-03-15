@@ -8,12 +8,16 @@ public class Spawner : Interactable
 {
     public ItemAsset itemAsset;
     public GameObject spawnPos;
+
+    private GameObject spawnedObj;
     //  public GameObject itemObj;
 
     private InventoryController _inventoryController;
     private DialogueController _dialogueController;
     public DialogueAsset _dialogueAsset;
     private CameraController _cameraController;
+
+    private bool _activeInHierarchy;
 
     // Start is called before the first frame update
     void Start()
@@ -33,15 +37,18 @@ public class Spawner : Interactable
         _dialogueController.addDialogue(_dialogueAsset, _cameraController);
         _dialogueController.SetCallback(() =>
         {
-            if (!HasItem())
+            if (!HasItem() && !_activeInHierarchy)
             {
-                var spawnedObj = Instantiate(itemAsset.obj);
+                spawnedObj = Instantiate(itemAsset.obj);
 
                 spawnedObj.transform.position = spawnPos.transform.position;
+
+                _activeInHierarchy = true;
             }
-            else if (HasItem())
+            else if (HasItem() || _activeInHierarchy)
             {
-                Debug.Log("already spawned");
+                //Debug.Log("already spawned");
+                Debug.Log("Is active? "+_activeInHierarchy);
             }
         });
     }

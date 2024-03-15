@@ -7,48 +7,60 @@ public class EnemyControllerStatesTypes : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-   // public Transform player;
-   public Transform _player;
-   
-   
+    // public Transform player;
+    public Transform _player;
+
+
     public LayerMask whatIsGround, whatIsPlayer;
-    private LockeInteractable locker; 
+    public GameObject[] _lockers;
 
     //patrolling
     public Vector3 walkPoint;
     private bool _walkPointSet;
     public float walkPointRange;
-    
+
     //attacking
     public float timeBetweenAttacks;
     private bool _alreadyAttacked;
-   // public GameObject projectile;
-    
+    // public GameObject projectile;
+
     //States
-    public float sightRange;// attackRange;
+    public float sightRange; // attackRange;
 
     public bool playerInSightRange, playerInAttackRange;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _player = FindFirstObjectByType<PlayerController>().transform;
         agent = GetComponent<NavMeshAgent>();
+        foreach (var locker in _lockers)
+        {
+            locker.GetComponent<LockeInteractable>();
+        }
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //check range
-        var position = transform.position;
-        playerInSightRange = Physics.CheckSphere(position, sightRange, whatIsPlayer);
-      //  playerInAttackRange = Physics.CheckSphere(position, attackRange, whatIsPlayer);
-        
-        //check locker.isHiding ?
-        
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-       // if (playerInSightRange && playerInAttackRange) AttackPlayer();
-    }
+   /* void Update()
+    { 
+        if (!_lockers.IsHiding())
+        {
+            Debug.Log("player not hidden");
+            //check range
+            var position = transform.position;
+            playerInSightRange = Physics.CheckSphere(position, sightRange, whatIsPlayer);
+
+            if (!playerInSightRange && !playerInAttackRange) Patroling();
+            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        }
+        else if (locker.isHiding)
+        {
+            Debug.Log("player hidden");
+
+            playerInSightRange = false;
+            Patroling();
+        }
+    }*/
 
     private void Patroling()
     {
@@ -66,21 +78,6 @@ public class EnemyControllerStatesTypes : MonoBehaviour
     {
         agent.SetDestination(_player.position);
     }
-
-   /* private void AttackPlayer()
-    {
-        agent.SetDestination(transform.position);
-        transform.LookAt(_player);
-        if (!_alreadyAttacked)
-        {
-            //attack 
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-
-            _alreadyAttacked = true;
-        }
-    }*/
 
     private void SearchWalkPoint()
     {

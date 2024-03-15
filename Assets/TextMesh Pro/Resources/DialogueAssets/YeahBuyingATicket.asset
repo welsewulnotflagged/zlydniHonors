@@ -24,7 +24,7 @@ MonoBehaviour:
     TriggerState: 
     SaveState: 0
   - ID: TICKET_TIMETABLE_DIALOGUE_2
-    ChoiceText: 'One-way ticket to //CityName. '
+    ChoiceText: One-way ticket to Medzhybizh.
     NextDialogueID: 
     TriggerState: TIMETABLE_INFO_1
     SaveState: 1

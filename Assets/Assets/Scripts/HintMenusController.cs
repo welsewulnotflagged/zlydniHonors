@@ -9,6 +9,8 @@ public class HintMenusController : MonoBehaviour
 
     public GameObject hint;
     private Freezer _freezer;
+    public bool triggersEnemies;
+    public GameObject[] enemies;
 
     // public BoxCollider[] triggerBoxes;
     // Start is called before the first frame update
@@ -16,6 +18,10 @@ public class HintMenusController : MonoBehaviour
     {
         _freezer = Freezer.Instance;
         hint.SetActive(false);
+        foreach (var enemy in enemies)
+        {
+            enemy.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -29,10 +35,19 @@ public class HintMenusController : MonoBehaviour
         {
             _freezer.DoFreeze();
             Debug.Log("Freeze called");
+            foreach (var enemy in enemies)
+            {
+                enemy.SetActive(true);
+            }
         }
+        
         else if (_freezer == null)
         {
             Debug.Log("no freezer");
+            if (triggersEnemies)
+            {
+                
+            }
         }
     }
 }
