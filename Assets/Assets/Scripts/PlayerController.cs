@@ -1,4 +1,3 @@
-
 //using UnityEditor.Animations;
 
 using Assets.Scripts;
@@ -10,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public float turningSpeed = 180f;
     public CameraController currentCameraController;
     public bool canMove;
+    public AudioClip NotificationSound;
     private GameObject _notificationIndicator;
 
     private float _gravity = -9.81f;
@@ -23,16 +23,18 @@ public class PlayerController : MonoBehaviour {
     private CharacterController _characterController;
     private DialogueController _dialogueController;
     private Animator _animator;
+    private AudioSource _audioSource;
     public JournalController _journalController;
     private UIController _uiController;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
         canRun = false; 
         _characterController = GetComponent<CharacterController>();
         _dialogueController = FindObjectOfType<DialogueController>();
+        _audioSource = GetComponent<AudioSource>();
         _animator = GetComponentInChildren<Animator>();
         _uiController = FindObjectOfType<UIController>();
         // _journalController.OpenJournalMenu();
@@ -42,35 +44,30 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (_dialogueController.HasActiveDialogue() || _uiController.HasActiveChoices())
-        {
+    void Update() {
+        if (_dialogueController.HasActiveDialogue() || _uiController.HasActiveChoices()) {
             return;
         }
 
-        if (!canMove)
-        {
+        if (!canMove) {
             tryMove();
             TrySwitchCamera();
         }
 
         //tryMove();
         //TrySwitchCamera();
-        if (Input.GetKey(KeyCode.Escape))
-        {
+        if (Input.GetKey(KeyCode.Escape)) {
             Application.Quit();
         }
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-        {    if (_journalController != null)
-            {
+
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            if (_journalController != null) {
                 _journalController.OpenJournalMenu();
                 _journalController.isOpen = !_journalController.isOpen;
             }
         }
     }
-    
+
 
     private void TrySwitchCamera() {
         if (Input.GetKeyUp(KeyCode.X)) {
@@ -83,7 +80,10 @@ public class PlayerController : MonoBehaviour {
 
     public void ToggleNotification(bool show) {
         _notificationIndicator.SetActive(show);
-    } 
+        if (show) {
+            _audioSource.PlayOneShot(NotificationSound);
+        }
+    }
 
     private void tryMove() {
         bool isGrounded = _characterController.isGrounded;
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         _animator.SetFloat("h", Input.GetAxis("Vertical"));
-        
+
         transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * turningSpeed, 0);
         // _direction.x = Input.GetAxis("Vertical");
         // _direction.z = transform.forward.magnitude;
@@ -122,7 +122,4 @@ public class PlayerController : MonoBehaviour {
         _velocity.y += _gravity * Time.deltaTime;
         _characterController.Move(_velocity * Time.deltaTime);
     }
-
-
 }
-
