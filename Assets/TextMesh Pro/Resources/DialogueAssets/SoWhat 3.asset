@@ -26,4 +26,5 @@ MonoBehaviour:
     NextDialogueID: 
     TriggerState: 
     SaveState: 1
+    ShowNotification: 1
   choicesTitle: 

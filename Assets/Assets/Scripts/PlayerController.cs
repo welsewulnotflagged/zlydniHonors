@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
     private Vector3 _velocity;
     [SerializeField] private float jumpHeight;
     private InventoryController inventory;
+    public bool isHidden;
+    public bool canRun;
 
 
     private CharacterController _characterController;
@@ -26,7 +28,9 @@ public class PlayerController : MonoBehaviour {
 
     
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
+        canRun = false; 
         _characterController = GetComponent<CharacterController>();
         _dialogueController = FindObjectOfType<DialogueController>();
         _animator = GetComponentInChildren<Animator>();
@@ -94,13 +98,21 @@ public class PlayerController : MonoBehaviour {
         // _direction.z = transform.forward.magnitude;
 
         var localSpeed = speed;
-        if (Input.GetKey(KeyCode.LeftShift)) {
-            _animator.SetBool("sprint", true);
-            localSpeed *= 2;
-        } else {
-            _animator.SetBool("sprint", false);
+        if (canRun)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _animator.SetBool("sprint", true);
+                localSpeed *= 2;
+            }
+            else
+            {
+                _animator.SetBool("sprint", false);
+            }
         }
+
         _characterController.Move(transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * localSpeed);
+        
 
         if (Input.GetKeyUp(KeyCode.Space) && isGrounded) {
             print("JUMPING");

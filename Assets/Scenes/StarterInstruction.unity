@@ -523,18 +523,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Hello! Welcome to the playtest of Milestone 1 Prototype of \"ZLYDNI\".
     \n\nA very quick synopsis of the level: the player will have to navigate through
-    the level that represents the train station. The intro part is a bit bugged right
-    now so it is highly advised to take a look at the time schedule, then open the
-    journal, write down the time, and only then talk to the first NPC who gives the
-    ticket. After that, the level is free to explore. Controls are WASD for movement
-    and spacebar for jump. Interact with NPCs by pressing E. Open up journal by pressing
-    Q, scroll through entries by left clicking on the pages, write more entries bu
-    interacting with buttons and turn pages of your diary by pressing < or > (left
-    or right arrow keys). \n\nPlease note this is a single person project. Whitebox
-    can be considered to be finished. Current under development areas: enemies patrol
-    the area but refuse to chase the player; binding dialogues with interactable
-    objects and journal assets is under development, but will be done this week,
-    along with thesis pages. \n\nWhen you are ready to start, click the button below
+    the level that represents the train station. To start the level, first open journal
+    by pressing Q and read through for instructions. After that, the level is free
+    to explore. Controls are WASD for movement and spacebar for jump. Interact with
+    NPCs and interactable objects by pressing E. Open up journal by pressing Q, scroll
+    through entries by left clicking on the pages, write more entries by pressing
+    < or > (left or right arrow keys). \n\nPlease note this is a single person project.
+    Whitebox can be considered to be finished. Currently, textures are under development,
+    and more content to come!\n\nWhen you are ready to start, click the button below
     :) "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 927d242ffb6c26a40b443099b3c8f53a, type: 2}

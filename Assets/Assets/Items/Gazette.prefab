@@ -120,5 +120,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Order: 0
   Prompt: INTERACT
-  item: {fileID: 11400000, guid: 62842952167452c4aa954d16f667d319, type: 2}
+  item: {fileID: 11400000, guid: f5d85893abc9916429f3aa8b40c87c00, type: 2}
   radius: 1

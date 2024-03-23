@@ -24,19 +24,23 @@ MonoBehaviour:
     NextDialogueID: 
     TriggerState: 
     SaveState: 1
+    ShowNotification: 1
   - ID: TIMETABLE_INFO_2
     ChoiceText: '13:00. I better write this down. '
     NextDialogueID: 
     TriggerState: 
     SaveState: 1
+    ShowNotification: 1
   - ID: TIMETABLE_INFO_3
     ChoiceText: '14:00. I better write this down. '
     NextDialogueID: 
     TriggerState: 
     SaveState: 1
+    ShowNotification: 1
   - ID: TIMETABLE_INFO_4
     ChoiceText: '15 minutes? I better write this down. '
     NextDialogueID: 
     TriggerState: 
     SaveState: 1
+    ShowNotification: 1
   choicesTitle: 

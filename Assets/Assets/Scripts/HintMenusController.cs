@@ -11,11 +11,13 @@ public class HintMenusController : MonoBehaviour
     private Freezer _freezer;
     public bool triggersEnemies;
     public GameObject[] enemies;
+    private PlayerController _playerController;
 
     // public BoxCollider[] triggerBoxes;
     // Start is called before the first frame update
     void Start()
     {
+        _playerController = FindObjectOfType<PlayerController>();
         _freezer = Freezer.Instance;
         hint.SetActive(false);
         foreach (var enemy in enemies)
@@ -38,6 +40,7 @@ public class HintMenusController : MonoBehaviour
             foreach (var enemy in enemies)
             {
                 enemy.SetActive(true);
+                _playerController.canRun = true;
             }
         }
         

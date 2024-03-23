@@ -17,5 +17,11 @@ MonoBehaviour:
   - ...
   - 'I won''t take up more of your time. The train is boarding now. '
   - ...
-  choices: []
+  choices:
+  - ID: BYE_FINAL_NPC1
+    ChoiceText: ...
+    NextDialogueID: 
+    TriggerState: 
+    SaveState: 1
+    ShowNotification: 1
   choicesTitle: 

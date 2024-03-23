@@ -8,11 +8,11 @@ public class EnemyControllerStatesTypes : MonoBehaviour
     public NavMeshAgent agent;
 
     // public Transform player;
-    public Transform _player;
+    public PlayerController _player;
 
 
     public LayerMask whatIsGround, whatIsPlayer;
-    public GameObject[] _lockers;
+    //  public LockeInteractable[] _lockers;
 
     //patrolling
     public Vector3 walkPoint;
@@ -32,18 +32,14 @@ public class EnemyControllerStatesTypes : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        _player = FindFirstObjectByType<PlayerController>().transform;
+        _player = FindFirstObjectByType<PlayerController>();
         agent = GetComponent<NavMeshAgent>();
-        foreach (var locker in _lockers)
-        {
-            locker.GetComponent<LockeInteractable>();
-        }
     }
 
     // Update is called once per frame
-   /* void Update()
-    { 
-        if (!_lockers.IsHiding())
+    void Update()
+    {
+        if (!_player.isHidden)
         {
             Debug.Log("player not hidden");
             //check range
@@ -53,14 +49,14 @@ public class EnemyControllerStatesTypes : MonoBehaviour
             if (!playerInSightRange && !playerInAttackRange) Patroling();
             if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         }
-        else if (locker.isHiding)
+        else
         {
             Debug.Log("player hidden");
 
             playerInSightRange = false;
             Patroling();
         }
-    }*/
+    }
 
     private void Patroling()
     {
@@ -76,7 +72,7 @@ public class EnemyControllerStatesTypes : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(_player.position);
+        agent.SetDestination(_player.gameObject.transform.position);
     }
 
     private void SearchWalkPoint()

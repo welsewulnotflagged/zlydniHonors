@@ -53,7 +53,7 @@ public class DialogueChoiceButtonController {
 
     private void HandleButton(DialogueChoice choice) {
         if (choice.SaveState) {
-            _stateController.AddBoolState(choice);
+            _stateController.AddBoolState(choice, choice.ShowNotification);
         }
 
         if (!string.IsNullOrEmpty(choice.NextDialogueID)) {

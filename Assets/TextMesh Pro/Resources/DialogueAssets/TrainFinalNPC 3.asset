@@ -23,5 +23,11 @@ MonoBehaviour:
   - 'Whatever! I will stop with this sentiment now and won''t take up more of your
     time. The train is boarding now. '
   - ...
-  choices: []
+  choices:
+  - ID: BYE_FINAL_NPC
+    ChoiceText: ...
+    NextDialogueID: 
+    TriggerState: 
+    SaveState: 1
+    ShowNotification: 1
   choicesTitle: 

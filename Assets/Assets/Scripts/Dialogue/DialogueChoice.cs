@@ -12,4 +12,5 @@ public class DialogueChoice {
     public string TriggerState;
 
     public bool SaveState;
+    public bool ShowNotification;
 }
