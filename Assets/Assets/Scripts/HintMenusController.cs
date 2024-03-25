@@ -33,8 +33,8 @@ public class HintMenusController : MonoBehaviour
         hint.SetActive(true);
         var collider = hint.GetComponentInParent<BoxCollider>();
         collider.enabled = false;
-        if (_freezer != null)
-        {
+        if (_freezer != null) {
+            _playerController.lockedCursor = false;
             _freezer.DoFreeze();
             Debug.Log("Freeze called");
             foreach (var enemy in enemies)
