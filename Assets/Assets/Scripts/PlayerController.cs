@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         Cursor.lockState = lockedCursor ? CursorLockMode.Locked : CursorLockMode.None;
+        if (Input.GetKey(KeyCode.LeftAlt)) {
+            Cursor.lockState = CursorLockMode.None;
+        }
 
         if (_dialogueController.HasActiveDialogue() || _uiController.HasActiveChoices()) {
             return;
