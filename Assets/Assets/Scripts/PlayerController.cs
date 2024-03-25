@@ -12,7 +12,11 @@ public class PlayerController : MonoBehaviour {
     public AudioClip NotificationSound;
     private GameObject _notificationIndicator;
 
-    private float _gravity = -9.81f;
+    public float ymouseSensitivity = 30f;
+    public float xmouseSensitivity = 50f;
+    private float verticalRotation = 0f;
+    public bool lockedCursor = true;
+    private const float Gravity = -29.81f; // damn look at that GRAVITY
     private Vector3 _velocity;
     [SerializeField] private float jumpHeight;
     private InventoryController inventory;
@@ -45,6 +49,8 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        Cursor.lockState = lockedCursor ? CursorLockMode.Locked : CursorLockMode.None;
+
         if (_dialogueController.HasActiveDialogue() || _uiController.HasActiveChoices()) {
             return;
         }
@@ -64,6 +70,7 @@ public class PlayerController : MonoBehaviour {
             if (_journalController != null) {
                 _journalController.OpenJournalMenu();
                 _journalController.isOpen = !_journalController.isOpen;
+                lockedCursor = !_journalController.isOpen;
             }
         }
     }
@@ -93,10 +100,6 @@ public class PlayerController : MonoBehaviour {
 
         _animator.SetFloat("h", Input.GetAxis("Vertical"));
 
-        transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * turningSpeed, 0);
-        // _direction.x = Input.GetAxis("Vertical");
-        // _direction.z = transform.forward.magnitude;
-
         var localSpeed = speed;
         if (canRun)
         {
@@ -110,16 +113,28 @@ public class PlayerController : MonoBehaviour {
                 _animator.SetBool("sprint", false);
             }
         }
+        
+        if (lockedCursor) {
+            float mouseX = Input.GetAxis("Mouse X") * xmouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * ymouseSensitivity * Time.deltaTime;
+
+            transform.Rotate(Vector3.up, mouseX);
+
+            verticalRotation -= mouseY;
+            verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
+            transform.localRotation = Quaternion.Euler(verticalRotation, transform.localEulerAngles.y, 0f);
+        }
 
         _characterController.Move(transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * localSpeed);
+        _characterController.Move(transform.right * Input.GetAxis("Horizontal") * Time.deltaTime * localSpeed);
         
 
         if (Input.GetKeyUp(KeyCode.Space) && isGrounded) {
             print("JUMPING");
-            _velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * _gravity);
+            _velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * Gravity);
         }
 
-        _velocity.y += _gravity * Time.deltaTime;
+        _velocity.y += Gravity * Time.deltaTime;
         _characterController.Move(_velocity * Time.deltaTime);
     }
 }
