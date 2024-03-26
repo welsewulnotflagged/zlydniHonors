@@ -1,6 +1,7 @@
 //using UnityEditor.Animations;
 
 using Assets.Scripts;
+using Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -11,7 +12,8 @@ public class PlayerController : MonoBehaviour {
     public bool canMove;
     public AudioClip NotificationSound;
     private GameObject _notificationIndicator;
-
+    private CinemachineVirtualCamera _virtualCamera;
+    
     public float ymouseSensitivity = 30f;
     public float xmouseSensitivity = 50f;
     private float verticalRotation = 0f;
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour {
         _audioSource = GetComponent<AudioSource>();
         _animator = GetComponentInChildren<Animator>();
         _uiController = FindObjectOfType<UIController>();
+        _virtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         // _journalController.OpenJournalMenu();
         //  _journalController = GetComponentInChildren<JournalController>();
         _notificationIndicator = GameObject.Find("IndicatorNewEntry");
@@ -124,8 +127,9 @@ public class PlayerController : MonoBehaviour {
             transform.Rotate(Vector3.up, mouseX);
 
             verticalRotation -= mouseY;
-            verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
-            transform.localRotation = Quaternion.Euler(verticalRotation, transform.localEulerAngles.y, 0f);
+            verticalRotation = Mathf.Clamp(verticalRotation, -45f, 45f);
+            _virtualCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+            transform.localRotation = Quaternion.Euler(0, transform.localEulerAngles.y, 0f);
         }
 
         _characterController.Move(transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * localSpeed);
