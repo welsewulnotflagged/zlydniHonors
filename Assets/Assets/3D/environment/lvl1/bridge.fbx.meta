@@ -3,7 +3,17 @@ guid: de5dbd703d436d04aa0004d351fd177b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mesh
+    second: {fileID: 2100000, guid: b2d955fa6333d4144adaffc29d5da610, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal railings
+    second: {fileID: 2100000, guid: 9a64c0c9d63159542a20d65829d3c95f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
