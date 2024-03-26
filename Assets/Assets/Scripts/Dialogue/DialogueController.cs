@@ -34,6 +34,7 @@ public class DialogueController : MonoBehaviour {
     public void UpdateState() {
         var player = FindObjectOfType<PlayerController>();
         if (queue.Count > 0) {
+            player.lockedCursor = false;
             _uiController.ShowDialogue();
             _uiController.ClearDialogueButtons();
             _uiController.SetDialogueText(queue.Dequeue());
@@ -51,6 +52,7 @@ public class DialogueController : MonoBehaviour {
 
         Debug.Log("close dialog");
         _uiController.ShowHUD();
+        player.lockedCursor = true;
         if (cameraController) {
             cameraController.Disable(player.gameObject);
         }
