@@ -132,46 +132,6 @@ MonoBehaviour:
     m_Value: 0
   DepthNormalsShader: {fileID: 4800000, guid: 516d67fad41db074ca871164dfde9e71, type: 3}
   shader: {fileID: 4800000, guid: 3d6327a8c88b3714793200af974474fc, type: 3}
---- !u!114 &-4259472660434585122
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
-  m_Name: Tonemapping
-  m_EditorClassIdentifier: 
-  active: 1
-  mode:
-    m_OverrideState: 1
-    m_Value: 1
-  neutralHDRRangeReductionMode:
-    m_OverrideState: 0
-    m_Value: 2
-  acesPreset:
-    m_OverrideState: 0
-    m_Value: 3
-  hueShiftAmount:
-    m_OverrideState: 0
-    m_Value: 0
-  detectPaperWhite:
-    m_OverrideState: 0
-    m_Value: 0
-  paperWhite:
-    m_OverrideState: 0
-    m_Value: 300
-  detectBrightnessLimits:
-    m_OverrideState: 0
-    m_Value: 1
-  minNits:
-    m_OverrideState: 0
-    m_Value: 0.005
-  maxNits:
-    m_OverrideState: 0
-    m_Value: 1000
 --- !u!114 &-359255258248137043
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -195,17 +155,17 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   scatter:
-    m_OverrideState: 0
-    m_Value: 0.7
+    m_OverrideState: 1
+    m_Value: 1
   clamp:
     m_OverrideState: 0
     m_Value: 65472
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.6392157, b: 0.07058824, a: 1}
   highQualityFiltering:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   downscale:
     m_OverrideState: 0
     m_Value: 0
@@ -233,11 +193,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: -359255258248137043}
-  - {fileID: -4259472660434585122}
   - {fileID: 2734161128468686462}
-  - {fileID: 3520737899200043051}
   - {fileID: 1238261179462986351}
   - {fileID: -6300215111268441819}
+  - {fileID: 6569456184053602339}
 --- !u!114 &1238261179462986351
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -302,42 +261,6 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 2
   shader: {fileID: 4800000, guid: fa78272576207e243bc6ec9f8a6c4f73, type: 3}
---- !u!114 &3520737899200043051
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 363d22a71edb5214d8cf8e2d5946a938, type: 3}
-  m_Name: Gradient
-  m_EditorClassIdentifier: 
-  active: 0
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0
-  input:
-    m_OverrideState: 1
-    m_Value: 0
-  color1:
-    m_OverrideState: 1
-    m_Value: {r: 0, g: 0.8, b: 0.56, a: 0.5}
-  color2:
-    m_OverrideState: 1
-    m_Value: {r: 0.81, g: 0.37, b: 1, a: 0.5}
-  rotation:
-    m_OverrideState: 1
-    m_Value: 0
-  gradientTex:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
-    dimension: 1
-  mode:
-    m_OverrideState: 1
-    m_Value: 0
-  shader: {fileID: 4800000, guid: b695a2a5e9375f446947b5bf60e72467, type: 3}
 --- !u!114 &5474848227654045115
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -378,3 +301,30 @@ MonoBehaviour:
   maxNits:
     m_OverrideState: 0
     m_Value: 1000
+--- !u!114 &6569456184053602339
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ce1611ace1a9a4a8284d45a924bdcd, type: 3}
+  m_Name: Dithering
+  m_EditorClassIdentifier: 
+  active: 1
+  lut:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 7a95f13299f9b0948aff699c1881bfc6, type: 3}
+    dimension: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.341
+  luminanceThreshold:
+    m_OverrideState: 0
+    m_Value: 0.5
+  tiling:
+    m_OverrideState: 0
+    m_Value: 0.93
+  shader: {fileID: 4800000, guid: 9dfd4d129fd660d43a2fb5c40d119ca4, type: 3}
