@@ -8,8 +8,10 @@ public class Interactor : MonoBehaviour {
 
     private Interactable _hitObject;
     private DialogueController _dialogueController;
+    private PlayerController _playerController;
 
     private void Start() {
+        _playerController = FindObjectOfType<PlayerController>();
         _dialogueController = FindObjectOfType<DialogueController>();
     }
 
@@ -38,7 +40,7 @@ public class Interactor : MonoBehaviour {
         tryRaycast();
 
         if (Input.GetKeyDown(KeyCode.E) && _hitObject != null) {
-            _hitObject.GetComponent<Interactable>().Interact(gameObject);
+            _hitObject.GetComponent<Interactable>().Interact(_playerController.gameObject);
         }
     }
 }
