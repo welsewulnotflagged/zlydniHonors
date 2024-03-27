@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &4988190909513208970
 GameObject:
@@ -63,9 +63,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4988190909513208970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9b1b9d7bde1495d9181592a92649707, type: 3}
+  m_Script: {fileID: 11500000, guid: a83321e3aee9f8747abdce8ec944f8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Order: 0
+  Prompt: INTERACT
   opened: 0
   doorHandle: {fileID: 5751795691821273079}
   speed: 5
